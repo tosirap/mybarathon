@@ -52,6 +52,7 @@
 
   <!-- Contact -->
   
+  
   <!-- todo later
     <div class="w3-center w3-padding-64" id="contact">
     <span class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">Contact Us</span>
