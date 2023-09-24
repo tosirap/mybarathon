@@ -43,7 +43,7 @@
 
         <div class="w3-center">
           <img src="~/assets/images/instagram_icon.png" class="w3-round" alt="Lots" style="width:20%">
-          <p>
+          <p style="padding-top: 16px;">
             <a href="https://www.instagram.com/mybarathon/" style="font-size: 18px; font-weight: 600; "> Suivez nous sur Instagram ! </a> 
           </p>
         </div>
