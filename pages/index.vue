@@ -31,6 +31,7 @@
     </div>
   </div>
 
+  <!-- Billeterie -->
   <div class="w3-panel w3-padding-64" id="billeterie">
     <BarathonBilleterie/>
   </div>
