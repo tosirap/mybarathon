@@ -11,7 +11,7 @@
         </p>
         <ul class="concept-text">
           <li>Précommandez votre Ecocup sur notre billetterie</li>
-          <li>Récupérez votre Ecocup le 12 octobre entre 19h et 22h
+          <li>Récupérez votre Ecocup le jeudi 12 octobre entre 19h et 22h
             au People Hostel 7 Rue de la Krutenau et au Délirium 5 Quai de Paris.</li>
           <li>Profitez de vos avantages le jour de l'événement !</li>
         </ul>
