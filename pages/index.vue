@@ -1,5 +1,8 @@
 <template>
   <div>
+    <Head>
+      <Title>MyBarathon</Title>
+    </Head>
         <!-- Links (sit on top) -->
     <div class="w3-top">
       <BarathonMenu :isDesktop ="isDesktop"/>
@@ -79,6 +82,13 @@
 
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue';
+
+    useSeoMeta({
+      title: 'MyBarathon',
+      ogTitle: 'MyBarathon',
+      description: 'Site proposant des évènement de type barathons pour le compte de MyBarathon. MyBarathon.. My barathon. Barathon Strasbourg.',
+      ogDescription: 'Site proposant des évènement de type barathons pour le compte de MyBarathon. MyBarathon.. My barathon. Barathon Strasbourg.'
+    })
 
     const listeBar = [
       {
