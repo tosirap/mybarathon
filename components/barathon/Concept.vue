@@ -42,7 +42,7 @@
 
 <script setup>
     const props = defineProps({
-        listeBar: []
+        listeBar: Array
      });
 </script>
 
@@ -51,7 +51,6 @@
     font-size: 16px;
     text-align: justify;
 }
-
 
 .concept-panel{
     border-radius: 10px;

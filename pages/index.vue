@@ -45,7 +45,9 @@
        <!-- TODO integrate carousel + 3 last post -->
 
         <div class="w3-center">
-          <img src="~/assets/images/instagram_icon.png" class="w3-round" alt="Lots" style="width:20%">
+          <a href="https://www.instagram.com/mybarathon/">
+            <img src="~/assets/images/instagram_icon.png" class="w3-round" alt="Lots" style="width:20%">
+          </a>
           <p style="padding-top: 16px;">
             <a href="https://www.instagram.com/mybarathon/" style="font-size: 18px; font-weight: 600; "> Suivez nous sur Instagram ! </a> 
           </p>
@@ -86,8 +88,8 @@ import { ref, onMounted, onBeforeUnmount } from 'vue';
     useSeoMeta({
       title: 'MyBarathon',
       ogTitle: 'MyBarathon',
-      description: 'Site proposant des évènement de type barathons pour le compte de MyBarathon. MyBarathon.. My barathon. Barathon Strasbourg.',
-      ogDescription: 'Site proposant des évènement de type barathons pour le compte de MyBarathon. MyBarathon.. My barathon. Barathon Strasbourg.'
+      description: 'Site proposant des évènement de type barathons pour le compte de MyBarathon. MyBarathon. My barathon. Barathon Strasbourg.',
+      ogDescription: 'Site proposant des évènement de type barathons pour le compte de MyBarathon. MyBarathon. My barathon. Barathon Strasbourg.'
     })
 
     const listeBar = [
