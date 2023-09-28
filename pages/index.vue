@@ -27,8 +27,8 @@
       <h1 class="centered"  style="padding-bottom: 24px;"><b>Liste des bars</b></h1>
       <ul class="flatten-list-ul">
         <li v-for="(bar, index) in listeBar" :class="isDesktop ? 'flatten-list-li-desktop' : 'flatten-list-li-mobile'">
-          <a :href="bar.link" class="bar-name"> {{ bar.name }} </a> 
-          <i v-if="index < listeBar.length-1" :class="isDesktop ? 'flatten-list-li-dot' : 'flatten-list-li-dot-mobile'"> . </i>
+          <a :href="(bar != null && bar.link != null) ? bar.link : ''" class="bar-name"> {{ (bar != null && bar.name != null) ? bar.name : "" }} </a> 
+          <i v-if="index < listeBar.length-1" :class="isDesktop ? 'flatten-list-li-dot' : 'flatten-list-li-dot-mobile'"> &#x2022 </i>
         </li>
       </ul>
     </div>
@@ -73,8 +73,8 @@
 <footer class="w3-container w3-padding-32 w3-light-grey w3-center">
   <a href="#" class="w3-button w3-black w3-margin"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
   <div class="w3-xxlarge w3-section">
-    <a href="https://www.instagram.com/mybarathon" target="_blank"><i class="fa fa-instagram w3-hover-opacity" style="margin-right: 32px;"></i></a>
-    <a href="https://www.facebook.com/MyBarathon" target="_blank"><i class="fa fa-facebook-official w3-hover-opacity"></i></a>
+    <a href="https://www.instagram.com/mybarathon" target="_blank"><i class="fa fa-instagram w3-hover-opacity" style="margin-right: 32px;" aria-label="Instagram"></i></a>
+    <a href="https://www.facebook.com/MyBarathon" target="_blank"><i class="fa fa-facebook-official w3-hover-opacity" aria-label="Facebook"></i></a>
   </div>
   <p>MyBarathon 2023 © Tout droits réservés</p>
 </footer>
@@ -106,8 +106,8 @@ import { ref, onMounted, onBeforeUnmount } from 'vue';
         link: "https://www.google.com/maps/place/Restaurant+Tamil/@48.5789279,7.7520696,16z/data=!3m1!5s0x4796c84d57e20c77:0x3fa08421bf3a6579!4m6!3m5!1s0x4796c931101717cd:0xa4c4b7ed54df5182!8m2!3d48.5799053!4d7.7463184!16s%2Fg%2F11fq9knwxp?entry=ttu"
       },
       {
-        name: "Jimmy's",
-        link: "https://www.google.com/maps/place/Jimmy's+Bar/@48.5809347,7.7495472,17z/data=!3m1!4b1!4m6!3m5!1s0x4796c854f35d0057:0x6df65a0cc849055!8m2!3d48.5809313!4d7.7544181!16s%2Fg%2F1th27bgr?entry=ttu"
+        name: "Happy Hours",
+        link: "https://www.google.com/maps/place/Happy+Hours+-+Bar+Krutenau+Strasbourg/@48.5791832,7.7602776,15z/data=!4m2!3m1!1s0x0:0xb9ea22c77b00c0e?sa=X&ved=2ahUKEwiUj87E-M2BAxW0U6QEHaAxDO0Q_BJ6BAhhEAA&ved=2ahUKEwiUj87E-M2BAxW0U6QEHaAxDO0Q_BJ6BAh-EAg"
       },
       {
         name: "Algorythme",
@@ -156,6 +156,10 @@ import { ref, onMounted, onBeforeUnmount } from 'vue';
       {
         name: "21 shooter bar",
         link: "https://www.google.com/maps/place/Le+21+ShooterBar/@48.5804462,7.755008,17z/data=!3m1!4b1!4m6!3m5!1s0x4796c85572bd96ed:0xed05be5911efbfad!8m2!3d48.5804427!4d7.7575829!16s%2Fg%2F11b781b451?entry=ttu"
+      },
+      {
+        name: "Jimmy's",
+        link: "https://www.google.com/maps/place/Jimmy's+Bar/@48.5809347,7.7495472,17z/data=!3m1!4b1!4m6!3m5!1s0x4796c854f35d0057:0x6df65a0cc849055!8m2!3d48.5809313!4d7.7544181!16s%2Fg%2F1th27bgr?entry=ttu"
       },
       {
         name: "Starling Burgers",
