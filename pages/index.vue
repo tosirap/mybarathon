@@ -2,9 +2,6 @@
   <div>
     <Head>
       <Title>MyBarathon</Title>
-      <Meta>
-        <meta name="google-site-verification" content="quKZv_nOvLLTNqqfwAvIYg7kFXaDqDfopLPRdTJbDdg" />
-      </Meta>
     </Head>
         <!-- Links (sit on top) -->
     <div class="w3-top">
