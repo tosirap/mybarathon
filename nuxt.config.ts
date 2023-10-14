@@ -8,4 +8,13 @@ export default defineNuxtConfig({
         { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' }
       ]
     }
+  },
+  buildModules: [
+    '@nuxtjs/sitemap' // Include the sitemap module in buildModules
+  ],
+  sitemap: {
+    hostname: 'https://www.mybarathon.fr', // Replace with your domain
+    gzip: true, // Enable gzip compression for the generated sitemap
+    routes: [
+    ],
 }})
