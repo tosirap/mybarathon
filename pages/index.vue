@@ -2,6 +2,7 @@
   <div>
     <Head>
       <Title>MyBarathon</Title>
+      <link rel="icon" href="/public/favicon.ico" type="image/x-icon">
     </Head>
         <!-- Links (sit on top) -->
     <div class="w3-top">
