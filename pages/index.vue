@@ -2,7 +2,6 @@
   <div>
     <Head>
       <Title>MyBarathon</Title>
-      <link rel="icon" href="/public/favicon.ico" type="image/x-icon">
     </Head>
         <!-- Links (sit on top) -->
     <div class="w3-top">
@@ -89,8 +88,9 @@ import { ref, onMounted, onBeforeUnmount } from 'vue';
     useSeoMeta({
       title: 'MyBarathon',
       ogTitle: 'MyBarathon',
-      description: 'Site proposant des évènement de type barathons pour le compte de MyBarathon. MyBarathon. My barathon. Barathon Strasbourg.',
-      ogDescription: 'Site proposant des évènement de type barathons pour le compte de MyBarathon. MyBarathon. My barathon. Barathon Strasbourg.'
+      description: 'Organisateur de barathons et de bière pong géants sur Strasbourg. MyBarathon. My barathon. Barathon Strasbourg.',
+      ogDescription: 'Organisateur de barathons et de bière pong géants sur Strasbourg. MyBarathon. My barathon. Barathon Strasbourg.',
+      ogImage: '/public/favicon.ico',
     })
 
     const listeBar = [
