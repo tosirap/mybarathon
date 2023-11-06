@@ -54,18 +54,6 @@
         </div>
     </div>
   </div>
-
-
-  <!-- Contact -->
-  
-  <!-- todo later
-    <div class="w3-center w3-padding-64" id="contact">
-    <span class="w3-xlarge w3-bottombar w3-border-dark-grey w3-padding-16">Contact Us</span>
-  </div>
-  <BarathonContact/>
--->
-
-  
 </div>
 
 <!-- Footer -->
@@ -88,8 +76,8 @@ import { ref, onMounted, onBeforeUnmount } from 'vue';
     useSeoMeta({
       title: 'MyBarathon',
       ogTitle: 'MyBarathon',
-      description: 'Organisateur de barathons et de bière pong géants sur Strasbourg. MyBarathon. My barathon. Barathon Strasbourg.',
-      ogDescription: 'Organisateur de barathons et de bière pong géants sur Strasbourg. MyBarathon. My barathon. Barathon Strasbourg.',
+      description: 'Organisateur de barathons et de bière pong géants sur Strasbourg.',
+      ogDescription: 'Organisateur de barathons et de bière pong géants sur Strasbourg. MyBarathon. My barathon. Barathon Strasbourg. Grand Barathon. Evènement. Event Strasbourg. Alsace',
       ogImage: '/public/favicon.ico',
     })
 

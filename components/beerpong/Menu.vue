@@ -5,12 +5,11 @@
                 <div class="w3-col s1 centered">
                     <img src="~/assets/images/logo.png" alt="Logo mybarathon" style="width:25%">
                 </div>
-                
                 <div class="w3-col s2">
-                    <a href="#concept" class="w3-button w3-block">Concept</a>
+                    <a href="#" class="w3-button w3-block">Home</a>
                 </div>
                 <div class="w3-col s2">
-                    <a href="#bars" class="w3-button w3-block">Liste des bars</a>
+                    <a href="#concept" class="w3-button w3-block">Concept</a>
                 </div>
                 <div class="w3-col s2">
                     <a href="#billeterie" class="w3-button w3-block">Billeterie</a>
@@ -19,7 +18,7 @@
                     <a href="#instagram" class="w3-button w3-block">Notre Instagram</a>
                 </div>
                 <div class="w3-col s2">
-                    <a href="/beerPong" class="w3-button w3-block w3-red w3-round">BeerPong -></a>
+                    <a href="/" class="w3-button w3-block w3-red w3-round">Barathon -></a>
                 </div>
             </div>
             <div v-else>
@@ -36,17 +35,3 @@ const props = defineProps({
     isDesktop: Boolean,
  });
 </script>
-<style>
-.billeterie-button{
-    color: white;
-    font-size: 20px;
-    background-color: #684a8f;
-    border-radius: 14px;
-    border: none;
-    padding-top: 2px;
-    padding-bottom: 2px;
-    padding-right: 12px;
-    padding-left: 12px;
-    cursor: pointer;
-}
-</style>
