@@ -38,33 +38,15 @@
   <div class="w3-panel w3-padding-64" id="billeterie">
     <BarathonBilleterie/>
   </div>
-
+  <!-- Instagram -->
   <div class="w3-panel background-panel w3-padding-64" id="instagram">
-    <div class="content">
-     <h1 class="centered" style="padding-bottom: 32px;"><b>Notre instagram</b></h1>
-       <!-- TODO integrate carousel + 3 last post -->
-
-        <div class="w3-center">
-          <a href="https://www.instagram.com/mybarathon/">
-            <img src="~/assets/images/instagram_icon.png" class="w3-round" alt="Lots" style="width:20%">
-          </a>
-          <p style="padding-top: 16px;">
-            <a href="https://www.instagram.com/mybarathon/" style="font-size: 18px; font-weight: 600; "> Suivez nous sur Instagram ! </a> 
-          </p>
-        </div>
-    </div>
+    <Instagram/>
   </div>
 </div>
 
 <!-- Footer -->
-
 <footer class="w3-container w3-padding-32 w3-light-grey w3-center">
-  <a href="#" class="w3-button w3-black w3-margin"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
-  <div class="w3-xxlarge w3-section">
-    <a href="https://www.instagram.com/mybarathon" target="_blank"><i class="fa fa-instagram w3-hover-opacity" style="margin-right: 32px;" aria-label="Instagram"></i></a>
-    <a href="https://www.facebook.com/MyBarathon" target="_blank"><i class="fa fa-facebook-official w3-hover-opacity" aria-label="Facebook"></i></a>
-  </div>
-  <p>MyBarathon 2023 © Tout droits réservés</p>
+  <Footer/>
 </footer>
 
     </div>

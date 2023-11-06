@@ -21,7 +21,7 @@
                     <a href="#instagram" class="w3-button w3-block">Notre Instagram</a>
                 </div>
                 <div class="w3-col s2">
-                    <a href="/beerPong" class="w3-button w3-block w3-round" style="background-color: #eb9e2af6;">BeerPong -></a>
+                    <a href="/beerPong" class="w3-button w3-block w3-round" style="background-color: #f36f4ef6;">BeerPong -></a>
                 </div>
             </div>
             <div v-else>

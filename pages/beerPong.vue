@@ -27,6 +27,15 @@
           <BeerpongBilleterie/>
         </div>
 
+        <!-- Instagram -->
+        <div class="w3-panel background-panel-beerpong w3-padding-64" id="instagram">
+            <Instagram/>
+        </div>
+
+        <!-- Footer -->
+        <footer class="w3-container w3-padding-32 w3-light-grey w3-center">
+         <Footer/>
+        </footer>
 
     </div>
 
