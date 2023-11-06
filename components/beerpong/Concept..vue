@@ -20,12 +20,6 @@
     </div>
 </template>
 
-<script setup>
-    const props = defineProps({
-        listeBar: Array
-     });
-</script>
-
 <style>
 .concept-text{
     font-size: 16px;

@@ -3,7 +3,9 @@
         <div class="w3-row w3-large w3-light-grey w3-padding">
             <div v-if="isDesktop">
                 <div class="w3-col s1 centered">
-                    <img src="~/assets/images/logo.png" alt="Logo mybarathon" style="width:25%">
+                    <a href="#">
+                        <img src="~/assets/images/logo.png" alt="Logo mybarathon" style="width:25%">
+                    </a>
                 </div>
                 
                 <div class="w3-col s2">

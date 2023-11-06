@@ -1,7 +1,7 @@
 <template>
     <div class="content" >
       <h1 class="centered"  style="padding-bottom: 24px;"><b>Billeterie</b></h1>
-        <div class="billeterie" style="background-color: white;">
+        <div class="billeterie">
             <a
                 title="Vente de billets en ligne"
                 href="https://www.billetweb.fr/shop.php?event=tournois-beerpong-mybarathon"

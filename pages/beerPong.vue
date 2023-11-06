@@ -17,8 +17,13 @@
             <BeerpongConcept/>
         </div>
 
+        <!-- >Regles -->
+        <div class="w3-panel background-panel-beerpong w3-padding-64"  id="regles">
+            <BeerpongRegles/>
+        </div>
+
         <!-- Billeterie -->
-        <div class="w3-panel background-panel-beerpong w3-padding-64" id="billeterie">
+        <div class="w3-panel w3-padding-32" id="billeterie">
           <BeerpongBilleterie/>
         </div>
 

@@ -3,13 +3,15 @@
         <div class="w3-row w3-large w3-light-grey w3-padding">
             <div v-if="isDesktop">
                 <div class="w3-col s1 centered">
-                    <img src="~/assets/images/logo.png" alt="Logo mybarathon" style="width:25%">
-                </div>
-                <div class="w3-col s2">
-                    <a href="#" class="w3-button w3-block">Home</a>
+                    <a href="#">
+                        <img src="~/assets/images/logo.png" alt="Logo mybarathon" style="width:25%">
+                    </a>
                 </div>
                 <div class="w3-col s2">
                     <a href="#concept" class="w3-button w3-block">Concept</a>
+                </div>
+                <div class="w3-col s2">
+                    <a href="#regles" class="w3-button w3-block">Règles</a>
                 </div>
                 <div class="w3-col s2">
                     <a href="#billeterie" class="w3-button w3-block">Billeterie</a>
