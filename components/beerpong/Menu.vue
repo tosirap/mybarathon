@@ -18,7 +18,7 @@
                     <a href="#instagram" class="w3-button w3-block">Notre Instagram</a>
                 </div>
                 <div class="w3-col s2">
-                    <a href="/" class="w3-button w3-block w3-red w3-round">Barathon -></a>
+                    <a href="/" class="w3-button w3-block w3-round" style="background-color: #ebde2af6;">Barathon -></a>
                 </div>
             </div>
             <div v-else>

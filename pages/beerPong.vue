@@ -5,7 +5,7 @@
         </div>
         <!-- Title -->
         <div >
-            <div class="w3-panel background-panel centered w3-padding-64">
+            <div class="w3-panel background-panel-beerpong centered w3-padding-64">
             <h1 style="padding-top: 24px"><b>MYBARATHON</b></h1>
             <h3>Beer Pong Géant</h3>
             <button class="billeterie-button" style="margin-top: 1%;"
@@ -18,7 +18,7 @@
         </div>
 
         <!-- Billeterie -->
-        <div class="w3-panel background-panel w3-padding-64" id="billeterie">
+        <div class="w3-panel background-panel-beerpong w3-padding-64" id="billeterie">
           <BeerpongBilleterie/>
         </div>
 
