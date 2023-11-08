@@ -24,8 +24,11 @@
                 </div>
             </div>
             <div v-else>
-                <div class="w3-col s12">
+                <div class="w3-col s6">
                     <a href="#billeterie" class="w3-button w3-block">Billeterie</a>
+                </div>
+                <div class="w3-col s6">
+                    <a href="/" class="w3-button w3-block w3-round" style="background-color: #ebde2af6;">Barathon &#10140;</a>
                 </div>
             </div>
         </div>
