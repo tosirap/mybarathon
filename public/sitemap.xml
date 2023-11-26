@@ -9,7 +9,13 @@
 
 <url>
   <loc>https://www.mybarathon.fr/</loc>
-  <lastmod>2023-10-14T22:47:27+00:00</lastmod>
+  <lastmod>2023-11-13T22:09:59+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://www.mybarathon.fr/beerPong</loc>
+  <lastmod>2023-11-13T22:09:59+00:00</lastmod>
+  <priority>0.80</priority>
 </url>
 
 
