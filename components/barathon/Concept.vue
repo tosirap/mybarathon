@@ -18,7 +18,7 @@
       <div class="w3-row w3-container w3-padding-16" style="display: flex;">
         <div class="w3-col s5 w3-center w3-padding-16 concept-panel" style="background-color: #f9e6ba;">
           <img src="~/assets/images/bars.png" class="w3-round" alt="Bars" style="width:30%">
-          <p><b>{{ props.listeBar.length }} bars participants</b></p>
+          <p><b>{{ props.nbBar }} bars participants</b></p>
         </div>
         <div class="w3-col s1 w3-center w3-padding-16"></div>
         <div class="w3-col s5 w3-center w3-padding-16 concept-panel" style="background-color: #f2cd75;">
@@ -42,7 +42,7 @@
 
 <script setup>
     const props = defineProps({
-        listeBar: Array
+        nbBar: Number
      });
 </script>
 
