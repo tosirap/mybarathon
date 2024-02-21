@@ -5,6 +5,6 @@
             <a href="https://www.instagram.com/mybarathon" target="_blank"><i class="fa fa-instagram w3-hover-opacity" style="margin-right: 32px;" aria-label="Instagram"></i></a>
             <a href="https://www.facebook.com/MyBarathon" target="_blank"><i class="fa fa-facebook-official w3-hover-opacity" aria-label="Facebook"></i></a>
         </div>
-        <p>MyBarathon 2023 © Tout droits réservés</p>
+        <p>MyBarathon 2024 © Tout droits réservés</p>
     </div>
 </template>
