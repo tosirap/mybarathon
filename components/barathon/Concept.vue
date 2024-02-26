@@ -11,8 +11,7 @@
         </p>
         <ul class="concept-text">
           <li>Précommandez votre Ecocup sur notre billetterie</li>
-          <li>Récupérez votre Ecocup le jeudi 12 octobre entre 19h et 22h
-            au People Hostel 7 Rue de la Krutenau et au Délirium 5 Quai de Paris.</li>
+          <li>Récupérez votre Ecocup le jeudi 14 mars, à partir de 19H au Wawa, 4 Pl. Saint-Nicolas-aux-Ondes.</li>
           <li>Profitez de vos avantages le jour de l'événement !</li>
         </ul>
       <div class="w3-row w3-container w3-padding-16" style="display: flex;">
@@ -33,9 +32,15 @@
         </div>
         <div class="w3-col s1 w3-center w3-padding-16"></div>
         <div class="w3-col s5 w3-center w3-padding-16 concept-panel" style="background-color: #f5d997;">
+          <img src="~/assets/images/wawaBar.png" class="w3-round" alt="Lots" style="width:30%">
+        <p><b>Départ au Wawa bar !</b></p>
+        </div>
+        <!-- GOODIES A GAGNER
+        <div class="w3-col s5 w3-center w3-padding-16 concept-panel" style="background-color: #f5d997;">
           <img src="~/assets/images/cadeau.png" class="w3-round" alt="Lots" style="width:30%">
           <p><b>1000€ de lots à gagner !</b></p>
         </div>
+        -->
       </div>
     </div>
 </template>

@@ -20,44 +20,8 @@ const barList = [
       link: "https://www.google.com/maps/place/BAR+ALGORYTHME/@48.5787635,7.7562891,17z/data=!3m1!4b1!4m6!3m5!1s0x4796c8ffe3a73db3:0xd1025e9238635ff7!8m2!3d48.57876!4d7.758864!16s%2Fg%2F11c5zyl72z?entry=ttu"
     },
     {
-      name: "Télégraphe",
-      link: "https://www.google.com/maps/place/Brasserie+Au+T%C3%A9l%C3%A9graphe/@48.5790951,7.7540898,17z/data=!3m1!4b1!4m6!3m5!1s0x4796c8fff75730e7:0xc0b48238e650c2c5!8m2!3d48.5790917!4d7.7589607!16s%2Fg%2F1vm79dj5?entry=ttu"
-    },
-    {
-      name: "The People",
-      link: "https://www.google.com/maps/place/The+People+-+Strasbourg/@48.5812647,7.7548254,17z/data=!4m9!3m8!1s0x4796c855a0e90db7:0xd5f66a5234d0c8f8!5m2!4m1!1i2!8m2!3d48.5812612!4d7.7574003!16s%2Fg%2F11lgks7_0c?entry=ttu"
-    },
-    {
-      name: "Sacrilège",
-      link: "https://www.google.com/maps/place/Sacril%C3%A8ge/@48.5794181,7.749555,17z/data=!3m2!4b1!5s0x4796c8534fdc2025:0x363d33df285d4bb0!4m6!3m5!1s0x4796c937110e027f:0x494c2dfea05bc71f!8m2!3d48.5794146!4d7.7521299!16s%2Fg%2F11sr7bbyx1?entry=ttu"
-    },
-    {
-      name: "Trolleybus",
-      link: "https://www.google.com/maps/place/Le+Trolleybus/@48.581891,7.7428837,17z/data=!3m1!4b1!4m6!3m5!1s0x4796c84d9f94e3d5:0xbbfcefb4df29b8ae!8m2!3d48.5818875!4d7.7454586!16s%2Fg%2F1vqmh99p?entry=ttu"
-    },
-    {
-      name: "Schloss",
-      link: "https://www.google.com/maps/place/Brasserie+La+Schloss+-+Schlosserstub/@48.5806816,7.7444899,17z/data=!3m1!4b1!4m6!3m5!1s0x4796c8529900979b:0x1a9e2c127751b72c!8m2!3d48.5806781!4d7.7470648!16s%2Fg%2F1q5blcjwl?entry=ttu"
-    },
-    {
-      name: "Jeannette et les Cycleux",
-      link: "https://www.google.com/maps/place/Jeannette+et+les+Cycleux/@48.5806816,7.7444899,17z/data=!4m6!3m5!1s0x4796c852ef2c1af7:0xd29bcea104b08510!8m2!3d48.5806997!4d7.7488189!16s%2Fg%2F1tdkqr87?entry=ttu"
-    },
-    {
-      name: "Berthom",
-      link: "https://www.google.com/maps/place/Les+BerThoM+Strasbourg/@48.5801999,7.7466393,17z/data=!3m1!4b1!4m6!3m5!1s0x4796c852de9a82bb:0xf66dad79c0af2985!8m2!3d48.5801964!4d7.7492142!16s%2Fg%2F1v3kl_yv?entry=ttu"
-    },
-    {
-      name: "Le tigre",
-      link: "https://www.google.com/maps/place/Le+Petit+Tigre/@48.58236,7.7326598,17z/data=!3m2!4b1!5s0x4796c84baac57f97:0xb72572887a47ee2e!4m6!3m5!1s0x4796c99a318c4915:0x3f98de5997e656b2!8m2!3d48.5823566!4d7.7375307!16s%2Fg%2F11jpkgv4s1?entry=ttu"
-    },
-    {
-      name: "Délirium",
-      link: "https://www.google.com/maps/place/Delirium+Caf%C3%A9/@48.5846863,7.7398673,17z/data=!3m2!4b1!5s0x4796c84c1dbcb9b1:0x8cc95e51ca70bb93!4m6!3m5!1s0x4796c84c1d430bf1:0x6d86f9bc1635704d!8m2!3d48.5846828!4d7.7424422!16s%2Fg%2F11g9sx2l3b?entry=ttu"
-    },
-    {
-      name: "Barberousse",
-      link: "https://www.google.com/maps/place/Bar+Barberousse+Strasbourg/@48.5833789,7.7485925,17z/data=!3m1!4b1!4m6!3m5!1s0x4796c853f85e36d5:0x81e07432a30c96a7!8m2!3d48.5833755!4d7.7534634!16s%2Fg%2F11c6_n44y4?entry=ttu"
+      name: "Kooma",
+      link: "https://www.google.com/maps/place/Brasserie+Kooma/@48.5812831,7.7556259,17z/data=!3m1!4b1!4m6!3m5!1s0x4796c9c021b3be0d:0xcbad4294ff252740!8m2!3d48.5812796!4d7.7582008!16s%2Fg%2F11vjrrn3xj?entry=ttu"
     },
     {
       name: "21 shooter bar",
@@ -70,6 +34,10 @@ const barList = [
     {
       name: "Starling Burgers",
       link: "https://www.google.com/maps/place/Starling+Burgers/@48.5831214,7.7404499,17z/data=!3m1!4b1!4m6!3m5!1s0x4796c97c3dfe855b:0x627b045436e9af38!8m2!3d48.5831179!4d7.7430248!16s%2Fg%2F11sdbfx9f1?entry=ttu"
+    },
+    {
+      name: "Barberousse",
+      link: "https://www.google.com/maps/place/Bar+Barberousse+Strasbourg/@48.5833789,7.7485925,17z/data=!3m1!4b1!4m6!3m5!1s0x4796c853f85e36d5:0x81e07432a30c96a7!8m2!3d48.5833755!4d7.7534634!16s%2Fg%2F11c6_n44y4?entry=ttu"
     },
   ]
 
