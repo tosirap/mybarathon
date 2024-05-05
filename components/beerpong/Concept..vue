@@ -1,7 +1,7 @@
 <template>
     <div class="content">
       <h1 class="centered w3-padding-16"><b>Concept</b></h1>
-      <h4 class="centered" >SAMEDI 18 NOVEMBRE 14h au <a href="https://www.google.com/maps/place/Delirium+Caf%C3%A9/@48.5846828,7.7424422,15z/data=!4m6!3m5!1s0x4796c84c1d430bf1:0x6d86f9bc1635704d!8m2!3d48.5846828!4d7.7424422!16s%2Fg%2F11g9sx2l3b?entry=ttu" style="text-decoration: none;">Délirium</a>. </h4>
+      <h4 class="centered" >SAMEDI 25 MAI 14h au <a href="https://www.google.com/maps/place/Delirium+Caf%C3%A9/@48.5846828,7.7424422,15z/data=!4m6!3m5!1s0x4796c84c1d430bf1:0x6d86f9bc1635704d!8m2!3d48.5846828!4d7.7424422!16s%2Fg%2F11g9sx2l3b?entry=ttu" style="text-decoration: none;">Délirium</a>. </h4>
         <p> 
           Principe du Beer Pong made in MyBarathon :
         </p>
