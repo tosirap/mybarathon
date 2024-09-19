@@ -15,7 +15,7 @@
             data-resize="1"
           >
           Vente de billets en ligne</a>
-          <p class="centered">Après 22H les billets non récupérés sont revendus ssur place pour 10€</p>
+          <p class="centered">Après 22H les billets non récupérés sont revendus sur place pour 10€</p>
         </div>
     </div>
 </template>
