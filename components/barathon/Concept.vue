@@ -11,7 +11,7 @@
         </p>
         <ul class="concept-text">
           <li>Précommandez votre Ecocup sur notre billetterie</li>
-          <li>Récupérez votre Ecocup le jeudi 14 mars, à partir de 19H au Wawa, 4 Pl. Saint-Nicolas-aux-Ondes.</li>
+          <li>Récupérez votre Ecocup le jeudi 10 octobre, à partir de 19H au Barco Latino, ou au Delirium Café.</li>
           <li>Profitez de vos avantages le jour de l'événement !</li>
         </ul>
       <div class="w3-row w3-container w3-padding-16" style="display: flex;">

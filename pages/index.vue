@@ -26,7 +26,7 @@
     <div class="content" >
       <h1 class="centered"  style="padding-bottom: 24px;"><b>Liste des bars</b></h1>
       <ul class="flatten-list-ul">
-        <li v-for="(bar, index) in barList" :class="isDesktop ? 'flatten-list-li-desktop' : 'flatten-list-li-mobile'">
+        <li v-for="(bar, index) in barList" :key="index" :class="isDesktop ? 'flatten-list-li-desktop' : 'flatten-list-li-mobile'">
           <a :href="(bar != null && bar.link != null) ? bar.link : ''" class="bar-name"> {{ (bar != null && bar.name != null) ? bar.name : "" }} </a> 
           <i v-if="index < barList.length-1" :class="isDesktop ? 'flatten-list-li-dot' : 'flatten-list-li-dot-mobile'"> &#x2022 </i>
         </li>

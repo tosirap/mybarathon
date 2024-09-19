@@ -1,15 +1,15 @@
 .background-panel {
-    color:#000;
-    background-color:#ebde2af6;
+    color: #000;
+    background-color: #ebde2af6;
 }
 
-.background-panel-beerpong{
-    color:#000;
-    background-color:#f36f4ef6;
+.background-panel-beerpong {
+    color: #000;
+    background-color: #f36f4ef6;
 }
 
-.content{
-    max-width:950px;
+.content {
+    max-width: 950px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -18,22 +18,23 @@
     text-align: center;
 }
 
-.space-between-column{
+.space-between-column {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .flatten-list-ul {
-    list-style: none; /* Supprime la décoration de la liste */
+    list-style: none;
+    /* Supprime la décoration de la liste */
     margin: 0 auto;
     width: 100%;
     padding-bottom: 40px;
-    
+
 }
 
-.flatten-list-li-desktop{
-    display: inline-block; 
+.flatten-list-li-desktop {
+    display: inline-block;
     margin: 8px;
     color: #684a8f;
     font-weight: 600;
@@ -41,8 +42,8 @@
     justify-content: space-between;
 }
 
-.flatten-list-li-mobile{
-    display: inline-flex; 
+.flatten-list-li-mobile {
+    display: inline-flex;
     margin: 8px;
     color: #684a8f;
     font-weight: 600;
@@ -51,25 +52,25 @@
     line-height: 2em;
 }
 
-.flatten-list-li-dot{
+.flatten-list-li-dot {
     margin-left: 12px;
     margin-right: 8px;
     font-weight: 900;
 }
 
-.flatten-list-li-dot-mobile{
+.flatten-list-li-dot-mobile {
     margin-left: 16px;
     margin-right: 4px;
     font-weight: 900;
 }
 
-.bar-name{
-    text-decoration:none;
+.bar-name {
+    text-decoration: none;
     font-size: 18px;
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
-.billeterie{
+.billeterie {
     padding: 1%;
     border: solid;
     border-color: darkgray;
@@ -77,7 +78,7 @@
     border-radius: 20px;
 }
 
-.billeterie-button{
+.billeterie-button {
     color: white;
     font-size: 20px;
     background-color: #684a8f;
