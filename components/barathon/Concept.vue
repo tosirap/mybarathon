@@ -33,7 +33,8 @@
         <div class="w3-col s1 w3-center w3-padding-16"></div>
         <div class="w3-col s5 w3-center w3-padding-16 concept-panel" style="background-color: #f5d997;">
           <img src="~/assets/images/wawaBar.png" class="w3-round" alt="Lots" style="width:30%">
-        <p><b>Départ au bar Wawa !</b></p>
+        <p><b>Départ au Barco Latino</b></p>
+        <p><b>ou au Delirium Café !</b></p>
         </div>
         <!-- GOODIES A GAGNER
         <div class="w3-col s5 w3-center w3-padding-16 concept-panel" style="background-color: #f5d997;">
