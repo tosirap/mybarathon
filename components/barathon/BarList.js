@@ -12,8 +12,8 @@ const barList = [
     link: "https://www.google.com/maps/place/Jimmy's+Bar/@48.5809347,7.7495472,17z/data=!3m1!4b1!4m6!3m5!1s0x4796c854f35d0057:0x6df65a0cc849055!8m2!3d48.5809313!4d7.7544181!16s%2Fg%2F1th27bgr?entry=ttu"
   },
   {
-    name: "Happy Hours",
-    link: "https://www.google.com/maps/place/Happy+Hours+-+Bar+Krutenau+Strasbourg/@48.5791832,7.7602776,15z/data=!4m2!3m1!1s0x0:0xb9ea22c77b00c0e?sa=X&ved=2ahUKEwiUj87E-M2BAxW0U6QEHaAxDO0Q_BJ6BAhhEAA&ved=2ahUKEwiUj87E-M2BAxW0U6QEHaAxDO0Q_BJ6BAh-EAg"
+    name: "Kooma Pub",
+    link: "https://www.google.com/maps/place/Kooma+Pub/@48.5811258,7.755639,17z/data=!4m10!1m2!2m1!1skooma+strasbourg!3m6!1s0x4796c99ad142f997:0x483656e5bded2ed!8m2!3d48.5812828!4d7.7584817!15sChBrb29tYSBzdHJhc2JvdXJnWhIiEGtvb21hIHN0cmFzYm91cmeSAQNiYXLgAQA!16s%2Fg%2F11vqhcsjht?entry=ttu&g_ep=EgoyMDI0MDkxNi4wIKXMDSoASAFQAw%3D%3D"
   },
   {
     name: "Algorythme", //
