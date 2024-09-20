@@ -36,6 +36,10 @@ const barList = [
     link: "https://www.google.com/maps/place/Blue+Moon+Bar/@48.580644,7.7596661,15z/data=!4m2!3m1!1s0x0:0xb93338379b5ab11?sa=X&ved=2ahUKEwjG3t-DvruBAxVZV6QEHQFSBawQ_BJ6BAhUEAA&ved=2ahUKEwjG3t-DvruBAxVZV6QEHQFSBawQ_BJ6BAhsEAg"
   },
   {
+    name: "Happy Hours", //
+    link: "https://www.google.com/maps/place/Happy+Hours+-+Bar+Krutenau+Strasbourg/@48.578064,7.7575262,16.25z/data=!4m6!3m5!1s0x4796c8ffc244d073:0xb9ea22c77b00c0e!8m2!3d48.5791832!4d7.7602776!16s%2Fg%2F11f2sh6vpz?entry=ttu&g_ep=EgoyMDI0MDkxNi4wIKXMDSoASAFQAw%3D%3D"
+  },
+  {
     name: "The People Bar", //
     link: "https://www.google.fr/maps/place/The+People+Strasbourg/@48.5812647,7.7548254,17z/data=!4m9!3m8!1s0x4796c855a0e90db7:0xd5f66a5234d0c8f8!5m2!4m1!1i2!8m2!3d48.5812612!4d7.7574003!16s%2Fg%2F11lgks7_0c?entry=ttu&g_ep=EgoyMDI0MDkxNi4wIKXMDSoASAFQAw%3D%3D"
   },
@@ -44,7 +48,7 @@ const barList = [
     link: "https://www.google.fr/maps/place/What+the+Fox/@48.5795824,7.7447121,17z/data=!3m1!4b1!4m6!3m5!1s0x4796c85328ff71f1:0x7c341e2cf12dde2f!8m2!3d48.579579!4d7.749583!16s%2Fg%2F11bwg0h6zf?entry=ttu&g_ep=EgoyMDI0MDkxNi4wIKXMDSoASAFQAw%3D%3D"
   },
   {
-    name: "Queen's Elisabeth English Pub", //
+    name: "Queen's Elisabeth", //
     link: "https://www.google.fr/maps/place/The+Queen+Elizabeth+English+Pub/@48.5795109,7.7553067,17z/data=!3m1!4b1!4m6!3m5!1s0x4796c839a743ee27:0xdd01411e5a46054c!8m2!3d48.5795074!4d7.7578816!16s%2Fg%2F1tgxg_s2?entry=ttu&g_ep=EgoyMDI0MDkxNi4wIKXMDSoASAFQAw%3D%3D"
   },
   {
