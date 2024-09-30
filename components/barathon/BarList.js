@@ -44,6 +44,10 @@ const barList = [
     link: "https://www.google.fr/maps/place/The+People+Strasbourg/@48.5812647,7.7548254,17z/data=!4m9!3m8!1s0x4796c855a0e90db7:0xd5f66a5234d0c8f8!5m2!4m1!1i2!8m2!3d48.5812612!4d7.7574003!16s%2Fg%2F11lgks7_0c?entry=ttu&g_ep=EgoyMDI0MDkxNi4wIKXMDSoASAFQAw%3D%3D"
   },
   {
+    name: "R Club", //
+    link: "https://www.google.fr/maps/place/R+Club/@48.5830367,7.7369528,15.25z/data=!3m1!5s0x4796c8492e6d4ad5:0x7edf0a3ac8c9c1ec!4m6!3m5!1s0x4796c84eb7880741:0xe0cae965504c544b!8m2!3d48.5857723!4d7.7425662!16s%2Fg%2F1jgl_bgm6?entry=ttu&g_ep=EgoyMDI0MDkyNS4wIKXMDSoASAFQAw%3D%3D"
+  },
+  {
     name: "What the fox", //
     link: "https://www.google.fr/maps/place/What+the+Fox/@48.5795824,7.7447121,17z/data=!3m1!4b1!4m6!3m5!1s0x4796c85328ff71f1:0x7c341e2cf12dde2f!8m2!3d48.579579!4d7.749583!16s%2Fg%2F11bwg0h6zf?entry=ttu&g_ep=EgoyMDI0MDkxNi4wIKXMDSoASAFQAw%3D%3D"
   },
@@ -72,6 +76,10 @@ const barList = [
     link: "https://www.google.fr/maps/place/Delirium+Caf%C3%A9/@48.5846863,7.7398673,16z/data=!3m2!4b1!5s0x4796c84c1dbcb9b1:0x8cc95e51ca70bb93!4m6!3m5!1s0x4796c84c1d430bf1:0x6d86f9bc1635704d!8m2!3d48.5846828!4d7.7424422!16s%2Fg%2F11g9sx2l3b?entry=ttu&g_ep=EgoyMDI0MDkxNi4wIKXMDSoASAFQAw%3D%3D"
   },
   {
+    name: "Legends Bar", //
+    link: "https://www.google.fr/maps/place/Bar+Legends+Strasbourg/@48.5836137,7.7522478,17z/data=!3m1!4b1!4m6!3m5!1s0x4796c9fea972b3c9:0x9a5e33f44f8acf71!8m2!3d48.5836102!4d7.7548227!16s%2Fg%2F11vkm7dwb7?entry=ttu&g_ep=EgoyMDI0MDkyNS4wIKXMDSoASAFQAw%3D%3D"
+  },
+  {
     name: "Jeannette et les Cycleux", //
     link: "https://www.google.fr/maps/place/Jeannette+et+les+Cycleux/@48.5807032,7.746244,17z/data=!3m1!4b1!4m6!3m5!1s0x4796c852ef2c1af7:0xd29bcea104b08510!8m2!3d48.5806997!4d7.7488189!16s%2Fg%2F1tdkqr87?entry=ttu&g_ep=EgoyMDI0MDkxNi4wIKXMDSoASAFQAw%3D%3D"
   },
@@ -86,6 +94,14 @@ const barList = [
   {
     name: "Créchoir Café Bar", //
     link: "https://www.google.fr/maps/place/Cr%C3%A9choir+Caf%C3%A9+Bar/@48.5739565,7.7636152,17z/data=!3m1!4b1!4m6!3m5!1s0x4796c9b54aba8c81:0xf5c0f980b4480864!8m2!3d48.573953!4d7.7661901!16s%2Fg%2F11y3nsbxcq?entry=ttu&g_ep=EgoyMDI0MDkxNi4wIKXMDSoASAFQAw%3D%3D"
+  },
+  {
+    name: "Au Coin des Craquelins", //
+    link: "https://www.google.fr/maps/place/Au+Coin+des+Craquelins/@48.5770637,7.7558038,14.75z/data=!4m6!3m5!1s0x4796c8fffb3b8fa3:0x139bac1f380f8238!8m2!3d48.5788591!4d7.7592678!16s%2Fg%2F1tkl27xy?entry=ttu&g_ep=EgoyMDI0MDkyNS4wIKXMDSoASAFQAw%3D%3D"
+  },
+  {
+    name: "Au Télégraphe", //
+    link: "https://www.google.fr/maps/place/Brasserie+Au+T%C3%A9l%C3%A9graphe/@48.5790952,7.7563858,17z/data=!3m1!4b1!4m6!3m5!1s0x4796c8fff75730e7:0xc0b48238e650c2c5!8m2!3d48.5790917!4d7.7589607!16s%2Fg%2F1vm79dj5?entry=ttu&g_ep=EgoyMDI0MDkyNS4wIKXMDSoASAFQAw%3D%3D"
   },
 ]
 

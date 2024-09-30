@@ -1,3 +1,5 @@
+import { SpeedInsights } from '@vercel/speed-insights/nuxt'
+
 export default defineNuxtConfig({
   target: 'static',
   app: {
@@ -10,11 +12,13 @@ export default defineNuxtConfig({
     }
   },
   buildModules: [
-    '@nuxtjs/sitemap' // Include the sitemap module in buildModules
+    '@nuxtjs/sitemap', // Include the sitemap module in buildModules,
+    SpeedInsights
   ],
   sitemap: {
     hostname: 'https://www.mybarathon.fr', // Replace with your domain
     gzip: true, // Enable gzip compression for the generated sitemap
     routes: [
     ],
-}})
+  }
+})
