@@ -11,7 +11,7 @@
         </p>
         <ul class="concept-text">
           <li>Précommandez votre Ecocup sur notre billetterie</li>
-          <li>Récupérez votre Ecocup le jeudi 10 octobre, à partir de 19H au Barco Latino, ou au Delirium Café.</li>
+          <li>Récupérez votre Ecocup le jeudi 20 mars, à partir de 19H au Wawa.</li>
           <li>Profitez de vos avantages le jour de l'événement !</li>
         </ul>
       <div class="w3-row w3-container w3-padding-16" style="display: flex;">
@@ -33,11 +33,9 @@
         <div class="w3-col s1 w3-center w3-padding-16"></div>
         <div class="w3-col s5 w3-center w3-padding-16 concept-panel" style="background-color: #f5d997;">
           <div style="display: flex; justify-content: space-around;">
-            <img src="~/assets/images/barco-latino.svg" class="w3-round" alt="Barco Latino" style="width:35%">
-            <img src="~/assets/images/delirium-cafe.svg" class="w3-round" alt="Delirium Café" style="width:35%">
+            <img src="~/assets/images/wawaBar.png" class="w3-round" alt="Bar" style="width:30%">
           </div>
-          <p><b>Départ au Barco Latino</b></p>
-          <p><b>ou au Delirium Café !</b></p>
+          <p><b>Départ au Wawa</b></p>
         </div>
         <!-- GOODIES A GAGNER
         <div class="w3-col s5 w3-center w3-padding-16 concept-panel" style="background-color: #f5d997;">
