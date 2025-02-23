@@ -40,8 +40,8 @@ const barList = [
     link: "https://www.google.com/maps/place/Happy+Hours+-+Bar+Krutenau+Strasbourg/@48.578064,7.7575262,16.25z/data=!4m6!3m5!1s0x4796c8ffc244d073:0xb9ea22c77b00c0e!8m2!3d48.5791832!4d7.7602776!16s%2Fg%2F11f2sh6vpz?entry=ttu&g_ep=EgoyMDI0MDkxNi4wIKXMDSoASAFQAw%3D%3D"
   },
   {
-    name: "Au coin des craquelin",
-    link: "https://www.google.com/maps/place/Au+coin+des+Craquelins/@48.5796391,7.7544714,15.79z/data=!4m6!3m5!1s0x4796c90000ecbf83:0x69fbd2e3a7b6f629!8m2!3d48.5788591!4d7.7592678!16s%2Fg%2F11wy0fygh8?entry=ttu&g_ep=EgoyMDI1MDIxOS4xIKXMDSoJLDEwMjExNDU1SAFQAw%3D%3D"
+    name: "The Spot",
+    link: "https://www.google.com/maps/place/Le+Spot/@48.5788626,7.7566929,17z/data=!3m1!4b1!4m6!3m5!1s0x4796c8fffb3b8fa3:0x139bac1f380f8238!8m2!3d48.5788591!4d7.7592678!16s%2Fg%2F1tkl27xy?entry=ttu&g_ep=EgoyMDI1MDIxOS4xIKXMDSoJLDEwMjExNDU1SAFQAw%3D%3D"
   },
   {
     name: "The People Bar",
