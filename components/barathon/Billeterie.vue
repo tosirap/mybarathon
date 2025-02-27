@@ -4,14 +4,14 @@
         <div class="billeterie">
           <a 
             title="Vente de billets en ligne" 
-            href="https://www.billetweb.fr/shop.php?event=barathon2" 
+            href="https://www.billetweb.fr/shop.php?event=barathon22" 
             class="shop_frame"  
             target="_blank"  
-            data-src="https://www.billetweb.fr/shop.php?event=barathon2"  
+            data-src="https://www.billetweb.fr/shop.php?event=barathon22"  
             data-max-width="100%"  
             data-initial-height="600" 
             data-scrolling="no"  
-            data-id="barathon2"  
+            data-id="barathon22"  
             data-resize="1"
           >
           Vente de billets en ligne</a>
