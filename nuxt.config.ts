@@ -13,7 +13,7 @@ export default defineNuxtConfig({
   },
   buildModules: [
     '@nuxtjs/sitemap', // Include the sitemap module in buildModules,
-    SpeedInsights
+    SpeedInsights // '@vercel/speed-insights/nuxt' 
   ],
   sitemap: {
     hostname: 'https://www.mybarathon.fr', // Replace with your domain
