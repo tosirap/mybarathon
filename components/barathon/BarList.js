@@ -67,6 +67,15 @@ const barList = [
     name: "Delirium café",
     link: "https://www.google.fr/maps/place/Delirium+Caf%C3%A9/@48.5846863,7.7398673,16z/data=!3m2!4b1!5s0x4796c84c1dbcb9b1:0x8cc95e51ca70bb93!4m6!3m5!1s0x4796c84c1d430bf1:0x6d86f9bc1635704d!8m2!3d48.5846828!4d7.7424422!16s%2Fg%2F11g9sx2l3b?entry=ttu&g_ep=EgoyMDI0MDkxNi4wIKXMDSoASAFQAw%3D%3D"
   },
+  {
+    name: "Réserve 1862",
+    link: "https://www.google.com/maps/place/R%C3%A9serve+1862/@48.5805113,7.7462222,17z/data=!3m1!4b1!4m6!3m5!1s0x4796c97aec115a07:0x413175d0931be535!8m2!3d48.5805078!4d7.7487971!16s%2Fg%2F11j15531xg?entry=ttu&g_ep=EgoyMDI1MDMxMC4wIKXMDSoJLDEwMjExNDU1SAFQAw%3D%3D"
+  },
+  {
+    name: "Créchoir Café Bar",
+    link: "https://www.google.com/maps/place/Cr%C3%A9choir+Caf%C3%A9+Bar/@48.5739565,7.7636152,17z/data=!3m1!4b1!4m6!3m5!1s0x4796c9b54aba8c81:0xf5c0f980b4480864!8m2!3d48.573953!4d7.7661901!16s%2Fg%2F11y3nsbxcq?entry=ttu&g_ep=EgoyMDI1MDMxMC4wIKXMDSoJLDEwMjExNDU1SAFQAw%3D%3D"
+  },
+
 ]
 
 export default barList;
