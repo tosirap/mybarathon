@@ -10,7 +10,7 @@
     </div>
 
     <!-- Title -->
-    <div class="p-32 flex flex-col items-center justify-center bg-gray-800 text-white">
+    <div class="pt-20 pb-8 flex flex-col items-center justify-center bg-gray-800 text-white">
       <h1 class="pt-6 text-4xl font-bold">MYBARATHON</h1>
       <h3 class="text-xl mt-2">Toute ta ville en happy hours</h3>
       <button

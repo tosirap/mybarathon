@@ -6,7 +6,7 @@
         <!-- Logo -->
         <div class="flex-1 flex justify-center">
           <a href="#">
-            <img src="~/assets/images/logo.png" alt="Logo mybarathon" class="w-16 md:w-20" />
+            <img src="~/assets/images/logo.png" alt="Logo mybarathon" class="w-8 md:w-12" />
           </a>
         </div>
 
