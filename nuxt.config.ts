@@ -1,7 +1,9 @@
 import { SpeedInsights } from '@vercel/speed-insights/nuxt'
 
 export default defineNuxtConfig({
+  devtools: { enabled: false },
   target: 'static',
+
   app: {
     head: {
       link: [
@@ -10,20 +12,26 @@ export default defineNuxtConfig({
       ]
     }
   },
+
   modules: [
     '@nuxtjs/tailwindcss',   // ✅ TailwindCSS intégré
   ],
+
   buildModules: [
     '@nuxtjs/sitemap', // Include the sitemap module in buildModules,
     SpeedInsights // '@vercel/speed-insights/nuxt' 
   ],
+
   sitemap: {
     hostname: 'https://www.mybarathon.fr', // Replace with your domain
     gzip: true, // Enable gzip compression for the generated sitemap
     routes: [
     ],
   },
+
   css: [
     '~/assets/css/main.css'  // ✅ fichier Tailwind (si tu as créé assets/css/main.css avec @tailwind base, components, utilities)
-  ]
+  ],
+
+  compatibilityDate: '2025-08-19'
 })
