@@ -1,66 +1,62 @@
 <template>
-    <div class="content">
-      <h1 class="centered w3-padding-16"><b>Concept</b></h1>
-      <p class="concept-text">Le Barathon est une liste de bars dans lesquels Mybarathon vous a négocié un tarif préférentiel. <br>
-        Ceci vous permet de bénéficier d'Happy Hours ainsi que d'autres avantages jusqu'à la fermeture des établissements. </p>
-        <p class="concept-text">
-          Pendant le Barathon déplacez-vous librement entre les bars de votre choix avec votre ecocup. Vous choisissez vous-même votre itinéraire !
-        </p>
-        <p> 
-          Comment participer ?      
-        </p>
-        <ul class="concept-text">
-          <li>Précommandez votre Ecocup sur notre billetterie</li>
-          <li>Récupérez votre Ecocup le jeudi 20 mars, à partir de 19H au Wawa.</li>
-          <li>Profitez de vos avantages le jour de l'événement !</li>
-        </ul>
-      <div class="w3-row w3-container w3-padding-16" style="display: flex;">
-        <div class="w3-col s5 w3-center w3-padding-16 concept-panel" style="background-color: #f9e6ba;">
-          <img src="~/assets/images/bars.png" class="w3-round" alt="Bars" style="width:30%">
-          <p><b>{{ props.nbBar }} bars participants</b></p>
-        </div>
-        <div class="w3-col s1 w3-center w3-padding-16"></div>
-        <div class="w3-col s5 w3-center w3-padding-16 concept-panel" style="background-color: #f2cd75;">
-          <img src="~/assets/images/secours.png" class="w3-round" alt="Secours" style="width:30%">
-          <p><b>Secours</b></p>
-        </div>
+  <div class="max-w-5xl mx-auto p-8">
+    <h1 class="text-center text-2xl font-bold pb-6">Concept</h1>
+
+    <!-- Texte -->
+    <p class="text-base text-justify mb-4">
+      Le Barathon est une liste de bars dans lesquels Mybarathon vous a négocié un tarif préférentiel. <br>
+      Ceci vous permet de bénéficier d'Happy Hours ainsi que d'autres avantages jusqu'à la fermeture des établissements.
+    </p>
+    <p class="text-base text-justify mb-4">
+      Pendant le Barathon déplacez-vous librement entre les bars de votre choix avec votre ecocup.
+      Vous choisissez vous-même votre itinéraire !
+    </p>
+
+    <p class="font-semibold mb-2">Comment participer ?</p>
+    <ul class="list-disc list-inside text-base text-justify mb-8">
+      <li>Précommandez votre Ecocup sur notre billetterie</li>
+      <li>Récupérez votre Ecocup le jeudi 20 mars, à partir de 19H au Wawa.</li>
+      <li>Profitez de vos avantages le jour de l'événement !</li>
+    </ul>
+
+    <!-- Première ligne de panneaux -->
+    <div class="flex flex-col md:flex-row gap-4 mb-6">
+      <div class="flex flex-col items-center justify-center p-6 bg-[#f9e6ba] rounded-lg flex-1">
+        <img src="~/assets/images/bars.png" alt="Bars" class="rounded w-1/3 mb-3">
+        <p class="font-bold">{{ props.nbBar }} bars participants</p>
       </div>
-      <div class="w3-row w3-container w3-padding-16" style="display: flex;">
-        <div class="w3-col s5 w3-center w3-padding-16 concept-panel" style="background-color: #efc050;">
-          <img src="~/assets/images/ecocup.png" class="w3-round" alt="Ecocup" style="width:30%">
-          <p><b>Ecocup = pass</b></p>
-        </div>
-        <div class="w3-col s1 w3-center w3-padding-16"></div>
-        <div class="w3-col s5 w3-center w3-padding-16 concept-panel" style="background-color: #f5d997;">
-          <div style="display: flex; justify-content: space-around;">
-            <img src="~/assets/images/wawaBar.png" class="w3-round" alt="Bar" style="width:30%">
-          </div>
-          <p><b>Départ au Wawa</b></p>
-        </div>
-        <!-- GOODIES A GAGNER
-        <div class="w3-col s5 w3-center w3-padding-16 concept-panel" style="background-color: #f5d997;">
-          <img src="~/assets/images/cadeau.png" class="w3-round" alt="Lots" style="width:30%">
-          <p><b>1000€ de lots à gagner !</b></p>
-        </div>
-        -->
+
+      <div class="flex flex-col items-center justify-center p-6 bg-[#f2cd75] rounded-lg flex-1">
+        <img src="~/assets/images/secours.png" alt="Secours" class="rounded w-1/3 mb-3">
+        <p class="font-bold">Secours</p>
       </div>
     </div>
+
+    <!-- Deuxième ligne de panneaux -->
+    <div class="flex flex-col md:flex-row gap-4">
+      <div class="flex flex-col items-center justify-center p-6 bg-[#efc050] rounded-lg flex-1">
+        <img src="~/assets/images/ecocup.png" alt="Ecocup" class="rounded w-1/3 mb-3">
+        <p class="font-bold">Ecocup = pass</p>
+      </div>
+
+      <div class="flex flex-col items-center justify-center p-6 bg-[#f5d997] rounded-lg flex-1">
+        <img src="~/assets/images/wawaBar.png" alt="Bar" class="rounded w-1/3 mb-3">
+        <p class="font-bold">Départ au Wawa</p>
+      </div>
+
+      <!-- Variante goodies (décommenter si besoin) -->
+      <!--
+      <div class="flex flex-col items-center justify-center p-6 bg-[#f5d997] rounded-lg flex-1">
+        <img src="~/assets/images/cadeau.png" alt="Lots" class="rounded w-1/3 mb-3">
+        <p class="font-bold">1000€ de lots à gagner !</p>
+      </div>
+      -->
+    </div>
+  </div>
 </template>
 
 <script setup>
-    const props = defineProps({
-        nbBar: Number
-     });
+const props = defineProps({
+  nbBar: Number
+});
 </script>
-
-<style>
-.concept-text{
-    font-size: 16px;
-    text-align: justify;
-}
-
-.concept-panel{
-    border-radius: 10px;
-}
-
-</style>

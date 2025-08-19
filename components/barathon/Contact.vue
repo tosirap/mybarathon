@@ -1,23 +1,57 @@
 <template>
-    <div class="content" style="margin-bottom: 32px;">
-    <form class="w3-container" action="" target="_blank">
-      <div class="w3-section">
-        <label>Name</label>
-        <input class="w3-input w3-border w3-hover-border-black" style="width:100%;" type="text" name="Name" required>
+  <div class="max-w-lg mx-auto mb-8">
+    <form action="" target="_blank" class="space-y-4 bg-white p-6 rounded-lg shadow">
+      <!-- Name -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+        <input
+          type="text"
+          name="Name"
+          required
+          class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500"
+        />
       </div>
-      <div class="w3-section">
-        <label>Email</label>
-        <input class="w3-input w3-border w3-hover-border-black" style="width:100%;" type="text" name="Email" required>
+
+      <!-- Email -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+        <input
+          type="email"
+          name="Email"
+          required
+          class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500"
+        />
       </div>
-      <div class="w3-section">
-        <label>Subject</label>
-        <input class="w3-input w3-border w3-hover-border-black" style="width:100%;" name="Subject" required>
+
+      <!-- Subject -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Subject</label>
+        <input
+          type="text"
+          name="Subject"
+          required
+          class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500"
+        />
       </div>
-      <div class="w3-section">
-        <label>Message</label>
-        <input class="w3-input w3-border w3-hover-border-black" style="width:100%;" name="Message" required>
+
+      <!-- Message -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+        <textarea
+          name="Message"
+          rows="4"
+          required
+          class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500"
+        ></textarea>
       </div>
-      <button type="submit" class="w3-button w3-block w3-black">Send</button>
+
+      <!-- Button -->
+      <button
+        type="submit"
+        class="w-full bg-black text-white py-2 rounded-md shadow hover:bg-gray-800 transition"
+      >
+        Send
+      </button>
     </form>
   </div>
 </template>

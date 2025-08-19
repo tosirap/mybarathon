@@ -1,63 +1,60 @@
 <template>
-    <div>
-        <div class="w3-top">
-          <BeerpongMenu :isDesktop ="isDesktop"/>
-        </div>
-        <!-- Title -->
-        <div >
-            <div class="w3-panel background-panel-beerpong centered w3-padding-64">
-            <h1 style="padding-top: 24px"><b>MYBARATHON</b></h1>
-            <h3>Beer Pong Géant</h3>
-            <button class="billeterie-button" style="margin-top: 1%;"
-                onclick="location.href='#billeterie'"><b>Billeterie →</b></button>
-            </div>
-        </div>
-        <!-- Concept -->
-        <div class="w3-panel w3-padding-32"  id="concept">
-            <BeerpongConcept/>
-        </div>
-
-        <!-- >Regles -->
-        <div class="w3-panel background-panel-beerpong w3-padding-64"  id="regles">
-            <BeerpongRegles/>
-        </div>
-
-        <!-- Billeterie -->
-        <div class="w3-panel w3-padding-32" id="billeterie">
-          <BeerpongBilleterie/>
-        </div>
-
-        <!-- Instagram -->
-        <div class="w3-panel background-panel-beerpong w3-padding-64" id="instagram">
-            <Instagram/>
-        </div>
-
-        <!-- Footer -->
-        <footer class="w3-container w3-padding-32 w3-light-grey w3-center">
-         <Footer/>
-        </footer>
-
+  <div>
+    <!-- Menu -->
+    <div class="fixed top-0 left-0 w-full z-50">
+      <BeerpongMenu :isDesktop="isDesktop" />
     </div>
 
+    <!-- Title -->
+    <div class="p-32 flex flex-col items-center justify-center bg-gray-800 text-white">
+      <h1 class="pt-6 text-4xl font-bold">MYBARATHON</h1>
+      <h3 class="text-xl mt-2">Beer Pong Géant</h3>
+      <button
+        class="mt-4 px-6 py-2 bg-yellow-500 text-black rounded-lg shadow hover:bg-yellow-600 transition"
+        @click="() => (location.href='#billeterie')"
+      >
+        <b>Billeterie →</b>
+      </button>
+    </div>
+
+    <!-- Concept -->
+    <div id="concept" class="p-8">
+      <BeerpongConcept />
+    </div>
+
+    <!-- Règles -->
+    <div id="regles" class="p-16 bg-gray-100">
+      <BeerpongRegles />
+    </div>
+
+    <!-- Billeterie -->
+    <div id="billeterie" class="p-8">
+      <BeerpongBilleterie />
+    </div>
+
+    <!-- Instagram -->
+    <div id="instagram" class="p-16 bg-gray-800 text-white">
+      <Instagram />
+    </div>
+
+    <!-- Footer -->
+    <footer class="container mx-auto px-4 py-8 bg-gray-100 text-center">
+      <Footer />
+    </footer>
+  </div>
 </template>
 
 <script setup>
+const isDesktop = ref(false);
 
-    const isDesktop = ref(false); // Initialize as false
+const handleResize = () => {
+  isDesktop.value = window.innerWidth >= 768;
+};
 
-    const handleResize = () => {
+onMounted(() => {
+  if (process.client) {
     isDesktop.value = window.innerWidth >= 768;
-    };
-
-    onMounted(() => {
-        if (process.client) {
-            isDesktop.value = window.innerWidth >= 768;
-            window.addEventListener('resize', handleResize);
-        }
-    });
+    window.addEventListener("resize", handleResize);
+  }
+});
 </script>
-
-<style>
-  @import url("~/assets/css/common.css");
-
-</style>

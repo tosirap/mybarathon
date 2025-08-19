@@ -1,23 +1,28 @@
 <template>
-    <div class="content" >
-      <h1 class="centered"  style="padding-bottom: 24px;"><b>Billeterie</b></h1>
-        <div class="billeterie">
-          <a 
-            title="Vente de billets en ligne" 
-            href="https://www.billetweb.fr/shop.php?event=barathon22" 
-            class="shop_frame"  
-            target="_blank"  
-            data-src="https://www.billetweb.fr/shop.php?event=barathon22"  
-            data-max-width="100%"  
-            data-initial-height="600" 
-            data-scrolling="no"  
-            data-id="barathon22"  
-            data-resize="1"
-          >
-          Vente de billets en ligne</a>
-          <p class="centered">Après 22H les billets non récupérés sont revendus sur place pour 10€</p>
-        </div>
+  <div class="max-w-4xl mx-auto p-8">
+    <h1 class="text-center text-2xl font-bold pb-6">Billeterie</h1>
+
+    <div class="flex flex-col items-center">
+      <a
+        title="Vente de billets en ligne"
+        href="https://www.billetweb.fr/shop.php?event=barathon22"
+        class="inline-block px-6 py-3 bg-yellow-500 text-black rounded-lg shadow hover:bg-yellow-600 transition font-medium"
+        target="_blank"
+        data-src="https://www.billetweb.fr/shop.php?event=barathon22"
+        data-max-width="100%"
+        data-initial-height="600"
+        data-scrolling="no"
+        data-id="barathon22"
+        data-resize="1"
+      >
+        Vente de billets en ligne
+      </a>
+
+      <p class="text-center text-gray-600 mt-4">
+        Après 22H les billets non récupérés sont revendus sur place pour 10€
+      </p>
     </div>
+  </div>
 </template>
 
 
