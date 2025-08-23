@@ -4,39 +4,39 @@
     <Menu />
 
     <!-- Sections -->
-    <section id="accueil" class="min-h-screen flex items-center justify-center bg-white border-b border-black">
+    <section id="accueil" class="py-24 flex items-center justify-center bg-white border-b border-black">
       <Accueil />
     </section>
 
-    <section id="evenements" class="min-h-screen flex items-center justify-center bg-yellow-100 border-b border-black">
+    <section id="evenements" class="py-24 flex items-center justify-center bg-yellow-100 border-b border-black">
       <Evenements />
     </section>
 
-    <section id="partenaires" class="min-h-screen flex items-center justify-center bg-white border-b border-black">
+    <section id="partenaires" class="py-24 flex items-center justify-center bg-white border-b border-black">
       <Partenaires />
     </section>
 
-    <section id="billetterie" class="min-h-screen flex items-center justify-center bg-yellow-100 border-b border-black">
+    <section id="billetterie" class="py-24 flex items-center justify-center bg-yellow-100 border-b border-black">
       <Billetterie />
     </section>
 
-    <section id="securite" class="min-h-screen flex items-center justify-center bg-white border-b border-black">
+    <section id="securite" class="py-24 flex items-center justify-center bg-white border-b border-black">
       <Securite />
     </section>
 
-    <section id="galerie" class="min-h-screen flex items-center justify-center bg-yellow-100 border-b border-black">
+    <section id="galerie" class="py-24 flex items-center justify-center bg-yellow-100 border-b border-black">
       <Galerie />
     </section>
 
-    <section id="rejoindre" class="min-h-screen flex items-center justify-center bg-white border-b border-black">
+    <section id="rejoindre" class="py-24 flex items-center justify-center bg-white border-b border-black">
       <Rejoindre />
     </section>
 
-    <section id="faq" class="min-h-screen flex items-center justify-center bg-yellow-100 border-b border-black">
+    <section id="faq" class="py-24 flex items-center justify-center bg-yellow-100 border-b border-black">
       <Faq />
     </section>
 
-    <section id="contact" class="min-h-screen flex items-center justify-center bg-white border-b border-black">
+    <section id="contact" class="py-24 flex items-center justify-center bg-white border-b border-black">
       <Contact />
     </section>
   </div>
