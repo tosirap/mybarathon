@@ -4,40 +4,58 @@
     <Menu />
 
     <!-- Sections -->
-    <section id="accueil" class="py-24 flex items-center justify-center bg-white border-b border-black">
-      <Accueil />
+    <section id="accueil" class="py-24 bg-white border-b border-black">
+      <div class="max-w-4xl mx-auto px-2">
+        <Accueil />
+      </div>
     </section>
 
-    <section id="evenements" class="py-24 flex items-center justify-center bg-yellow-100 border-b border-black">
-      <Evenements />
+    <section id="evenements" class="py-24 bg-yellow-100 border-b border-black">
+      <div class="max-w-4xl mx-auto px-2">
+        <Evenements />
+      </div>
     </section>
 
-    <section id="partenaires" class="py-24 flex items-center justify-center bg-white border-b border-black">
-      <Partenaires />
+    <section id="partenaires" class="py-24 bg-white border-b border-black">
+      <div class="max-w-4xl mx-auto px-2">
+        <Partenaires />
+      </div>
     </section>
 
-    <section id="billetterie" class="py-24 flex items-center justify-center bg-yellow-100 border-b border-black">
-      <Billetterie />
+    <section id="billetterie" class="py-24 bg-yellow-100 border-b border-black">
+      <div class="max-w-4xl mx-auto px-2">
+        <Billetterie />
+      </div>
     </section>
 
-    <section id="securite" class="py-24 flex items-center justify-center bg-white border-b border-black">
-      <Securite />
+    <section id="securite" class="py-24 bg-white border-b border-black">
+      <div class="max-w-4xl mx-auto px-2">
+        <Securite />
+      </div>
     </section>
 
-    <section id="galerie" class="py-24 flex items-center justify-center bg-yellow-100 border-b border-black">
-      <Galerie />
+    <section id="galerie" class="py-24 bg-yellow-100 border-b border-black">
+      <div class="max-w-4xl mx-auto px-2">
+        <Galerie />
+      </div>
     </section>
 
-    <section id="rejoindre" class="py-24 flex items-center justify-center bg-white border-b border-black">
-      <Rejoindre />
+    <section id="rejoindre" class="py-24 bg-white border-b border-black">
+      <div class="max-w-4xl mx-auto px-2">
+        <Rejoindre />
+      </div>
     </section>
 
-    <section id="faq" class="py-24 flex items-center justify-center bg-yellow-100 border-b border-black">
-      <Faq />
+    <section id="faq" class="py-24 bg-yellow-100 border-b border-black">
+      <div class="max-w-4xl mx-auto px-2">
+        <Faq />
+      </div>
     </section>
 
-    <section id="contact" class="py-24 flex items-center justify-center bg-white border-b border-black">
-      <Contact />
+    <section id="contact" class="py-24 bg-white border-b border-black">
+      <div class="max-w-4xl mx-auto px-2">
+        <Contact />
+      </div>
     </section>
   </div>
 </template>

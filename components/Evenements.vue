@@ -13,6 +13,6 @@
       <li>Vous choisissez votre itinéraire parmi les établissements partenaires</li>
       <li>Et vous profitez d’animations, de surprises et de la convivialité alsacienne !</li>
     </ol>
-    <p>👉 Voir les prochains événements</p>
+    <Evenement/>
   </section>
 </template>
