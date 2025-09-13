@@ -17,6 +17,8 @@
       <li>Des rencontres et des souvenirs mémorables</li>
       <li>Des avantages lors des événements</li>
     </ul>
-    <p>📩 Écris-nous via Instagram ou par mail à mybarathon@gmail.com</p>
+    <p>📩 Écris-nous via  <a href="https://www.instagram.com/mybarathon/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">
+            Instagram
+          </a>ou par mail à mybarathon@gmail.com</p>
   </section>
 </template>

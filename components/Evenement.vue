@@ -1,12 +1,12 @@
 <template>
-  <div class="container mx-auto px-4 py-6">
+  <div class="container mx-auto py-6">
     <!-- Intro -->
-    <div class="mb-8 text-center">
+    <div class="my-8 text-center">
       <p class="text-lg font-medium">
-        Prochain barathon : <span class="font-bold">ICI LA DATE</span>
+        Prochain barathon : 9 octobre 2025
       </p>
-      <p class="text-md text-gray-600">
-        Départ : <span class="font-semibold">BAR DEPART</span>
+      <p class="text-md">
+        Départs : <span class="font-bold">Le Créchoire</span>
       </p>
     </div>
 
@@ -36,7 +36,11 @@
       <transition name="fade">
         <div v-if="activeIndex === index" class="p-4 bg-white">
           <!-- Image -->
-          <img :src="bar.image" :alt="bar.name" class="w-full h-48 object-cover rounded-md mb-3" />
+           <img
+            :src="bar.image || defaultBarImage"
+            :alt="bar.name"
+            class="w-full h-48 object-cover rounded-md mb-3"
+          />
 
           <!-- Carte Google Maps -->
           <div class="mb-3" v-if="bar.link">
@@ -53,10 +57,12 @@
           </div>
 
           <!-- Liste des boissons -->
-          <h3 class="text-lg font-bold mb-2">Boissons disponibles</h3>
-          <ul class="list-disc pl-5 space-y-1">
-            <li v-for="(drink, i) in bar.drinks" :key="i">{{ drink.name }} — {{ drink.price }}</li>
-          </ul>
+          <div v-if="bar.drinks && bar.drinks.length > 0">
+            <h3 class="text-lg font-bold mb-2">Boissons disponibles</h3>
+            <ul class="list-disc pl-5 space-y-1">
+              <li v-for="(drink, i) in bar.drinks" :key="i">{{ drink.name }} — {{ drink.price }}</li>
+            </ul>
+          </div>
         </div>
       </transition>
     </div>
@@ -65,6 +71,7 @@
 
 <script setup>
 import barList from '@/components/barathon/BarList'
+import defaultBarImage from '@/assets/images/defaultBarImage.png'
 const activeIndex = ref(null)
 
 const toggleBar = (index) => {

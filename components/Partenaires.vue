@@ -10,6 +10,9 @@
       <li>Participer à des événements dynamiques et bien organisés</li>
       <li>Valoriser les savoir-faire régionaux dans un cadre festif</li>
     </ul>
-    <p>📬 Vous êtes un établissement alsacien et souhaitez rejoindre l’aventure ? Contactez-nous</p>
+    <p>
+      📬 Vous êtes un établissement alsacien et souhaitez rejoindre l’aventure ?
+      <a href="#contact" class="text-blue-600 hover:underline">Contactez-nous</a>
+    </p>
   </section>
 </template>
