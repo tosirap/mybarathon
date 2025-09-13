@@ -13,7 +13,7 @@
     <!-- Titre -->
     <h1 class="text-3xl font-bold mb-6 text-center">Liste des Bars</h1>
 
-    <!-- Liste des bars -->
+    <!-- Liste des bars participants -->
     <div v-for="(bar, index) in barList" :key="index" class="mb-4 border rounded-lg shadow-sm">
       <!-- Header cliquable -->
       <button
