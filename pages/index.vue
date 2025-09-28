@@ -28,6 +28,12 @@
       </div>
     </section>
 
+    <section id="faq" class="py-24 bg-yellow-100 border-b border-black">
+      <div class="max-w-4xl mx-auto px-2">
+        <Faq />
+      </div>
+    </section>
+    
     <section id="securite" class="py-24 bg-white border-b border-black">
       <div class="max-w-4xl mx-auto px-2">
         <Securite />
@@ -43,12 +49,6 @@
     <section id="rejoindre" class="py-24 bg-white border-b border-black">
       <div class="max-w-4xl mx-auto px-2">
         <Rejoindre />
-      </div>
-    </section>
-
-    <section id="faq" class="py-24 bg-yellow-100 border-b border-black">
-      <div class="max-w-4xl mx-auto px-2">
-        <Faq />
       </div>
     </section>
 
