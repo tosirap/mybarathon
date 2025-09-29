@@ -31,6 +31,22 @@ const barList = [
     starting: true,
   },
   {
+    name: "Berthom",
+    link: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7465.849726522074!2d7.749019261137023!3d48.57965983396884!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4796c852de9a82bb%3A0xf66dad79c0af2985!2sLes%20Berthom!5e0!3m2!1sfr!2sfr!4v1757771036910!5m2!1sfr!2sfr",
+    drinks: [
+      { name: "Blonde", price: 4.5 },
+      { name: "Red", price: 6.0 },
+      { name: "IPA", price: 6.0 },
+      { name: "Perrier", price: 3.0 },
+      { name: "Limonade", price: 3.0 },
+      { name: "Coca", price: 3.0 },
+      { name: "Shooter", price: 3.0 },
+      { name: "Cuba Libre", price: 6.5 },
+    ],
+    image: "",
+    starting: true,
+  },
+  {
     name: "Wawa",
     link: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2639.496347865903!2d7.759602212471312!3d48.5811944711761!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4796c8ff02a99a57%3A0x67cef509666e2072!2sWawa%20Music%20%26%20Food!5e0!3m2!1sfr!2s!4v1755977378538!5m2!1sfr!2s",
     drinks: [
@@ -121,7 +137,23 @@ const barList = [
   {
     name: "Algorythme",
     link: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2639.627172799862!2d7.7563244767599!3d48.57868912034887!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4796c8ffe3a73db3%3A0xd1025e9238635ff7!2sAlgorythme!5e0!3m2!1sfr!2sfr!4v1757770792815!5m2!1sfr!2sfr",
-    drinks: [],
+    drinks: [
+      { name: "Cocktails 25cl", price: 6 },
+      { name: "Cocktails 50cl", price: 10 },
+      { name: "Pils", price: 4.5 },
+      { name: "IPA", price: 5 },
+      { name: "Panaché", price: 4.5 },
+      { name: "Picon", price: 6 },
+      { name: "Monaco", price: 4.8 },
+      { name: "Diabolo", price: 3.5 },
+      { name: "Tonic and sirop", price: 3.5 },
+    ],
+    foods: [
+      { name: "Tartes flambéees", price: 6 },
+      { name: "Classique", price: 6 },
+      { name: "Gratinée", price: 6 },
+      { name: "Champêtre", price: 6 },
+    ],
     image: "",
   },
   {
@@ -166,7 +198,7 @@ const barList = [
   },
   {
     name: "Jimmy's",
-    link: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2639.509906609794!2d7.751843176759948!3d48.58093482019145!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4796c854f35d0057%3A0x6df65a0cc849055!2sJimmy&#39;s%20Bar!5e0!3m2!1sfr!2sfr!4v1757770911331!5m2!1sfr!2sfr",
+    link: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5279.019813219667!2d7.751843177460084!3d48.58093482019069!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4796c854f35d0057%3A0x6df65a0cc849055!2sJimmy%27s%20Bar!5e0!3m2!1sfr!2sfr!4v1759172897276!5m2!1sfr!2sfr",
     drinks: [
       { name: "Vodka énergie", price: 5 },
       { name: "Jagerbomb", price: 5 },
@@ -188,28 +220,22 @@ const barList = [
   {
     name: "Tempête",
     link: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1347701.671785842!2d3.73371537510986!3d48.72019998966709!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4796c9643a8e8fd1%3A0x7ec3c72e4beca4d6!2zVGVtcMOqdGU!5e0!3m2!1sfr!2sfr!4v1757770991068!5m2!1sfr!2sfr",
-    drinks: [],
+    drinks: [
+      { name: "Blonde", price: 5 },
+      { name: "Picon", price: 6 },
+      { name: "Desperados", price: 7 },
+      { name: "Cuba libre", price: 8 },
+      { name: "Gin tonic", price: 8 },
+      { name: "Bouteille", price: 80 },
+      { name: "Shooter", price: 4 },
+      { name: "Soft", price: 3 },
+    ],
     image: "",
   },
   {
     name: "What the fox",
     link: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2639.5805216338745!2d7.747008076759951!3d48.579582520286344!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4796c85328ff71f1%3A0x7c341e2cf12dde2f!2sWhat%20the%20Fox!5e0!3m2!1sfr!2sfr!4v1757771010499!5m2!1sfr!2sfr",
     drinks: [],
-    image: "",
-  },
-  {
-    name: "Berthom",
-    link: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7465.849726522074!2d7.749019261137023!3d48.57965983396884!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4796c852de9a82bb%3A0xf66dad79c0af2985!2sLes%20Berthom!5e0!3m2!1sfr!2sfr!4v1757771036910!5m2!1sfr!2sfr",
-    drinks: [
-      { name: "Blonde", price: 4.5 },
-      { name: "Red", price: 6.0 },
-      { name: "IPA", price: 6.0 },
-      { name: "Perrier", price: 3.0 },
-      { name: "Limonade", price: 3.0 },
-      { name: "Coca", price: 3.0 },
-      { name: "Shooter", price: 3.0 },
-      { name: "Cuba Libre", price: 6.5 },
-    ],
     image: "",
   },
   {
@@ -262,7 +288,15 @@ const barList = [
   {
     name: "Delirium",
     link: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3138.6987865614155!2d7.74053107760438!3d48.58456076315247!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4796c84c1d430bf1%3A0x6d86f9bc1635704d!2sDelirium%20Caf%C3%A9!5e0!3m2!1sfr!2sfr!4v1757771296161!5m2!1sfr!2sfr",
-    drinks: [],
+    drinks: [
+      { name: "Bière blonde", price: 4 },
+      { name: "Bière fruité", price: 5 },
+      { name: "Bière spéciale", price: 5 },
+      { name: "Ricard", price: 3 },
+      { name: "jagerbomb", price: 5 },
+      { name: "Sex on the beach", price: 6 },
+      { name: "Soft", price: 2.5 },
+    ],
     image: "",
   },
   {
@@ -310,14 +344,21 @@ const barList = [
   {
     name: "Barco latino",
     link: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6278.647464670967!2d7.75847044772125!3d48.57449687911226!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4796c855dc42b531%3A0x708a226f3b7cf502!2sBarco%20Latino!5e0!3m2!1sfr!2sfr!4v1757771433479!5m2!1sfr!2sfr",
-    drinks: [],
+    drinks: [
+      { name: "Blonde", price: 4.5 },
+      { name: "Blanche", price: 5.5 },
+      { name: "Red", price: 7 },
+      { name: "Shot Mybarathon", price: 3 },
+      { name: "Diabolo", price: 3 },
+    ],
+    foods: [{ name: "Saucisson", price: 8 }],
     image: "",
   },
   {
     name: "Starling (krutenau )",
     link: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2639.647948602021!2d7.754037091806899!3d48.57829124637314!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4796c9e521f80bf1%3A0x55dc0b359b3cd612!2sStarling%20Burgers%20Krutenau!5e0!3m2!1sfr!2sfr!4v1757771479166!5m2!1sfr!2sfr",
     drinks: [],
-    benefits: [{ value: "offre menu étudiant + 1 pinte pale alde ou perle" }],
+    benefits: [{ value: "offre menu étudiant + 1 pinte pale ale ou perle" }],
     image: "",
   },
   {
@@ -328,7 +369,7 @@ const barList = [
       { name: "Starling Pale Ale", price: 5 },
       { name: "IPA", price: 5 },
     ],
-    benefits: [{ value: "offre menu étudiant + 1 pinte pale alde ou perle" }],
+    benefits: [{ value: "offre menu étudiant + 1 pinte pale ale ou perle" }],
     image: "",
   },
   {

@@ -10,7 +10,7 @@ const links = [
   { name: "Billetterie 🎟️", href: "#billetterie", highlight: true },
   { name: "FAQ", href: "#faq" },
   { name: "Sécurité", href: "#securite" },
-  { name: "Galerie photo", href: "#galerie" },
+  // { name: "Galerie photo", href: "#galerie" },
   { name: "Rejoindre l’équipe", href: "#rejoindre" },
   { name: "Contact", href: "#contact" },
 ];
