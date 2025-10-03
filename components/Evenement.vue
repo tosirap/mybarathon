@@ -155,7 +155,9 @@ const formatPrice = (price) => {
     return `${price}€`;
   }
   if (typeof price === "string") {
-    return price.includes("€") ? price : `${price}€`;
+    return price.includes("€") || price.includes("même prix")
+      ? price
+      : `${price}€`;
   }
   return price;
 };
