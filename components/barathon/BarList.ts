@@ -83,7 +83,7 @@ const barList = [
       { name: "Jagger Bomb", price: 5 },
       { name: "Punch Mybarathon", price: 6 },
       { name: "Rhum Coca", price: 6 },
-      { name: "Gin To", price: 6 },
+      { name: "Gin Tonic", price: 6 },
       { name: "Vodka Energissant", price: 6 },
     ],
     image: "",
@@ -200,7 +200,11 @@ const barList = [
   {
     name: "Académie de la bière krutenau",
     link: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2639.54944002985!2d7.752322091807573!3d48.58017774624158!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4796c9c2ce1131ef%3A0x34dd0cca1473dca6!2sAcad%C3%A9mie%20de%20la%20Bi%C3%A8re%20Krutenau!5e0!3m2!1sfr!2sfr!4v1757770934124!5m2!1sfr!2sfr",
-    drinks: [],
+    drinks: [
+      { name: "Blonde", price: 5 },
+      { name: "Blanche", price: 5 },
+      { name: "soft", price: 3 },
+    ],
     image: "",
   },
   {
@@ -221,7 +225,13 @@ const barList = [
   {
     name: "What the fox",
     link: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2639.5805216338745!2d7.747008076759951!3d48.579582520286344!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4796c85328ff71f1%3A0x7c341e2cf12dde2f!2sWhat%20the%20Fox!5e0!3m2!1sfr!2sfr!4v1757771010499!5m2!1sfr!2sfr",
-    drinks: [],
+    drinks: [
+      { name: "Kastel red", price: 6 },
+      { name: "Blanche", price: 6 },
+      { name: "Pils", price: 5 },
+      { name: "Pils + sirop", price: 5.5 },
+      { name: "Soft (50cl)", price: 3.5 },
+    ],
     image: "",
   },
   {
@@ -288,7 +298,11 @@ const barList = [
   {
     name: "Legends Bar",
     link: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2639.3700142346056!2d7.7522477767601075!3d48.583613720003676!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4796c9fea972b3c9%3A0x9a5e33f44f8acf71!2sBar%20Legends%20Strasbourg!5e0!3m2!1sfr!2sfr!4v1757771314884!5m2!1sfr!2sfr",
-    drinks: [],
+    drinks: [
+      { name: "Bière", price: 5 },
+      { name: "Shot", price: 3 },
+      { name: "Soft", price: 3 },
+    ],
     image: "",
   },
   {
