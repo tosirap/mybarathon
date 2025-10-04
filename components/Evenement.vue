@@ -101,7 +101,6 @@
             v-else
             class="bar-image-wrapper flex items-center justify-center"
             style="
-              background: #111;
               width: 100%;
               height: 16rem;
               border-radius: 0.5rem;

@@ -352,7 +352,7 @@ const barList = [
       { name: "Diabolo", price: 3 },
     ],
     foods: [{ name: "Saucisson", price: 8 }],
-    image: "",
+    image: "/photoBar/LeBarco/Lebarco.png",
   },
   {
     name: "Starling (krutenau )",
@@ -376,7 +376,7 @@ const barList = [
     name: "Keb's baba (krutenau)",
     link: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2639.4761729653583!2d7.754395376760086!3d48.58158082014627!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4796c94b37a9e015%3A0x622f8ac800e70374!2sKEBS%20BABA%20KRUTENAU!5e0!3m2!1sfr!2sfr!4v1757771531924!5m2!1sfr!2sfr",
     drinks: [],
-    foods: [{ name: "Kebab au choix + frites + bière pression", price: 10 }],
+    foods: [{ name: "Kebab au choix + bière pression", price: 10 }],
     image: "/photoBar/KEBS/KebBaba.jpg",
   },
   {
@@ -385,7 +385,7 @@ const barList = [
     drinks: [],
     foods: [
       {
-        name: "Menu (kebab au choix + frites + bière canette)",
+        name: "Menu (kebab au choix + bière canette)",
         price: 10,
       },
     ],
