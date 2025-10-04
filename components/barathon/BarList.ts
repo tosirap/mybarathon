@@ -14,7 +14,7 @@ const barList = [
       { name: "Shooter", price: 1.5 },
       { name: "Soft", price: 3 },
     ],
-    image: "",
+    image: "photoBar/crechoir/Crechoir.webp",
     starting: true,
   },
   {
@@ -30,7 +30,7 @@ const barList = [
       { name: "Shooter", price: 3.0 },
       { name: "Cuba Libre", price: 6.5 },
     ],
-    image: "",
+    image: "/photoBar/berthom/Berthom.jpg",
     starting: true,
   },
   {
@@ -47,7 +47,7 @@ const barList = [
       { name: "Pintes Sirop", price: 3 },
       { name: "Tequila Sunrise", price: 6 },
     ],
-    image: "",
+    image: "/photoBar/Wawa/wawa.png",
   },
   {
     name: "Tamil",
@@ -73,7 +73,7 @@ const barList = [
       { name: "Naan cheese", price: 5 },
       { name: "Naan sandwich poulet et frites ", price: 13.9 },
     ],
-    image: "",
+    image: "/photoBar/Tamil/tamil.png",
   },
   {
     name: "Blue Moon",
@@ -86,7 +86,7 @@ const barList = [
       { name: "Gin Tonic", price: 6 },
       { name: "Vodka Energissant", price: 6 },
     ],
-    image: "",
+    image: "/photoBar/Blue_moon/BlueMoon.webp",
   },
   {
     name: "21",
@@ -94,7 +94,7 @@ const barList = [
     drinks: [
       { name: "Sur tous les shooters", price: "-1€ sur le prix de base" },
     ],
-    image: "",
+    image: "/photoBar/21/21logo.svg",
   },
   {
     name: "Happy hours",
@@ -105,7 +105,7 @@ const barList = [
       { name: "Kastel rouge", price: 6 },
       { name: "pinte soft", price: 3.5 },
     ],
-    image: "",
+    image: "/photoBar/Happy_hour/IMG_19941.jpg",
   },
   {
     name: "Télégraphe",
@@ -119,7 +119,7 @@ const barList = [
       { name: "Shot", price: 3 },
       { name: "Soft", price: 3 },
     ],
-    image: "",
+    image: "/photoBar/telegraphe/AuTelegraphe.jpg",
   },
   {
     name: "Algorythme",
@@ -141,7 +141,7 @@ const barList = [
       { name: "Gratinée", price: 6 },
       { name: "Champêtre", price: 6 },
     ],
-    image: "",
+    image: "/photoBar/Algo/Algorythme.webp",
   },
   {
     name: "The People bar",
@@ -152,7 +152,7 @@ const barList = [
       { name: "Soft ou limonade avec ou sans sirop", price: 1 },
       { name: "Cocktail Orange & Festival Vibes", price: 7 },
     ],
-    image: "",
+    image: "/photoBar/The_People_Bar/ThePeopleLOGO.png",
   },
   {
     name: "Le spot",
@@ -169,7 +169,7 @@ const barList = [
       { name: "Tequila Sunrise", price: 7 },
       { name: "Punch 50cl", price: 7 },
     ],
-    image: "",
+    image: "/photoBar/le_spot/spot.png",
   },
   {
     name: "The queen's elizabeth",
@@ -180,7 +180,7 @@ const barList = [
       { name: "Gin To", price: 7 },
       { name: "Soft", price: 4 },
     ],
-    image: "",
+    image: "/photoBar/Queens/QueenElizabeth.jpg",
   },
   {
     name: "Jimmy's",
@@ -195,7 +195,7 @@ const barList = [
       { name: "Shooter (vodka sirop)", price: 3 },
       { name: "Mètre", price: 25 },
     ],
-    image: "",
+    image: "/photoBar/Jimmy_s/JimmysBar.JPG",
   },
   {
     name: "Académie de la bière krutenau",
@@ -205,7 +205,7 @@ const barList = [
       { name: "Blanche", price: 5 },
       { name: "soft", price: 3 },
     ],
-    image: "",
+    image: "/photoBar/Académie_de_la_bière_Krut/LogoAcaKrut.svg",
   },
   {
     name: "Tempête",
@@ -220,7 +220,7 @@ const barList = [
       { name: "Shooter", price: 4 },
       { name: "Soft", price: 3 },
     ],
-    image: "",
+    image: "/photoBar/Tempete/Tempete.jpg",
   },
   {
     name: "What the fox",
@@ -232,7 +232,7 @@ const barList = [
       { name: "Pils + sirop", price: 5.5 },
       { name: "Soft (50cl)", price: 3.5 },
     ],
-    image: "",
+    image: "/photoBar/What_The_Fox/WhatTheFoxLOGO.JPG",
   },
   {
     name: "Schloss",
@@ -249,7 +249,7 @@ const barList = [
       { name: "Shooter Pur (Jameson / Smirnoff Red / Jagermeister)", price: 3 },
       { name: "Mètre Shooter Pur", price: 30 },
     ],
-    image: "",
+    image: "/photoBar/Schloss/schloss.png",
   },
   {
     name: "Trolleybus",
@@ -279,7 +279,7 @@ const barList = [
       },
     ],
     foods: [{ name: "Saucisson", price: 6 }],
-    image: "",
+    image: "/photoBar/Trolleybus/trolley.png",
   },
   {
     name: "Delirium",
@@ -293,7 +293,7 @@ const barList = [
       { name: "Sex on the beach", price: 6 },
       { name: "Soft", price: 2.5 },
     ],
-    image: "",
+    image: "/photoBar/Déli/Deli2.webp",
   },
   {
     name: "Legends Bar",
@@ -303,7 +303,7 @@ const barList = [
       { name: "Shot", price: 3 },
       { name: "Soft", price: 3 },
     ],
-    image: "",
+    image: "/photoBar/Legend/Legends.jpg",
   },
   {
     name: "La cabane",
@@ -315,7 +315,7 @@ const barList = [
       { name: "Gin Tonic", price: 7 },
       { name: "Soft (Coca, Diabolo, Limonade...)", price: 3 },
     ],
-    image: "",
+    image: "/photoBar/la_cabane/lacabane.jpg",
   },
   {
     name: "Barberousse",
@@ -326,7 +326,7 @@ const barList = [
       { name: "Pinte de Blonde", price: 5.5 },
       { name: "Soft (hors Redbull)", price: 2.5 },
     ],
-    image: "",
+    image: "/photoBar/Barberousse/Barberrousse.webp",
   },
   {
     name: "Jeannette et les cycleux",
@@ -339,7 +339,7 @@ const barList = [
       { name: "Mojito", price: 7 },
       { name: "Mojito Framboise", price: 8 },
     ],
-    image: "",
+    image: "/photoBar/jeanette_et_les_cycleux/jeanette.png",
   },
   {
     name: "Barco latino",
@@ -359,7 +359,7 @@ const barList = [
     link: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2639.647948602021!2d7.754037091806899!3d48.57829124637314!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4796c9e521f80bf1%3A0x55dc0b359b3cd612!2sStarling%20Burgers%20Krutenau!5e0!3m2!1sfr!2sfr!4v1757771479166!5m2!1sfr!2sfr",
     drinks: [],
     benefits: [{ value: "offre menu étudiant + 1 pinte pale ale ou perle" }],
-    image: "",
+    image: "/photoBar/Starling_krut/StarlingKrutenau.jpg",
   },
   {
     name: "Starling (centre)",
@@ -370,14 +370,14 @@ const barList = [
       { name: "IPA", price: 5 },
     ],
     benefits: [{ value: "offre menu étudiant + 1 pinte pale ale ou perle" }],
-    image: "",
+    image: "/photoBar/Starling_centre/Starling.jpg",
   },
   {
     name: "Keb's baba (krutenau)",
     link: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2639.4761729653583!2d7.754395376760086!3d48.58158082014627!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4796c94b37a9e015%3A0x622f8ac800e70374!2sKEBS%20BABA%20KRUTENAU!5e0!3m2!1sfr!2sfr!4v1757771531924!5m2!1sfr!2sfr",
     drinks: [],
     foods: [{ name: "Kebab au choix + frites + bière pression", price: 10 }],
-    image: "",
+    image: "/photoBar/KEBS/KebBaba.jpg",
   },
   {
     name: "Keb's baba (centre)",
@@ -389,14 +389,14 @@ const barList = [
         price: 10,
       },
     ],
-    image: "",
+    image: "/photoBar/KEBS/KebBaba.jpg",
   },
   {
     name: "La réserve 1862",
     link: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8878.209578881844!2d7.749575424009163!3d48.58098090850569!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4796c97aec115a07%3A0x413175d0931be535!2sR%C3%A9serve%201862!5e0!3m2!1sfr!2sfr!4v1757771623885!5m2!1sfr!2sfr",
     drinks: [],
     benefits: [{ value: "entrée gratuite" }, { value: "50% sur les boissons" }],
-    image: "",
+    image: "/photoBar/Reserve/laReserve.jpg",
     after: true,
   },
   {
@@ -408,7 +408,7 @@ const barList = [
       { name: "mètre vodka aromatisée", price: 30 },
       { name: "verre d’alcool 33cl", price: 7 },
     ],
-    image: "",
+    image: "/photoBar/Cafe_des_anges/cafeDesAnges.webp",
     after: true,
   },
 ];

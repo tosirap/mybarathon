@@ -84,11 +84,43 @@
       <transition name="fade">
         <div v-if="activeIndex === index" class="p-4 bg-white">
           <!-- Image -->
-          <img
-            :src="bar.image || defaultBarImage"
-            :alt="bar.name"
-            class="w-full h-48 object-cover rounded-md mb-3"
-          />
+          <div
+            v-if="!(bar.image || defaultBarImage).endsWith('.svg')"
+            class="bar-image-wrapper"
+            :style="{
+              backgroundImage: `url('${bar.image || defaultBarImage}')`,
+            }"
+          >
+            <img
+              :src="bar.image || defaultBarImage"
+              :alt="bar.name"
+              class="bar-image-main"
+            />
+          </div>
+          <div
+            v-else
+            class="bar-image-wrapper flex items-center justify-center"
+            style="
+              background: #111;
+              width: 100%;
+              height: 16rem;
+              border-radius: 0.5rem;
+              margin-bottom: 0.75rem;
+              overflow: hidden;
+            "
+          >
+            <img
+              :src="bar.image || defaultBarImage"
+              :alt="bar.name"
+              style="
+                max-width: 80%;
+                max-height: 80%;
+                object-fit: contain;
+                display: block;
+                margin: auto;
+              "
+            />
+          </div>
 
           <!-- Carte Google Maps -->
           <div class="mb-3" v-if="bar.link">
@@ -176,6 +208,37 @@ const capitalize = (s) => {
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
+}
+
+.bar-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 16rem; /* h-64 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  margin-bottom: 0.75rem;
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
+}
+.bar-image-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: inherit;
+  filter: blur(24px) brightness(0.7);
+}
+.bar-image-main {
+  position: relative;
+  z-index: 2;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
 }
 
 /* Responsive */
