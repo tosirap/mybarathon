@@ -29,20 +29,7 @@
             v-if="bar.starting"
             class="flex items-center text-green-600 font-bold text-sm px-2 py-0.5 border border-green-600 rounded space-x-1"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-4 w-4"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M5 3v16l7-5 7 5V3H5z"
-              />
-            </svg>
+            <FlagIcon class="h-4 w-4" />
             <span>Départ</span>
           </span>
 
@@ -50,34 +37,17 @@
             v-if="bar.after"
             class="flex items-center text-purple-600 font-bold text-sm px-2 py-0.5 border border-purple-600 rounded space-x-1"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-4 w-4"
-              fill="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path d="M21 12.79A9 9 0 0112.21 3a7 7 0 109.45 9.45z" />
-            </svg>
+            <MoonIcon class="h-4 w-4" />
             <span>After</span>
           </span>
         </div>
 
-        <svg
+        <ChevronDownIcon
           :class="[
             'w-5 h-5 transition-transform',
             { 'rotate-180': activeIndex === index },
           ]"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M19 9l-7 7-7-7"
-          />
-        </svg>
+        />
       </button>
 
       <!-- Détails affichés si actif -->
@@ -136,33 +106,64 @@
           </div>
 
           <!-- Liste des boissons -->
-          <div v-if="bar.drinks && bar.drinks.length > 0">
-            <h3 class="text-lg font-bold mb-2">Boissons</h3>
-            <ul class="list-disc pl-5 space-y-1">
-              <li v-for="(drink, i) in bar.drinks" :key="i">
-                {{ capitalize(drink.name) }} — {{ formatPrice(drink.price) }}
-              </li>
-            </ul>
+          <div v-if="bar.drinks && bar.drinks.length > 0" class="mb-6">
+            <h3 class="text-lg font-bold mb-4 flex items-center">
+              <CupSodaIcon class="w-5 h-5 mr-2 text-blue-500" />
+              Boissons
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <div
+                v-for="(drink, i) in bar.drinks"
+                :key="i"
+                class="flex justify-between items-center p-3 bg-gray-50 rounded-lg border border-gray-200 hover:bg-gray-100 transition-colors"
+              >
+                <span class="font-medium text-gray-800">{{
+                  capitalize(drink.name)
+                }}</span>
+                <span class="font-bold text-green-600">{{
+                  formatPrice(drink.price)
+                }}</span>
+              </div>
+            </div>
           </div>
 
           <!-- Liste des aliments -->
-          <div v-if="bar.foods && bar.foods.length > 0">
-            <h3 class="text-lg font-bold mb-2">Nourriture</h3>
-            <ul class="list-disc pl-5 space-y-1">
-              <li v-for="(food, i) in bar.foods" :key="i">
-                {{ capitalize(food.name) }} — {{ formatPrice(food.price) }}
-              </li>
-            </ul>
+          <div v-if="bar.foods && bar.foods.length > 0" class="mb-6">
+            <h3 class="text-lg font-bold mb-4 flex items-center">
+              <SandwichIcon class="w-5 h-5 mr-2 text-orange-500" />
+              Nourriture
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <div
+                v-for="(food, i) in bar.foods"
+                :key="i"
+                class="flex justify-between items-center p-3 bg-gray-50 rounded-lg border border-gray-200 hover:bg-gray-100 transition-colors"
+              >
+                <span class="font-medium text-gray-800">{{
+                  capitalize(food.name)
+                }}</span>
+                <span class="font-bold text-green-600">{{
+                  formatPrice(food.price)
+                }}</span>
+              </div>
+            </div>
           </div>
 
           <!-- Avantages -->
           <div v-if="bar.benefits && bar.benefits.length > 0">
-            <h3 class="text-lg font-bold mb-2">Avantages</h3>
-            <ul class="list-disc pl-5 space-y-1">
-              <li v-for="(benefit, i) in bar.benefits" :key="i">
+            <h3 class="text-lg font-bold mb-4 flex items-center">
+              <GiftIcon class="w-5 h-5 mr-2 text-purple-500" />
+              Avantages
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              <span
+                v-for="(benefit, i) in bar.benefits"
+                :key="i"
+                class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800 border border-blue-300 hover:bg-blue-200 transition-colors"
+              >
                 {{ capitalize(benefit.value) }}
-              </li>
-            </ul>
+              </span>
+            </div>
           </div>
         </div>
       </transition>
@@ -172,6 +173,14 @@
 
 <script setup>
 import { ref } from "vue";
+import {
+  ChevronDownIcon,
+  FlagIcon,
+  MoonIcon,
+  CupSodaIcon,
+  SandwichIcon,
+  GiftIcon,
+} from "lucide-vue-next";
 import barList from "@/components/barathon/BarList";
 import defaultBarImage from "@/assets/images/defaultBarImage.png";
 
