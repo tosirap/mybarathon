@@ -19,14 +19,15 @@ const links = [
 <template>
   <nav class="bg-gray-100 shadow-md fixed w-full z-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-16">
-        <!-- Logo -->
-        <div class="flex-shrink-0 flex items-center">
+      <div class="flex items-center justify-between w-full h-16">
+        <!-- Logo and Mobile title -->
+        <div class="flex items-center space-x-2 md:space-x-0">
           <img
             src="~/assets/images/logo.png"
             alt="Logo mybarathon"
             class="w-8 md:w-10"
           />
+          <span class="md:hidden text-black font-medium">MyBarathon</span>
         </div>
 
         <!-- Desktop menu -->
@@ -45,43 +46,15 @@ const links = [
         </div>
 
         <!-- Mobile burger -->
-        <div class="md:hidden">
+        <div class="md:hidden ml-auto pr-2">
           <button
             @click="isOpen = !isOpen"
-            class="text-black focus:outline-none"
+            class="hamburger text-black focus:outline-none relative w-6 h-6"
+            :class="{ active: isOpen }"
           >
-            <!-- Icône burger -->
-            <svg
-              v-if="!isOpen"
-              class="h-6 w-6"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
-            <!-- Icône croix -->
-            <svg
-              v-else
-              class="h-6 w-6"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
+            <span class="line top"></span>
+            <span class="line middle"></span>
+            <span class="line bottom"></span>
           </button>
         </div>
       </div>
@@ -108,3 +81,35 @@ const links = [
     </div>
   </nav>
 </template>
+
+<style scoped>
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.line {
+  width: 24px;
+  height: 3px;
+  background-color: currentColor;
+  margin: 2px 0;
+  transition: 0.3s;
+  transform-origin: center;
+}
+
+.hamburger.active .top {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active .middle {
+  opacity: 0;
+}
+
+.hamburger.active .bottom {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+</style>
