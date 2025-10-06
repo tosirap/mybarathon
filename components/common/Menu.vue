@@ -19,9 +19,9 @@ const links = [
 <template>
   <nav class="bg-gray-100 shadow-md fixed w-full z-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between w-full h-16">
+      <div class="flex items-center w-full h-16">
         <!-- Logo and Mobile title -->
-        <div class="flex items-center space-x-2 md:space-x-0">
+        <div class="flex items-center space-x-2 md:space-x-0 flex-shrink-0">
           <img
             src="~/assets/images/logo.png"
             alt="Logo mybarathon"
@@ -31,7 +31,7 @@ const links = [
         </div>
 
         <!-- Desktop menu -->
-        <div class="hidden md:flex space-x-6">
+        <div class="hidden md:flex space-x-6 flex-1 justify-center">
           <template v-for="link in links" :key="link.name">
             <a
               :href="link.href"
