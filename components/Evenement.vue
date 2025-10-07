@@ -4,7 +4,7 @@
     <div class="my-8 text-center">
       <p class="text-lg font-medium">Prochain barathon : 9 octobre 2025</p>
       <p class="text-md">
-        Départs : <span class="font-bold">Le Créchoir</span>
+        Départs : <span class="font-bold">Le Créchoir / Les Berthom</span>
       </p>
     </div>
 
