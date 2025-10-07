@@ -6,6 +6,15 @@
       <p class="text-md">
         Départs : <span class="font-bold">Le Créchoir / Les Berthom</span>
       </p>
+      
+      <!-- Bouton pour ouvrir la modal -->
+      <button
+        @click="showMapModal = true"
+        class="mt-4 inline-flex items-center px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg transition-colors shadow-md"
+      >
+        <MapPinIcon class="w-5 h-5 mr-2" />
+        Voir le plan du barathon
+      </button>
     </div>
 
     <!-- Titre -->
@@ -168,6 +177,44 @@
         </div>
       </transition>
     </div>
+
+    <!-- Modal pour la carte du barathon -->
+    <transition name="modal-fade">
+      <div
+        v-if="showMapModal"
+        @click="showMapModal = false"
+        class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+      >
+        <div
+          @click.stop
+          class="relative bg-white rounded-lg shadow-lg w-full max-w-4xl mx-4 max-h-[90vh] overflow-hidden"
+        >
+          <!-- Header de la modal -->
+          <div class="flex items-center justify-between p-4 border-b">
+            <h2 class="text-xl font-bold">Plan du Barathon</h2>
+            <button
+              @click="showMapModal = false"
+              class="text-gray-500 hover:text-gray-700 transition-colors"
+            >
+              <XIcon class="w-6 h-6" />
+            </button>
+          </div>
+
+          <!-- Contenu de la modal -->
+          <div class="p-4">
+            <iframe
+              src="https://www.google.com/maps/d/embed?mid=1dRegjolGKeBCUQuG8w6sPMeonDO4Vx8&ehbc=2E312F"
+              width="100%"
+              height="480"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              class="rounded-md"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -180,11 +227,14 @@ import {
   CupSodaIcon,
   SandwichIcon,
   GiftIcon,
+  MapPinIcon,
+  XIcon,
 } from "lucide-vue-next";
 import barList from "@/components/barathon/BarList";
 import defaultBarImage from "@/assets/images/defaultBarImage.png";
 
 const activeIndex = ref(null);
+const showMapModal = ref(false);
 
 const toggleBar = (index) => {
   activeIndex.value = activeIndex.value === index ? null : index;
@@ -215,6 +265,16 @@ const capitalize = (s) => {
 }
 .fade-enter-from,
 .fade-leave-to {
+  opacity: 0;
+}
+
+/* Transitions pour la modal */
+.modal-fade-enter-active,
+.modal-fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+.modal-fade-enter-from,
+.modal-fade-leave-to {
   opacity: 0;
 }
 
