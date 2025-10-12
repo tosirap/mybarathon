@@ -69,7 +69,7 @@ import Evenements from "~/components/Evenements.vue";
 import Partenaires from "~/components/Partenaires.vue";
 import Billetterie from "~/components/Billetterie.vue";
 import Securite from "~/components/Securite.vue";
-import Galerie from "~/components/Galerie.vue";
+//import Galerie from "~/components/Galerie.vue";
 import Rejoindre from "~/components/Rejoindre.vue";
 import Faq from "~/components/Faq.vue";
 import Contact from "~/components/Contact.vue";
