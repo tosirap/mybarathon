@@ -18,7 +18,7 @@ const links = [
   { name: "Billetterie 🎟️", href: "#billetterie", highlight: true },
   { name: "FAQ", href: "#faq" },
   { name: "Sécurité", href: "#securite" },
-  { name: "Rejoindre l’équipe", href: "#rejoindre" },
+  { name: "Rejoindre l'équipe", href: "#rejoindre" },
   { name: "Contact", href: "#contact" },
 ];
 </script>
@@ -68,22 +68,13 @@ const links = [
             :aria-expanded="isOpen"
           >
             <span
-              class="line w-full h-0.5 bg-current mx-0.5 transition-all duration-300 ease-in-out transform origin-center"
-              :class="{
-                'rotate-45 translate-y-0.5 translate-x-0.5': isOpen,
-                'opacity-0': isOpen,
-              }"
+              class="line top w-full h-0.5 bg-current mx-0.5 transition-all duration-300 ease-in-out transform origin-center"
             ></span>
             <span
-              class="line w-full h-0.5 bg-current mx-0.5 transition-all duration-300 ease-in-out transform origin-center"
-              :class="{
-                '-rotate-45 -translate-y-0.5 translate-x-0.5': isOpen,
-                'opacity-0': isOpen,
-              }"
+              class="line middle w-full h-0.5 bg-current mx-0.5 transition-all duration-300 ease-in-out transform origin-center"
             ></span>
             <span
-              class="line w-full h-0.5 bg-current mx-0.5 transition-all duration-300 ease-in-out"
-              :class="{ hidden: !isOpen }"
+              class="line bottom w-full h-0.5 bg-current mx-0.5 transition-all duration-300 ease-in-out transform origin-center"
             ></span>
           </button>
         </div>
