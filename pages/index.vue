@@ -5,7 +5,7 @@
 
     <!-- Sections -->
     <section id="accueil" class="py-12 bg-white border-b border-black">
-      <div class="max-w-4xl mx-auto px-2 pt-4">
+      <div class="max-w-4xl mx-auto px-2 pt-8">
         <Accueil />
       </div>
     </section>
