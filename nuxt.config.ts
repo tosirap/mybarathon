@@ -100,7 +100,12 @@ export default defineNuxtConfig({
         ],
       },
     ],
+    "@nuxtjs/supabase",
   ],
+
+  supabase: {
+    redirect: false // On gère nous-mêmes les redirections
+  },
 
   image: {
     provider: "ipx",
