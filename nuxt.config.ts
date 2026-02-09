@@ -107,6 +107,30 @@ export default defineNuxtConfig({
     redirect: false // On gère nous-mêmes les redirections
   },
 
+   nitro: {
+    compressPublicAssets: {
+      brotli: true,
+      gzip: true,
+    },
+    publicAssets: [{ baseURL: "/assets", dir: "public" }],
+    prerender: {
+      routes: ["/"],
+      // ⭐ Ignore les erreurs de prerender liées à Supabase
+      failOnError: false,
+    },
+    esbuild: {
+      options: {
+        target: "es2020",
+        minify: true,
+        minifyWhitespace: true,
+        minifyIdentifiers: true,
+        minifySyntax: true,
+      },
+    },
+    minify: true,
+  },
+
+
   image: {
     provider: "ipx",
     ipx: {
