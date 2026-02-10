@@ -8,6 +8,14 @@
             <h1 class="text-2xl font-bold text-gray-900">
               🍺 MyBarathon Admin
             </h1>
+            
+            <!-- BOUTON RETOUR HOME -->
+            <a
+              href="/"
+              class="flex items-center space-x-2 px-12 py-2 text-sm font-medium bg-orange-500 hover:bg-orange-600 text-white rounded-lg transition-colors"
+            >
+              ← Retour accueil
+            </a>
           </div>
 
           <!-- Bouton déconnexion si connecté -->
@@ -16,8 +24,7 @@
             @click="handleLogout"
             class="flex items-center space-x-2 px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
           >
-            <LogOutIcon class="w-4 h-4" />
-            <span>Déconnexion</span>
+            Déconnexion
           </button>
         </div>
       </div>
@@ -66,14 +73,13 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
-import { LogOutIcon } from "lucide-vue-next";
 import LoginForm from "@/components/admin/LoginForm.vue";
 import EventSelector from "@/components/admin/EventSelector.vue";
 import EventEditor from "@/components/admin/EventEditor.vue";
 
 const supabase = useSupabaseClient();
 
-// État local (on ne dépend plus de useSupabaseUser())
+// État local
 const isLoggedIn = ref(false);
 const isAdmin = ref(false);
 const selectedEventId = ref(null);
