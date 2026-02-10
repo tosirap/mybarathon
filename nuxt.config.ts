@@ -115,7 +115,6 @@ export default defineNuxtConfig({
     publicAssets: [{ baseURL: "/assets", dir: "public" }],
     prerender: {
       routes: ["/"],
-      // ⭐ Ignore les erreurs de prerender liées à Supabase
       failOnError: false,
     },
     esbuild: {
@@ -182,27 +181,6 @@ export default defineNuxtConfig({
       },
       cssCodeSplit: false,
     },
-  },
-
-  nitro: {
-    compressPublicAssets: {
-      brotli: true,
-      gzip: true,
-    },
-    publicAssets: [{ baseURL: "/assets", dir: "public" }],
-    prerender: {
-      routes: ["/"],
-    },
-    esbuild: {
-      options: {
-        target: "es2020",
-        minify: true,
-        minifyWhitespace: true,
-        minifyIdentifiers: true,
-        minifySyntax: true,
-      },
-    },
-    minify: true,
   },
 
   css: ["~/assets/css/main.css"],
