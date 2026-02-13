@@ -76,16 +76,12 @@
         <!-- Détails affichés si actif -->
         <transition name="fade">
           <div v-if="activeIndex === index" class="p-4 bg-white">
-            <!-- Image LAZY LOADED -->
+            <!-- Image LAZY LOADED : chargée UNIQUEMENT quand le bar est ouvert -->
             <div
-              v-if="!bar.image_path.endsWith('.svg')"
+              v-if="bar.imageLoaded && !bar.image_path.endsWith('.svg')"
               class="bar-image-wrapper"
-              :style="{
-                backgroundImage: activeIndex === index ? `url('${bar.image_path}')` : 'none',
-              }"
             >
               <img
-                v-if="activeIndex === index"
                 :src="bar.image_path"
                 :alt="bar.name"
                 loading="lazy"
@@ -93,33 +89,19 @@
               />
             </div>
             <div
-              v-else
-              class="bar-image-wrapper flex items-center justify-center"
-              style="
-                width: 100%;
-                height: 16rem;
-                border-radius: 0.5rem;
-                margin-bottom: 0.75rem;
-                overflow: hidden;
-              "
+              v-else-if="bar.imageLoaded && bar.image_path.endsWith('.svg')"
+              class="bar-image-wrapper-svg"
             >
               <img
-                v-if="activeIndex === index"
                 :src="bar.image_path"
                 :alt="bar.name"
                 loading="lazy"
-                style="
-                  max-width: 80%;
-                  max-height: 80%;
-                  object-fit: contain;
-                  display: block;
-                  margin: auto;
-                "
+                class="bar-image-svg"
               />
             </div>
 
             <!-- Carte Google Maps LAZY LOADED -->
-            <div class="mb-3" v-if="bar.google_maps_link && activeIndex === index">
+            <div class="mb-3" v-if="bar.google_maps_link">
               <iframe
                 :src="bar.google_maps_link"
                 width="100%"
@@ -346,6 +328,7 @@ const fetchActiveEvent = async () => {
           drinks: drinks || [],
           foods: foods || [],
           benefits: benefits || [],
+          imageLoaded: false, // ← FLAG pour lazy loading
         };
       })
     );
@@ -359,11 +342,18 @@ const fetchActiveEvent = async () => {
   }
 };
 
-// Fonctions utilitaires
+// Fonction pour toggle un bar ET charger son image si nécessaire
 const toggleBar = (index) => {
-  activeIndex.value = activeIndex.value === index ? null : index;
+  const wasActive = activeIndex.value === index;
+  activeIndex.value = wasActive ? null : index;
+  
+  // Charger l'image UNIQUEMENT si le bar est ouvert et pas déjà chargé
+  if (!wasActive && barList.value[index] && !barList.value[index].imageLoaded) {
+    barList.value[index].imageLoaded = true;
+  }
 };
 
+// Fonctions utilitaires
 const formatPrice = (price) => {
   if (typeof price === "number") {
     return `${price}€`;
@@ -416,6 +406,7 @@ onMounted(() => {
   opacity: 0;
 }
 
+/* Wrapper pour images normales (avec effet blur background) */
 .bar-image-wrapper {
   position: relative;
   width: 100%;
@@ -425,18 +416,10 @@ onMounted(() => {
   justify-content: center;
   border-radius: 0.5rem;
   margin-bottom: 0.75rem;
-  background-position: center;
-  background-size: cover;
+  background-color: #f3f4f6;
   overflow: hidden;
 }
-.bar-image-wrapper::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background: inherit;
-  filter: blur(24px) brightness(0.7);
-}
+
 .bar-image-main {
   position: relative;
   z-index: 2;
@@ -445,6 +428,27 @@ onMounted(() => {
   object-fit: contain;
   display: block;
   margin: 0 auto;
+}
+
+/* Wrapper pour images SVG */
+.bar-image-wrapper-svg {
+  width: 100%;
+  height: 16rem;
+  border-radius: 0.5rem;
+  margin-bottom: 0.75rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f3f4f6;
+}
+
+.bar-image-svg {
+  max-width: 80%;
+  max-height: 80%;
+  object-fit: contain;
+  display: block;
+  margin: auto;
 }
 
 /* Responsive */
