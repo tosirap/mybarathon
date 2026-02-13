@@ -89,7 +89,10 @@
 
         <!-- Tab: Nouveau bar -->
         <div v-if="activeTab === 'new'">
-          <BarForm @bar-created="handleBarCreated" />
+          <BarForm 
+            @bar-created="handleBarCreated" 
+            @cancel="$emit('close')"
+          />
         </div>
       </div>
     </div>
@@ -171,12 +174,10 @@ const getMaxDisplayOrder = async () => {
     return 0;
   }
 
-  // Si aucun bar n'existe encore, retourner 0
   if (!data || data.length === 0) {
     return 0;
   }
 
-  // Sinon retourner le max + 1
   return (data[0].display_order || 0) + 1;
 };
 

@@ -104,7 +104,7 @@ export default defineNuxtConfig({
   ],
 
   supabase: {
-    redirect: false 
+    redirect: false,
   },
 
   runtimeConfig: {
@@ -115,11 +115,11 @@ export default defineNuxtConfig({
     },
     public: {
       cloudinaryCloudName: process.env.CLOUDINARY_CLOUD_NAME,
-    }
+    },
   },
 
   nitro: {
-    preset: 'vercel',
+    preset: "vercel",
     compressPublicAssets: {
       brotli: true,
       gzip: true,
@@ -140,7 +140,6 @@ export default defineNuxtConfig({
     },
     minify: true,
   },
-
 
   image: {
     provider: "ipx",
