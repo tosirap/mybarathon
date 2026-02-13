@@ -158,7 +158,6 @@ const loadBars = async () => {
   loading.value = false;
 };
 
-// 🆕 Récupérer le display_order maximum actuel
 const getMaxDisplayOrder = async () => {
   const { data, error } = await supabase
     .from("event_bars")
@@ -186,7 +185,6 @@ const addExistingBar = async (barId) => {
   addingBarId.value = barId;
 
   try {
-    // 🆕 Récupérer le prochain display_order
     const nextOrder = await getMaxDisplayOrder();
 
     const { error } = await supabase.from("event_bars").insert([
@@ -195,7 +193,7 @@ const addExistingBar = async (barId) => {
         bar_id: barId,
         is_starting_bar: false,
         is_after_party: false,
-        display_order: nextOrder, // 🆕 Utiliser le prochain ordre
+        display_order: nextOrder,
       },
     ]);
 
