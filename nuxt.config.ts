@@ -55,18 +55,18 @@ export default defineNuxtConfig({
       style: [
         {
           innerHTML: `
-          @font-face {
-            font-family: 'Lato';
-            font-style: normal;
-            font-weight: 400;
-            font-display: swap;
-            src: local('Lato Regular'), local('Lato-Regular'), url(https://fonts.gstatic.com/s/lato/v24/S6uyw4BMUTPHjx4wXiWtFCc.woff2) format('woff2');
-          }
-          body { font-family: 'Lato', sans-serif; }
-          .container { max-width: 1200px; margin: 0 auto; }
-          .mb-4 { margin-bottom: 1rem; }
-          .text-center { text-align: center; }
-        `,
+            @font-face {
+              font-family: 'Lato';
+              font-style: normal;
+              font-weight: 400;
+              font-display: swap;
+              src: local('Lato Regular'), local('Lato-Regular'), url(https://fonts.gstatic.com/s/lato/v24/S6uyw4BMUTPHjx4wXiWtFCc.woff2) format('woff2');
+            }
+            body { font-family: 'Lato', sans-serif; }
+            .container { max-width: 1200px; margin: 0 auto; }
+            .mb-4 { margin-bottom: 1rem; }
+            .text-center { text-align: center; }
+          `,
         },
       ],
     },
@@ -104,10 +104,21 @@ export default defineNuxtConfig({
   ],
 
   supabase: {
-    redirect: false // On gère nous-mêmes les redirections
+    redirect: false 
   },
 
-   nitro: {
+  runtimeConfig: {
+    cloudinary: {
+      cloudName: process.env.CLOUDINARY_CLOUD_NAME,
+      apiKey: process.env.CLOUDINARY_API_KEY,
+      apiSecret: process.env.CLOUDINARY_API_SECRET,
+    },
+    public: {
+      cloudinaryCloudName: process.env.CLOUDINARY_CLOUD_NAME,
+    }
+  },
+
+  nitro: {
     compressPublicAssets: {
       brotli: true,
       gzip: true,

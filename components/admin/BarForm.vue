@@ -27,26 +27,17 @@
           placeholder="https://www.google.com/maps/embed?pb=..."
           class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent font-mono text-sm"
         ></textarea>
-        <p class="mt-1 text-xs text-gray-500">
-          💡 Allez sur Google Maps → Partager → Intégrer une carte → Copier le lien
-        </p>
       </div>
 
-      <!-- Chemin de l'image -->
+      <!-- Upload d'image -->
       <div>
-        <label class="block text-sm font-medium text-gray-700 mb-1">
-          Chemin de l'image *
+        <label class="block text-sm font-medium text-gray-700 mb-2">
+          Image du bar *
         </label>
-        <input
-          v-model="barData.image_path"
-          type="text"
-          required
-          placeholder="/photoBar/nom-du-bar/image.webp"
-          class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+        <ImageUploader
+          folder="mybarathon/bars"
+          @uploaded="handleImageUploaded"
         />
-        <p class="mt-1 text-xs text-gray-500">
-          💡 Format recommandé : /photoBar/nom-du-bar/image.webp
-        </p>
       </div>
     </div>
 
@@ -66,7 +57,7 @@
       </button>
       <button
         type="submit"
-        :disabled="loading"
+        :disabled="loading || !barData.image_path"
         class="px-6 py-2 bg-green-500 hover:bg-green-600 disabled:bg-gray-400 text-white font-semibold rounded-lg transition-colors"
       >
         {{ loading ? "Création..." : "Créer le bar" }}
@@ -77,6 +68,7 @@
 
 <script setup>
 import { ref } from "vue";
+import ImageUploader from "./ImageUploader.vue";
 
 const emit = defineEmits(["bar-created", "cancel"]);
 
@@ -90,6 +82,10 @@ const barData = ref({
 
 const loading = ref(false);
 const error = ref(null);
+
+const handleImageUploaded = (url) => {
+  barData.value.image_path = url;
+};
 
 const handleSubmit = async () => {
   loading.value = true;

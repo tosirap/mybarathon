@@ -1,0 +1,189 @@
+<template>
+  <div class="space-y-4">
+    <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-orange-500 transition-colors">
+      <div
+        @dragover.prevent
+        @drop.prevent="handleDrop"
+        class="space-y-3"
+      >
+        <div class="flex justify-center">
+          <div class="w-12 h-12 text-gray-400">📷</div>
+        </div>
+        
+        <div>
+          <label
+            for="file-upload"
+            class="cursor-pointer inline-flex items-center space-x-2 px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white font-medium rounded-lg transition-colors"
+          >
+            <span>⬆️ Choisir une image</span>
+          </label>
+          <input
+            id="file-upload"
+            type="file"
+            accept="image/*"
+            @change="handleFileSelect"
+            class="hidden"
+          />
+        </div>
+        
+        <p class="text-sm text-gray-500">
+          ou glisser-déposer une image ici
+        </p>
+        <p class="text-xs text-gray-400">
+          PNG, JPG, WEBP jusqu'à 5MB
+        </p>
+      </div>
+    </div>
+
+    <!-- Prévisualisation -->
+    <div v-if="previewUrl" class="relative">
+      <img
+        :src="previewUrl"
+        alt="Preview"
+        class="w-full h-48 object-cover rounded-lg border border-gray-200"
+      />
+      <button
+        @click="removeImage"
+        type="button"
+        class="absolute top-2 right-2 p-2 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg transition-colors"
+      >
+        ✕
+      </button>
+    </div>
+
+    <!-- Progress -->
+    <div v-if="uploading" class="space-y-2">
+      <div class="flex items-center justify-between text-sm">
+        <span class="text-gray-600">Upload en cours...</span>
+        <span class="text-gray-600">{{ uploadProgress }}%</span>
+      </div>
+      <div class="w-full bg-gray-200 rounded-full h-2">
+        <div
+          class="bg-orange-500 h-2 rounded-full transition-all duration-300"
+          :style="{ width: uploadProgress + '%' }"
+        ></div>
+      </div>
+    </div>
+
+    <!-- Erreur -->
+    <div v-if="error" class="bg-red-50 border border-red-200 rounded-lg p-3">
+      <p class="text-sm text-red-800">❌ {{ error }}</p>
+    </div>
+
+    <!-- Succès -->
+    <div v-if="uploadedUrl && !uploading" class="bg-green-50 border border-green-200 rounded-lg p-3">
+      <p class="text-sm text-green-800 font-medium">✓ Image uploadée avec succès !</p>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const props = defineProps({
+  folder: {
+    type: String,
+    default: 'mybarathon/bars'
+  }
+});
+
+const emit = defineEmits(['uploaded']);
+
+const previewUrl = ref(null);
+const uploadedUrl = ref(null);
+const uploading = ref(false);
+const uploadProgress = ref(0);
+const error = ref(null);
+
+const handleFileSelect = (event) => {
+  const file = event.target.files[0];
+  if (file) processFile(file);
+};
+
+const handleDrop = (event) => {
+  const file = event.dataTransfer.files[0];
+  if (file) processFile(file);
+};
+
+const processFile = async (file) => {
+  // Validation
+  if (!file.type.startsWith('image/')) {
+    error.value = 'Le fichier doit être une image';
+    return;
+  }
+
+  if (file.size > 5 * 1024 * 1024) {
+    error.value = 'L\'image ne doit pas dépasser 5MB';
+    return;
+  }
+
+  error.value = null;
+
+  // Prévisualisation
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    previewUrl.value = e.target.result;
+  };
+  reader.readAsDataURL(file);
+
+  // Upload
+  await uploadToCloudinary(file);
+};
+
+const uploadToCloudinary = async (file) => {
+  uploading.value = true;
+  uploadProgress.value = 0;
+  error.value = null;
+
+  try {
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('folder', props.folder);
+
+    const xhr = new XMLHttpRequest();
+
+    // Progress
+    xhr.upload.addEventListener('progress', (e) => {
+      if (e.lengthComputable) {
+        uploadProgress.value = Math.round((e.loaded * 100) / e.total);
+      }
+    });
+
+    // Promesse pour gérer l'upload
+    const response = await new Promise((resolve, reject) => {
+      xhr.addEventListener('load', () => {
+        if (xhr.status === 200) {
+          resolve(JSON.parse(xhr.responseText));
+        } else {
+          reject(new Error('Erreur upload'));
+        }
+      });
+
+      xhr.addEventListener('error', () => reject(new Error('Erreur réseau')));
+
+      xhr.open('POST', '/api/upload-image');
+      xhr.send(formData);
+    });
+
+    uploadedUrl.value = response.url;
+    emit('uploaded', response.url);
+    uploadProgress.value = 100;
+    
+    console.log('✅ Image uploadée:', response.url);
+  } catch (err) {
+    console.error('❌ Erreur upload:', err);
+    error.value = 'Erreur lors de l\'upload de l\'image';
+    previewUrl.value = null;
+  } finally {
+    uploading.value = false;
+  }
+};
+
+const removeImage = () => {
+  previewUrl.value = null;
+  uploadedUrl.value = null;
+  uploadProgress.value = 0;
+  error.value = null;
+  emit('uploaded', null);
+};
+</script>

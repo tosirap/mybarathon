@@ -29,7 +29,7 @@
               : 'text-gray-600 hover:text-gray-900',
           ]"
         >
-          Bars existants
+          Bars existants ({{ availableBars.length }})
         </button>
         <button
           @click="activeTab = 'new'"
@@ -58,27 +58,31 @@
             />
           </div>
 
-          <!-- Liste des bars disponibles -->
+          <!-- Loading -->
           <div v-if="loading" class="text-center py-8">
             <p class="text-gray-600">Chargement...</p>
           </div>
 
+          <!-- Aucun bar disponible -->
           <div v-else-if="filteredBars.length === 0" class="text-center py-8">
-            <p class="text-gray-600">Aucun bar disponible</p>
+            <p class="text-gray-600">
+              {{ searchQuery ? 'Aucun bar trouvé' : 'Tous les bars sont déjà ajoutés' }}
+            </p>
           </div>
 
-          <div v-else class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Liste compacte des bars -->
+          <div v-else class="space-y-2">
             <button
               v-for="bar in filteredBars"
               :key="bar.id"
               @click="addExistingBar(bar.id)"
               :disabled="addingBarId === bar.id"
-              class="p-4 border-2 border-gray-200 rounded-lg text-left hover:border-orange-500 hover:bg-orange-50 transition-all disabled:opacity-50"
+              class="w-full flex items-center justify-between p-3 border border-gray-200 rounded-lg text-left hover:border-orange-500 hover:bg-orange-50 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              <h3 class="font-semibold text-gray-900">{{ bar.name }}</h3>
-              <p class="text-sm text-gray-600 mt-1 truncate">
-                {{ bar.google_maps_link.substring(0, 50) }}...
-              </p>
+              <span class="font-medium text-gray-900">{{ bar.name }}</span>
+              <span class="text-sm text-gray-500">
+                {{ addingBarId === bar.id ? 'Ajout...' : 'Ajouter' }}
+              </span>
             </button>
           </div>
         </div>
@@ -135,15 +139,22 @@ const filteredBars = computed(() => {
   );
 });
 
-// Charger tous les bars
+// Charger tous les bars (SANS LIMITE)
 const loadBars = async () => {
   loading.value = true;
-  const { data } = await supabase
+  
+  const { data, error } = await supabase
     .from("bars")
-    .select("*")
+    .select("id, name")
     .order("name");
 
-  allBars.value = data || [];
+  if (error) {
+    console.error("❌ Erreur chargement bars:", error);
+  } else {
+    allBars.value = data || [];
+    console.log(`✅ ${data.length} bars chargés`);
+  }
+  
   loading.value = false;
 };
 
@@ -166,7 +177,8 @@ const addExistingBar = async (barId) => {
 
     emit("bar-added");
   } catch (err) {
-    console.error("Erreur lors de l'ajout:", err);
+    console.error("❌ Erreur lors de l'ajout:", err);
+    alert(`Erreur: ${err.message}`);
   } finally {
     addingBarId.value = null;
   }
