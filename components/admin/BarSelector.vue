@@ -139,7 +139,7 @@ const filteredBars = computed(() => {
   );
 });
 
-// Charger tous les bars (SANS LIMITE)
+// Charger tous les bars
 const loadBars = async () => {
   loading.value = true;
   
@@ -158,23 +158,50 @@ const loadBars = async () => {
   loading.value = false;
 };
 
+// 🆕 Récupérer le display_order maximum actuel
+const getMaxDisplayOrder = async () => {
+  const { data, error } = await supabase
+    .from("event_bars")
+    .select("display_order")
+    .eq("event_id", props.eventId)
+    .order("display_order", { ascending: false })
+    .limit(1);
+
+  if (error) {
+    console.error("❌ Erreur récupération display_order:", error);
+    return 0;
+  }
+
+  // Si aucun bar n'existe encore, retourner 0
+  if (!data || data.length === 0) {
+    return 0;
+  }
+
+  // Sinon retourner le max + 1
+  return (data[0].display_order || 0) + 1;
+};
+
 // Ajouter un bar existant
 const addExistingBar = async (barId) => {
   addingBarId.value = barId;
 
   try {
+    // 🆕 Récupérer le prochain display_order
+    const nextOrder = await getMaxDisplayOrder();
+
     const { error } = await supabase.from("event_bars").insert([
       {
         event_id: props.eventId,
         bar_id: barId,
         is_starting_bar: false,
         is_after_party: false,
-        display_order: props.existingBarIds.length,
+        display_order: nextOrder, // 🆕 Utiliser le prochain ordre
       },
     ]);
 
     if (error) throw error;
 
+    console.log(`✅ Bar ajouté avec display_order: ${nextOrder}`);
     emit("bar-added");
   } catch (err) {
     console.error("❌ Erreur lors de l'ajout:", err);
