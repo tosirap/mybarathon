@@ -14,14 +14,16 @@
           <label
             for="file-upload"
             class="cursor-pointer inline-flex items-center space-x-2 px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white font-medium rounded-lg transition-colors"
+            :class="{ 'opacity-50 cursor-not-allowed': uploading }"
           >
-            <span>⬆️ Choisir une image</span>
+            <span>{{ uploading ? '⏳ Upload...' : '⬆️ Choisir une image' }}</span>
           </label>
           <input
             id="file-upload"
             type="file"
             accept="image/*"
             @change="handleFileSelect"
+            :disabled="uploading"
             class="hidden"
           />
         </div>
@@ -30,7 +32,7 @@
           ou glisser-déposer une image ici
         </p>
         <p class="text-xs text-gray-400">
-          PNG, JPG, WEBP jusqu'à 5MB
+          PNG, JPG, WEBP jusqu'à 1MB
         </p>
       </div>
     </div>
@@ -43,6 +45,7 @@
         class="w-full h-48 object-cover rounded-lg border border-gray-200"
       />
       <button
+        v-if="!uploading"
         @click="removeImage"
         type="button"
         class="absolute top-2 right-2 p-2 bg-red-500 hover:bg-red-600 text-white rounded-full shadow-lg transition-colors"
@@ -97,36 +100,42 @@ const error = ref(null);
 
 const handleFileSelect = (event) => {
   const file = event.target.files[0];
-  if (file) processFile(file);
+  if (file) {
+    processFile(file);
+  }
 };
 
 const handleDrop = (event) => {
   const file = event.dataTransfer.files[0];
-  if (file) processFile(file);
+  if (file) {
+    processFile(file);
+  }
 };
 
 const processFile = async (file) => {
-  // Validation
-  if (!file.type.startsWith('image/')) {
-    error.value = 'Le fichier doit être une image';
-    return;
-  }
-
-  if (file.size > 5 * 1024 * 1024) {
-    error.value = 'L\'image ne doit pas dépasser 5MB';
-    return;
-  }
-
+  // Reset états
   error.value = null;
+  uploadedUrl.value = null;
 
-  // Prévisualisation
+  // Validation type
+  if (!file.type.startsWith('image/')) {
+    error.value = 'Le fichier doit être une image (PNG, JPG, WEBP)';
+    return;
+  }
+
+  if (file.size > 1 * 1024 * 1024) {
+    error.value = 'L\'image ne doit pas dépasser 1MB';
+    return;
+  }
+
+  // Prévisualisation locale
   const reader = new FileReader();
   reader.onload = (e) => {
     previewUrl.value = e.target.result;
   };
   reader.readAsDataURL(file);
 
-  // Upload
+  // Upload vers Cloudinary
   await uploadToCloudinary(file);
 };
 
@@ -138,41 +147,33 @@ const uploadToCloudinary = async (file) => {
   try {
     const formData = new FormData();
     formData.append('file', file);
+    formData.append('upload_preset', 'mybarathon_unsigned');
     formData.append('folder', props.folder);
 
-    const xhr = new XMLHttpRequest();
-
-    // Progress
-    xhr.upload.addEventListener('progress', (e) => {
-      if (e.lengthComputable) {
-        uploadProgress.value = Math.round((e.loaded * 100) / e.total);
-      }
+    const response = await fetch('https://api.cloudinary.com/v1_1/dthjuhj2g/image/upload', {
+      method: 'POST',
+      body: formData,
     });
 
-    // Promesse pour gérer l'upload
-    const response = await new Promise((resolve, reject) => {
-      xhr.addEventListener('load', () => {
-        if (xhr.status === 200) {
-          resolve(JSON.parse(xhr.responseText));
-        } else {
-          reject(new Error('Erreur upload'));
-        }
-      });
+    if (!response.ok) {
+      const errorData = await response.json();
+      console.error('Erreur Cloudinary:', errorData);
+      throw new Error(errorData.error?.message || 'Erreur upload');
+    }
 
-      xhr.addEventListener('error', () => reject(new Error('Erreur réseau')));
-
-      xhr.open('POST', '/api/upload-image');
-      xhr.send(formData);
-    });
-
-    uploadedUrl.value = response.url;
-    emit('uploaded', response.url);
+    const data = await response.json();
+    
+    uploadedUrl.value = data.secure_url;
     uploadProgress.value = 100;
     
-    console.log('✅ Image uploadée:', response.url);
+    console.log('✅ Image uploadée:', data.secure_url);
+    
+    // Émettre l'URL vers le parent
+    emit('uploaded', data.secure_url);
+
   } catch (err) {
     console.error('❌ Erreur upload:', err);
-    error.value = 'Erreur lors de l\'upload de l\'image';
+    error.value = err.message || 'Erreur lors de l\'upload de l\'image';
     previewUrl.value = null;
   } finally {
     uploading.value = false;
