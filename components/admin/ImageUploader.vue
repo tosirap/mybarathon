@@ -32,7 +32,7 @@
           ou glisser-déposer une image ici
         </p>
         <p class="text-xs text-gray-400">
-          PNG, JPG, WEBP jusqu'à 1MB
+          PNG, JPG, WEBP jusqu'à 100KB (convertissez en webp si possible puis, utilisez https://tinypng.com/ pour réduire la taille svp)
         </p>
       </div>
     </div>
@@ -123,8 +123,8 @@ const processFile = async (file) => {
     return;
   }
 
-  if (file.size > 1 * 1024 * 1024) {
-    error.value = 'L\'image ne doit pas dépasser 1MB';
+  if (file.size > 100 * 1024) {
+    error.value = 'L\'image ne doit pas dépasser 100KB';
     return;
   }
 

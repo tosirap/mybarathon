@@ -76,17 +76,19 @@
         <!-- Détails affichés si actif -->
         <transition name="fade">
           <div v-if="activeIndex === index" class="p-4 bg-white">
-            <!-- Image -->
+            <!-- Image LAZY LOADED -->
             <div
               v-if="!bar.image_path.endsWith('.svg')"
               class="bar-image-wrapper"
               :style="{
-                backgroundImage: `url('${bar.image_path}')`,
+                backgroundImage: activeIndex === index ? `url('${bar.image_path}')` : 'none',
               }"
             >
               <img
+                v-if="activeIndex === index"
                 :src="bar.image_path"
                 :alt="bar.name"
+                loading="lazy"
                 class="bar-image-main"
               />
             </div>
@@ -102,8 +104,10 @@
               "
             >
               <img
+                v-if="activeIndex === index"
                 :src="bar.image_path"
                 :alt="bar.name"
+                loading="lazy"
                 style="
                   max-width: 80%;
                   max-height: 80%;
@@ -114,8 +118,8 @@
               />
             </div>
 
-            <!-- Carte Google Maps -->
-            <div class="mb-3" v-if="bar.google_maps_link">
+            <!-- Carte Google Maps LAZY LOADED -->
+            <div class="mb-3" v-if="bar.google_maps_link && activeIndex === index">
               <iframe
                 :src="bar.google_maps_link"
                 width="100%"
@@ -217,6 +221,7 @@
             <!-- Contenu de la modal -->
             <div class="p-4">
               <iframe
+                v-if="showMapModal"
                 src="https://www.google.com/maps/d/embed?mid=1dRegjolGKeBCUQuG8w6sPMeonDO4Vx8&ehbc=2E312F"
                 width="100%"
                 height="480"
