@@ -23,6 +23,7 @@
 
         <!-- Bouton pour ouvrir la modal -->
         <button
+          v-if="event?.map_embed_url"
           @click="showMapModal = true"
           class="mt-4 inline-flex items-center px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg transition-colors shadow-md"
         >
@@ -203,8 +204,8 @@
             <!-- Contenu de la modal -->
             <div class="p-4">
               <iframe
-                v-if="showMapModal"
-                src="https://www.google.com/maps/d/embed?mid=1dRegjolGKeBCUQuG8w6sPMeonDO4Vx8&ehbc=2E312F"
+                v-if="event?.map_embed_url"
+                :src="event.map_embed_url"
                 width="100%"
                 height="480"
                 style="border: 0"
@@ -212,6 +213,8 @@
                 loading="lazy"
                 class="rounded-md"
               ></iframe>
+              <p v-else class="text-center text-gray-500">Aucune carte disponible.</p>
+
             </div>
           </div>
         </div>
