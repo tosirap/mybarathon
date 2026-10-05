@@ -18,7 +18,7 @@
     "@types/formidable": "^3.5.1",
     "baseline-browser-mapping": "^2.11.27",
     "nuxt": "^4.5.2",
-    "vercel": "^32.0.0"
+    "vercel": "^62.2.0"
   },
   "dependencies": {
     "@nuxtjs/sitemap": "^8.6.1",
