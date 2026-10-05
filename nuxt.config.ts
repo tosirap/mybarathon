@@ -1,6 +1,10 @@
 export default defineNuxtConfig({
   devtools: { enabled: false },
 
+  site: {
+    url: "https://www.mybarathon.fr",
+  },
+
   app: {
     head: {
       htmlAttrs: {
@@ -183,9 +187,20 @@ export default defineNuxtConfig({
       },
       rollupOptions: {
         output: {
-          manualChunks: {
-            vendor: ["vue", "vue-router", "@nuxt/kit"],
-            lucide: ["lucide-vue-next"],
+          manualChunks(id) {
+            const normalizedId = id.replace(/\\/g, "/");
+
+            if (normalizedId.includes("/node_modules/lucide-vue-next/")) {
+              return "lucide";
+            }
+
+            if (
+              ["vue", "vue-router", "@nuxt/kit"].some((dependency) =>
+                normalizedId.includes(`/node_modules/${dependency}/`)
+              )
+            ) {
+              return "vendor";
+            }
           },
         },
         external: [],
