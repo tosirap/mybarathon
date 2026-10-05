@@ -35,12 +35,12 @@ const values = [
 
 <template>
   <section id="accueil" aria-labelledby="accueil-title">
-    <div class="hero-bg relative overflow-hidden text-white">
+    <div class="relative overflow-hidden border-b border-black bg-white">
       <div
         class="container-page grid items-center gap-12 pb-20 pt-32 sm:pt-40 lg:grid-cols-[1.15fr_0.85fr] lg:pb-28"
       >
         <div>
-          <p class="eyebrow !text-amber-300">
+          <p class="eyebrow">
             <MapPinIcon class="h-4 w-4" aria-hidden="true" />
             Strasbourg · Alsace
           </p>
@@ -49,10 +49,10 @@ const values = [
             class="font-display text-4xl font-extrabold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl"
           >
             MyBarathon —
-            <span class="text-amber-300">L’Alsace en fête</span>, un bar à la
+            <span class="rounded-lg bg-yellow-300 px-2">L’Alsace en fête</span>, un bar à la
             fois
           </h1>
-          <p class="mt-6 max-w-xl text-base leading-relaxed text-white/80 sm:text-lg">
+          <p class="mt-6 max-w-xl text-base leading-relaxed text-ink/70 sm:text-lg">
             MyBarathon, c’est bien plus qu’une association : c’est une aventure
             festive et locale qui fait vibrer Strasbourg et ses alentours. Notre
             mission ? Mettre en lumière la richesse de la culture alsacienne à
@@ -63,7 +63,7 @@ const values = [
               <TicketIcon class="h-4 w-4" aria-hidden="true" />
               Réserver ma place
             </a>
-            <a href="#evenements" class="btn btn-outline-light">
+            <a href="#evenements" class="btn btn-outline-dark">
               Voir les événements
               <ArrowRightIcon class="h-4 w-4" aria-hidden="true" />
             </a>
@@ -72,7 +72,7 @@ const values = [
 
         <div class="relative mx-auto w-full max-w-xs sm:max-w-sm">
           <div
-            class="absolute inset-6 rounded-full bg-brand-500/30 blur-3xl"
+            class="absolute inset-4 rounded-full border-2 border-black bg-yellow-200"
             aria-hidden="true"
           ></div>
           <NuxtImg
@@ -121,7 +121,7 @@ const values = [
         </ul>
 
         <p
-          class="mt-10 flex items-start gap-3 rounded-2xl bg-brand-50 p-5 text-ink/80"
+          class="mt-10 flex items-start gap-3 rounded-xl border border-gray-300 bg-white p-5 text-ink/80"
         >
           <MapPinIcon
             class="mt-0.5 h-5 w-5 shrink-0 text-brand-600"

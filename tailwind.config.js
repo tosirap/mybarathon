@@ -11,23 +11,24 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        ink: { DEFAULT: "#170d3b", soft: "#241454" },
-        cream: "#fffaf0",
+        ink: { DEFAULT: "#111827", soft: "#1f2937" },
+        cream: "#fef9c3",
         brand: {
-          50: "#f5f1ff",
-          100: "#e9e0ff",
-          200: "#d5c5ff",
-          300: "#b99cfc",
-          400: "#9b73f6",
-          500: "#7e4ff0",
-          600: "#6a38e0",
-          700: "#5a2cc2",
-          800: "#482399",
-          900: "#2d1763",
+          50: "#fefce8",
+          100: "#fef9c3",
+          200: "#fef08a",
+          300: "#fde047",
+          400: "#facc15",
+          500: "#eab308",
+          600: "#a16207",
+          700: "#854d0e",
+          800: "#713f12",
+          900: "#422006",
         },
       },
       fontFamily: {
-        display: ["Manrope", "ui-sans-serif", "system-ui", "sans-serif"],
+        sans: ["Lato", "ui-sans-serif", "system-ui", "sans-serif"],
+        display: ["Lato", "ui-sans-serif", "system-ui", "sans-serif"],
       },
       boxShadow: {
         soft: "0 12px 32px -14px rgba(23, 13, 59, 0.28)",

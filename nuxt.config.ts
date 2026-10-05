@@ -29,7 +29,7 @@ export default defineNuxtConfig({
           name: "robots",
           content: "index, follow, max-image-preview:large",
         },
-        { name: "theme-color", content: "#170d3b" },
+        { name: "theme-color", content: "#fef9c3" },
         { property: "og:type", content: "website" },
         { property: "og:site_name", content: "MyBarathon" },
         { property: "og:locale", content: "fr_FR" },
@@ -79,7 +79,7 @@ export default defineNuxtConfig({
         },
         {
           rel: "stylesheet",
-          href: "https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&display=swap",
+          href: "https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap",
         },
       ],
     },

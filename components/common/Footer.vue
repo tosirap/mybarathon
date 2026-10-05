@@ -11,14 +11,14 @@ const links = [
 </script>
 
 <template>
-  <footer class="bg-ink text-white/75">
+  <footer class="border-t border-black bg-gray-100 text-ink/75">
     <div class="container-page py-12">
       <div
         class="flex flex-col gap-8 md:flex-row md:items-center md:justify-between"
       >
         <a
           href="#accueil"
-          class="flex items-center gap-3 text-white"
+          class="flex items-center gap-3 text-ink"
           aria-label="MyBarathon, retour en haut de page"
         >
           <NuxtImg
@@ -36,7 +36,7 @@ const links = [
         <nav aria-label="Liens du pied de page">
           <ul class="flex flex-wrap gap-x-6 gap-y-2 text-sm font-semibold">
             <li v-for="link in links" :key="link.name">
-              <a :href="link.href" class="transition hover:text-white">
+              <a :href="link.href" class="transition hover:text-black">
                 {{ link.name }}
               </a>
             </li>
@@ -45,7 +45,7 @@ const links = [
                 href="https://www.instagram.com/mybarathon/"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="transition hover:text-white"
+                class="transition hover:text-black"
               >
                 Instagram
               </a>
@@ -55,7 +55,7 @@ const links = [
       </div>
 
       <div
-        class="mt-8 flex flex-col gap-2 border-t border-white/10 pt-6 text-sm text-white/60 sm:flex-row sm:justify-between"
+        class="mt-8 flex flex-col gap-2 border-t border-gray-300 pt-6 text-sm text-ink/60 sm:flex-row sm:justify-between"
       >
         <p>© {{ year }} MyBarathon, association basée à Strasbourg.</p>
         <p>

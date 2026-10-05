@@ -15,7 +15,7 @@ const perks = [
   <section
     id="billetterie"
     aria-labelledby="billetterie-title"
-    class="section-y bg-brand-50"
+    class="section-y bg-white"
   >
     <div class="container-page">
       <div class="max-w-3xl">

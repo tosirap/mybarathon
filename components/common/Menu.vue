@@ -3,7 +3,6 @@ import { ref, onMounted, onBeforeUnmount } from "vue";
 import { MenuIcon, XIcon } from "lucide-vue-next";
 
 const isOpen = ref(false);
-const scrolled = ref(false);
 const activeId = ref("accueil");
 
 const links = [
@@ -19,17 +18,11 @@ const links = [
 
 let observer: IntersectionObserver | null = null;
 
-const onScroll = () => {
-  scrolled.value = window.scrollY > 8;
-};
-
 const onKeydown = (event: KeyboardEvent) => {
   if (event.key === "Escape") isOpen.value = false;
 };
 
 onMounted(() => {
-  onScroll();
-  window.addEventListener("scroll", onScroll, { passive: true });
   window.addEventListener("keydown", onKeydown);
 
   observer = new IntersectionObserver(
@@ -48,28 +41,20 @@ onMounted(() => {
 });
 
 onBeforeUnmount(() => {
-  window.removeEventListener("scroll", onScroll);
   window.removeEventListener("keydown", onKeydown);
   observer?.disconnect();
 });
 </script>
 
 <template>
-  <header
-    class="fixed inset-x-0 top-0 z-50 transition-colors duration-300"
-    :class="
-      scrolled || isOpen
-        ? 'bg-ink/95 shadow-lg shadow-black/20 backdrop-blur'
-        : 'bg-transparent'
-    "
-  >
+  <header class="fixed inset-x-0 top-0 z-50 bg-gray-100 shadow-md">
     <nav
       aria-label="Navigation principale"
-      class="container-page flex h-16 items-center justify-between gap-4 sm:h-20"
+      class="container-page flex h-16 items-center justify-between gap-4"
     >
       <a
         href="#accueil"
-        class="flex items-center gap-3 text-white"
+        class="flex items-center gap-3 text-gray-900"
         aria-label="MyBarathon, retour à l'accueil"
       >
         <NuxtImg
@@ -90,13 +75,13 @@ onBeforeUnmount(() => {
           <a
             :href="link.href"
             :aria-current="activeId === link.href.slice(1) ? 'location' : undefined"
-            class="rounded-full px-3 py-2 text-sm font-semibold transition-colors duration-200"
+            class="rounded-lg px-3 py-2 text-sm font-medium transition-colors duration-200"
             :class="
               link.highlight
-                ? 'ml-1 bg-amber-400 px-4 text-ink hover:bg-amber-300'
+                ? 'ml-1 bg-yellow-300 px-3 text-gray-900 hover:bg-yellow-200'
                 : activeId === link.href.slice(1)
-                  ? 'bg-white/15 text-white'
-                  : 'text-white/75 hover:bg-white/10 hover:text-white'
+                  ? 'bg-gray-200 text-gray-900'
+                  : 'text-gray-900 hover:text-gray-600'
             "
           >
             {{ link.name }}
@@ -106,7 +91,7 @@ onBeforeUnmount(() => {
 
       <button
         type="button"
-        class="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/25 text-white transition hover:bg-white/10 xl:hidden"
+        class="inline-flex h-11 w-11 items-center justify-center rounded-lg text-gray-900 transition hover:bg-gray-200 xl:hidden"
         :aria-label="
           isOpen ? 'Fermer le menu de navigation' : 'Ouvrir le menu de navigation'
         "
@@ -122,19 +107,19 @@ onBeforeUnmount(() => {
     <div
       v-if="isOpen"
       id="mobile-navigation"
-      class="border-t border-white/10 xl:hidden"
+      class="border-t border-gray-300 xl:hidden"
     >
       <ul class="container-page grid gap-1 py-4">
         <li v-for="link in links" :key="link.name">
           <a
             :href="link.href"
-            class="block rounded-xl px-4 py-3 text-base font-semibold transition-colors"
+            class="block rounded-lg px-4 py-3 text-base font-medium transition-colors"
             :class="
               link.highlight
-                ? 'bg-amber-400 text-ink hover:bg-amber-300'
+                ? 'bg-yellow-300 text-gray-900 hover:bg-yellow-200'
                 : activeId === link.href.slice(1)
-                  ? 'bg-white/15 text-white'
-                  : 'text-white/80 hover:bg-white/10 hover:text-white'
+                  ? 'bg-gray-200 text-gray-900'
+                  : 'text-gray-900 hover:bg-gray-200'
             "
             @click="isOpen = false"
           >

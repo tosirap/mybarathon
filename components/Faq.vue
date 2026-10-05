@@ -57,7 +57,7 @@ useHead({
 </script>
 
 <template>
-  <section id="faq" aria-labelledby="faq-title" class="section-y bg-white">
+  <section id="faq" aria-labelledby="faq-title" class="section-y bg-cream">
     <div class="container-page grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
       <div>
         <p class="eyebrow">
@@ -74,7 +74,7 @@ useHead({
         <details
           v-for="faq in faqs"
           :key="faq.question"
-          class="group rounded-2xl border border-ink/10 bg-cream transition open:bg-white open:shadow-soft"
+          class="group rounded-xl border border-gray-300 bg-white transition open:shadow-sm"
         >
           <summary
             class="flex cursor-pointer items-center justify-between gap-4 rounded-2xl p-5 font-bold"

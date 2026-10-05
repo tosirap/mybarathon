@@ -18,18 +18,18 @@ const gains = [
   <section
     id="rejoindre"
     aria-labelledby="rejoindre-title"
-    class="section-y dark-bg text-white"
+    class="section-y bg-cream"
   >
     <div class="container-page">
       <div class="max-w-3xl">
-        <p class="eyebrow !text-amber-300">
+        <p class="eyebrow">
           <UsersIcon class="h-4 w-4" aria-hidden="true" />
           Rejoindre l'équipe
         </p>
         <h2 id="rejoindre-title" class="section-title">
           Deviens acteur de la fête !
         </h2>
-        <p class="section-lead text-white/75">
+        <p class="section-lead">
           Tu veux participer à l’organisation d’événements festifs et locaux ?
           Rejoins l’équipe MyBarathon et découvre les coulisses d’une asso
           dynamique et créative !
@@ -37,22 +37,22 @@ const gains = [
       </div>
 
       <div class="mt-10 grid gap-5 md:grid-cols-2">
-        <div class="rounded-2xl border border-white/15 bg-white/5 p-6">
+        <div class="rounded-xl border border-gray-300 bg-white p-6">
           <h3 class="font-display text-xl font-extrabold">Ce qu’on recherche :</h3>
           <ul class="mt-4 space-y-3">
             <li v-for="item in seeking" :key="item" class="flex items-start gap-3">
-              <CheckIcon class="mt-1 h-4 w-4 shrink-0 text-amber-300" aria-hidden="true" />
-              <span class="text-white/85">{{ item }}</span>
+              <CheckIcon class="mt-1 h-4 w-4 shrink-0 text-brand-700" aria-hidden="true" />
+              <span class="text-ink/80">{{ item }}</span>
             </li>
           </ul>
         </div>
 
-        <div class="rounded-2xl border border-white/15 bg-white/5 p-6">
+        <div class="rounded-xl border border-gray-300 bg-white p-6">
           <h3 class="font-display text-xl font-extrabold">Ce que tu gagnes :</h3>
           <ul class="mt-4 space-y-3">
             <li v-for="item in gains" :key="item" class="flex items-start gap-3">
-              <CheckIcon class="mt-1 h-4 w-4 shrink-0 text-amber-300" aria-hidden="true" />
-              <span class="text-white/85">{{ item }}</span>
+              <CheckIcon class="mt-1 h-4 w-4 shrink-0 text-brand-700" aria-hidden="true" />
+              <span class="text-ink/80">{{ item }}</span>
             </li>
           </ul>
         </div>
@@ -69,7 +69,7 @@ const gains = [
           >
             Instagram
           </a>
-          <a href="mailto:mybarathon@gmail.com" class="btn btn-outline-light">
+          <a href="mailto:mybarathon@gmail.com" class="btn btn-outline-dark">
             <MailIcon class="h-4 w-4" aria-hidden="true" />
             mybarathon@gmail.com
           </a>
