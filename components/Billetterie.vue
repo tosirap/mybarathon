@@ -1,40 +1,85 @@
+<script setup lang="ts">
+import { TicketIcon, CheckIcon, ExternalLinkIcon } from "lucide-vue-next";
+
+const billetwebUrl = "https://www.billetweb.fr/shop.php?event=barathon22";
+
+const perks = [
+  "Ton Ecocup personnalisé",
+  "L’accès aux réductions exclusives",
+  "Des animations et surprises tout au long de la soirée",
+  "Des afters en club avec entrées incluses",
+];
+</script>
+
 <template>
-  <section class="bg-yellow-100 border-b border-black px-2 py-8">
-    <div class="max-w-3xl mx-auto w-full flex flex-col">
-      <!-- Texte de présentation -->
-      <h2>🎟️ Réserve ta place pour le prochain barathon !</h2>
-      <p class="mb-2">
-        Nos événements sont très demandés, alors pense à réserver ta place à
-        l’avance pour profiter de :
-      </p>
-      <ul
-        class="list-disc list-inside mb-4 space-y-1 text-left w-full max-w-lg px-4"
-      >
-        <li>Ton Ecocup personnalisé</li>
-        <li>L’accès aux réductions exclusives</li>
-        <li>Des animations et surprises tout au long de la soirée</li>
-        <li>Des afters en club avec entrées incluses</li>
+  <section
+    id="billetterie"
+    aria-labelledby="billetterie-title"
+    class="section-y bg-brand-50"
+  >
+    <div class="container-page">
+      <div class="max-w-3xl">
+        <p class="eyebrow">
+          <TicketIcon class="h-4 w-4" aria-hidden="true" />
+          Billetterie
+        </p>
+        <h2 id="billetterie-title" class="section-title">
+          Réserve ta place pour le prochain barathon !
+        </h2>
+        <p class="section-lead">
+          Nos événements sont très demandés, alors pense à réserver ta place à
+          l’avance pour profiter de :
+        </p>
+      </div>
+
+      <ul class="mt-8 grid gap-4 sm:grid-cols-2">
+        <li
+          v-for="perk in perks"
+          :key="perk"
+          class="flex items-start gap-3 rounded-2xl bg-white p-4 font-semibold shadow-soft"
+        >
+          <span
+            class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-700"
+          >
+            <CheckIcon class="h-4 w-4" aria-hidden="true" />
+          </span>
+          {{ perk }}
+        </li>
       </ul>
-      <p class="mb-4">
-        👉 Billets disponibles en prévente à tarif réduit sur BilletWeb
+
+      <p class="mt-8 text-lg font-bold">
+        Billets disponibles en prévente à tarif réduit sur BilletWeb
       </p>
-      <div class="w-full flex justify-center">
+
+      <div
+        class="mt-5 overflow-hidden rounded-3xl border border-ink/10 bg-white shadow-soft"
+      >
         <iframe
-          src="https://www.billetweb.fr/shop.php?event=barathon22"
-          class="w-full max-w-4xl min-h-[850px] rounded shadow"
-          frameborder="0"
+          :src="billetwebUrl"
+          class="block min-h-[850px] w-full border-0"
           scrolling="auto"
           loading="lazy"
-          title="Billetterie Barathon 2025"
+          title="Billetterie MyBarathon sur BilletWeb"
         ></iframe>
       </div>
-      <p class="text-center mt-2 text-sm text-gray-500">
-        Après 22H les billets non récupérés sont revendus sur place pour 10 €
-      </p>
-      <p>
-        🎉 Et pour les retardataires, quelques places sont disponibles en caisse
-        le soir-même !
-      </p>
+
+      <a
+        :href="billetwebUrl"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="link mt-4 inline-flex items-center gap-1.5 text-sm"
+      >
+        Ouvrir la billetterie dans un nouvel onglet
+        <ExternalLinkIcon class="h-4 w-4" aria-hidden="true" />
+      </a>
+
+      <div class="mt-8 space-y-2 text-sm text-ink/70">
+        <p>Après 22H les billets non récupérés sont revendus sur place pour 10 €</p>
+        <p>
+          Et pour les retardataires, quelques places sont disponibles en caisse
+          le soir-même !
+        </p>
+      </div>
     </div>
   </section>
 </template>

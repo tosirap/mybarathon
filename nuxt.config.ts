@@ -10,67 +10,76 @@ export default defineNuxtConfig({
       htmlAttrs: {
         lang: "fr",
       },
-      title: "MyBarathon - Événement Barathon et Bière pong à Strasbourg",
+      title: "MyBarathon – Barathon et bière pong à Strasbourg",
       meta: [
         { charset: "utf-8" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
         {
           name: "description",
           content:
-            "Participez à tous les évènements de MyBarathon. Des barathons, des bières pong et plein d'autre évènements.",
+            "Barathons, bières pong et soirées dans les bars de Strasbourg et d'Alsace. Découvre les prochains événements MyBarathon et réserve ta place.",
         },
         {
           name: "keywords",
           content:
-            "barathon, Strasbourg, bars, événement, bière, bière-pong, soirée",
+            "barathon, Strasbourg, Alsace, bars, événement, bière, bière-pong, soirée, étudiants",
         },
-        { name: "author", content: "MyBarathon Team" },
-        { property: "og:title", content: "MyBarathon - Barathon 2025" },
+        { name: "author", content: "MyBarathon" },
+        {
+          name: "robots",
+          content: "index, follow, max-image-preview:large",
+        },
+        { name: "theme-color", content: "#170d3b" },
+        { property: "og:type", content: "website" },
+        { property: "og:site_name", content: "MyBarathon" },
+        { property: "og:locale", content: "fr_FR" },
+        {
+          property: "og:title",
+          content: "MyBarathon – Barathon et bière pong à Strasbourg",
+        },
         {
           property: "og:description",
           content:
-            "Découvrez les bars participants au Barathon de Strasbourg le 9 octobre 2025.",
+            "Barathons, bières pong et soirées dans les bars de Strasbourg et d'Alsace. Réserve ta place pour le prochain événement.",
         },
-        { property: "og:image", content: "public/favicon.ico" },
-        { property: "og:url", content: "https://www.mybarathon.fr" },
+        {
+          property: "og:image",
+          content: "https://www.mybarathon.fr/images/og-image.png",
+        },
+        { property: "og:image:width", content: "1200" },
+        { property: "og:image:height", content: "630" },
+        {
+          property: "og:image:alt",
+          content: "MyBarathon, barathons et événements à Strasbourg",
+        },
+        { property: "og:url", content: "https://www.mybarathon.fr/" },
+        { name: "twitter:card", content: "summary_large_image" },
+        {
+          name: "twitter:title",
+          content: "MyBarathon – Barathon et bière pong à Strasbourg",
+        },
+        {
+          name: "twitter:description",
+          content:
+            "Barathons, bières pong et soirées dans les bars de Strasbourg et d'Alsace.",
+        },
+        {
+          name: "twitter:image",
+          content: "https://www.mybarathon.fr/images/og-image.png",
+        },
       ],
       link: [
+        { rel: "icon", href: "/favicon.ico", sizes: "any" },
+        { rel: "apple-touch-icon", href: "/images/logo.png" },
+        { rel: "preconnect", href: "https://fonts.googleapis.com" },
         {
           rel: "preconnect",
-          href: "https://fonts.googleapis.com",
-          crossorigin: "",
-        },
-        { rel: "preconnect", href: "fonts.gstatic.com", crossorigin: "" },
-        {
-          rel: "preload",
-          as: "font",
-          href: "https://fonts.gstatic.com/s/lato/v24/S6uyw4BMUTPHjx4wXiWtFCc.woff2",
-          type: "font/woff2",
+          href: "https://fonts.gstatic.com",
           crossorigin: "",
         },
         {
-          rel: "preload",
-          as: "style",
-          href: "/_nuxt/assets/css/main.css",
-          onload: "this.onload=null;this.rel='stylesheet'",
-        },
-        { rel: "dns-prefetch", href: "cdnjs.cloudflare.com" },
-      ],
-      style: [
-        {
-          innerHTML: `
-            @font-face {
-              font-family: 'Lato';
-              font-style: normal;
-              font-weight: 400;
-              font-display: swap;
-              src: local('Lato Regular'), local('Lato-Regular'), url(https://fonts.gstatic.com/s/lato/v24/S6uyw4BMUTPHjx4wXiWtFCc.woff2) format('woff2');
-            }
-            body { font-family: 'Lato', sans-serif; }
-            .container { max-width: 1200px; margin: 0 auto; }
-            .mb-4 { margin-bottom: 1rem; }
-            .text-center { text-align: center; }
-          `,
+          rel: "stylesheet",
+          href: "https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&display=swap",
         },
       ],
     },
@@ -87,25 +96,17 @@ export default defineNuxtConfig({
         viewer: false,
       },
     ],
-    [
-      "@nuxtjs/sitemap",
-      {
-        hostname: "https://www.mybarathon.fr",
-        gzip: true,
-        routes: async () => [
-          "/",
-          "/evenements",
-          "/partenaires",
-          "/billetterie",
-          "/faq",
-          "/securite",
-          "/rejoindre",
-          "/contact",
-        ],
-      },
-    ],
+    "@nuxtjs/sitemap",
     "@nuxtjs/supabase",
   ],
+
+  sitemap: {
+    exclude: ["/admin", "/admin/**"],
+  },
+
+  routeRules: {
+    "/admin": { headers: { "X-Robots-Tag": "noindex, nofollow" } },
+  },
 
   supabase: {
     redirect: false,

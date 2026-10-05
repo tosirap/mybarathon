@@ -1,140 +1,147 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, onMounted, onBeforeUnmount } from "vue";
+import { MenuIcon, XIcon } from "lucide-vue-next";
 
 const isOpen = ref(false);
-const buttonRef = ref<HTMLButtonElement | null>(null);
-
-const toggleMenu = () => {
-  isOpen.value = !isOpen.value;
-  if (buttonRef.value) {
-    buttonRef.value.setAttribute("aria-expanded", isOpen.value.toString());
-  }
-};
+const scrolled = ref(false);
+const activeId = ref("accueil");
 
 const links = [
   { name: "Accueil", href: "#accueil" },
   { name: "Événements", href: "#evenements" },
   { name: "Partenaires", href: "#partenaires" },
-  { name: "Billetterie 🎟️", href: "#billetterie", highlight: true },
+  { name: "Billetterie", href: "#billetterie", highlight: true },
   { name: "FAQ", href: "#faq" },
   { name: "Sécurité", href: "#securite" },
   { name: "Rejoindre l'équipe", href: "#rejoindre" },
   { name: "Contact", href: "#contact" },
 ];
+
+let observer: IntersectionObserver | null = null;
+
+const onScroll = () => {
+  scrolled.value = window.scrollY > 8;
+};
+
+const onKeydown = (event: KeyboardEvent) => {
+  if (event.key === "Escape") isOpen.value = false;
+};
+
+onMounted(() => {
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("keydown", onKeydown);
+
+  observer = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) activeId.value = entry.target.id;
+      }
+    },
+    { rootMargin: "-40% 0px -55% 0px" },
+  );
+
+  for (const link of links) {
+    const section = document.getElementById(link.href.slice(1));
+    if (section) observer.observe(section);
+  }
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener("scroll", onScroll);
+  window.removeEventListener("keydown", onKeydown);
+  observer?.disconnect();
+});
 </script>
 
 <template>
-  <nav class="bg-gray-100 shadow-md fixed w-full z-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center w-full h-16">
-        <div class="flex items-center space-x-2 md:space-x-0 flex-shrink-0">
-          <NuxtImg
-            src="/images/logo.png"
-            alt="Logo mybarathon"
-            width="40"
-            height="40"
-            sizes="sm:32 md:40"
-            format="webp"
-            loading="lazy"
-            class="w-8 md:w-10"
-          />
-          <span class="md:hidden text-gray-900 font-medium text-base"
-            >MyBarathon</span
-          >
-        </div>
+  <header
+    class="fixed inset-x-0 top-0 z-50 transition-colors duration-300"
+    :class="
+      scrolled || isOpen
+        ? 'bg-ink/95 shadow-lg shadow-black/20 backdrop-blur'
+        : 'bg-transparent'
+    "
+  >
+    <nav
+      aria-label="Navigation principale"
+      class="container-page flex h-16 items-center justify-between gap-4 sm:h-20"
+    >
+      <a
+        href="#accueil"
+        class="flex items-center gap-3 text-white"
+        aria-label="MyBarathon, retour à l'accueil"
+      >
+        <NuxtImg
+          src="/images/logo.png"
+          alt=""
+          width="34"
+          height="40"
+          format="webp"
+          class="h-10 w-auto"
+        />
+        <span class="font-display text-lg font-extrabold tracking-tight">
+          MyBarathon
+        </span>
+      </a>
 
-        <div class="hidden md:flex space-x-6 flex-1 justify-center">
-          <template v-for="link in links" :key="link.name">
-            <a
-              :href="link.href"
-              class="text-gray-900 hover:text-gray-600 font-medium transition-colors duration-200"
-              :class="
-                link.highlight ? 'bg-yellow-300 px-3 py-1 rounded-lg' : ''
-              "
-            >
-              {{ link.name }}
-            </a>
-          </template>
-        </div>
-
-        <div class="md:hidden ml-auto pr-2">
-          <button
-            ref="buttonRef"
-            name="open_menu_burger"
-            @click="toggleMenu"
-            class="hamburger flex flex-col justify-center items-center w-6 h-6 text-gray-900 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:outline-none transition-transform duration-300 relative"
-            :class="{ active: isOpen }"
-            aria-label="Ouvrir le menu de navigation"
-            :aria-expanded="isOpen"
-          >
-            <span
-              class="line top w-full h-0.5 bg-current mx-0.5 transition-all duration-300 ease-in-out transform origin-center"
-            ></span>
-            <span
-              class="line middle w-full h-0.5 bg-current mx-0.5 transition-all duration-300 ease-in-out transform origin-center"
-            ></span>
-            <span
-              class="line bottom w-full h-0.5 bg-current mx-0.5 transition-all duration-300 ease-in-out transform origin-center"
-            ></span>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <div v-if="isOpen" class="md:hidden bg-gray-100 shadow-lg">
-      <div class="px-4 py-4 space-y-3">
-        <template v-for="link in links" :key="link.name">
+      <ul class="hidden items-center gap-1 xl:flex">
+        <li v-for="link in links" :key="link.name">
           <a
             :href="link.href"
-            class="block text-gray-900 hover:text-gray-600 font-medium transition-colors duration-200"
+            :aria-current="activeId === link.href.slice(1) ? 'location' : undefined"
+            class="rounded-full px-3 py-2 text-sm font-semibold transition-colors duration-200"
             :class="
               link.highlight
-                ? 'bg-yellow-300 px-3 py-2 rounded-lg inline-block'
-                : ''
+                ? 'ml-1 bg-amber-400 px-4 text-ink hover:bg-amber-300'
+                : activeId === link.href.slice(1)
+                  ? 'bg-white/15 text-white'
+                  : 'text-white/75 hover:bg-white/10 hover:text-white'
+            "
+          >
+            {{ link.name }}
+          </a>
+        </li>
+      </ul>
+
+      <button
+        type="button"
+        class="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/25 text-white transition hover:bg-white/10 xl:hidden"
+        :aria-label="
+          isOpen ? 'Fermer le menu de navigation' : 'Ouvrir le menu de navigation'
+        "
+        :aria-expanded="isOpen"
+        aria-controls="mobile-navigation"
+        @click="isOpen = !isOpen"
+      >
+        <XIcon v-if="isOpen" class="h-5 w-5" aria-hidden="true" />
+        <MenuIcon v-else class="h-5 w-5" aria-hidden="true" />
+      </button>
+    </nav>
+
+    <div
+      v-if="isOpen"
+      id="mobile-navigation"
+      class="border-t border-white/10 xl:hidden"
+    >
+      <ul class="container-page grid gap-1 py-4">
+        <li v-for="link in links" :key="link.name">
+          <a
+            :href="link.href"
+            class="block rounded-xl px-4 py-3 text-base font-semibold transition-colors"
+            :class="
+              link.highlight
+                ? 'bg-amber-400 text-ink hover:bg-amber-300'
+                : activeId === link.href.slice(1)
+                  ? 'bg-white/15 text-white'
+                  : 'text-white/80 hover:bg-white/10 hover:text-white'
             "
             @click="isOpen = false"
           >
             {{ link.name }}
           </a>
-        </template>
-      </div>
+        </li>
+      </ul>
     </div>
-  </nav>
+  </header>
 </template>
-
-<style scoped>
-.hamburger {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.hamburger:focus-visible {
-  outline: 2px solid #3b82f6;
-  outline-offset: 2px;
-}
-
-.line {
-  width: 24px;
-  height: 3px;
-  background-color: currentColor;
-  margin: 2px 0;
-  transition: 0.3s;
-  transform-origin: center;
-}
-
-.hamburger.active .top {
-  transform: rotate(45deg) translate(5px, 5px);
-}
-
-.hamburger.active .middle {
-  opacity: 0;
-}
-
-.hamburger.active .bottom {
-  transform: rotate(-45deg) translate(5px, -5px);
-}
-</style>
