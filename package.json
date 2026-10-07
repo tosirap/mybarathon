@@ -8,8 +8,8 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "deploy": "npm run generate && vercel --prod",
-    "vercel-build": "nuxt generate",
+    "deploy": "npm run build && vercel deploy --prebuilt --prod",
+    "vercel-build": "nuxt build",
     "vercel-dev": "nuxt dev --host 0.0.0.0 --port $PORT"
   },
   "devDependencies": {
