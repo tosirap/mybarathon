@@ -8,17 +8,14 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "deploy": "npm run generate && vercel --prod",
-    "vercel-build": "nuxt generate",
-    "vercel-dev": "nuxt dev --host 0.0.0.0 --port $PORT"
+    "vercel-build": "nuxt build"
   },
   "devDependencies": {
     "@nuxt/image": "^2.1.0",
     "@nuxtjs/tailwindcss": "^6.14.0",
     "@types/formidable": "^3.5.1",
     "baseline-browser-mapping": "^2.11.27",
-    "nuxt": "^4.5.2",
-    "vercel": "^62.2.0"
+    "nuxt": "^4.5.2"
   },
   "dependencies": {
     "@nuxtjs/sitemap": "^8.6.1",

@@ -110,6 +110,7 @@ export default defineNuxtConfig({
 
   supabase: {
     redirect: false,
+    types: false,
   },
 
   runtimeConfig: {
@@ -129,19 +130,9 @@ export default defineNuxtConfig({
       brotli: true,
       gzip: true,
     },
-    publicAssets: [{ baseURL: "/assets", dir: "public" }],
     prerender: {
       routes: ["/"],
       failOnError: false,
-    },
-    esbuild: {
-      options: {
-        target: "es2020",
-        minify: true,
-        minifyWhitespace: true,
-        minifyIdentifiers: true,
-        minifySyntax: true,
-      },
     },
     minify: true,
   },
@@ -165,7 +156,6 @@ export default defineNuxtConfig({
 
   build: {
     transpile: ["lucide-vue-next"],
-    analyze: true,
   },
 
   vite: {
