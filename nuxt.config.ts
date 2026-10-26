@@ -96,13 +96,9 @@ export default defineNuxtConfig({
         viewer: false,
       },
     ],
-    "@nuxtjs/sitemap",
     "@nuxtjs/supabase",
   ],
 
-  sitemap: {
-    exclude: ["/admin", "/admin/**"],
-  },
 
   routeRules: {
     "/admin": { headers: { "X-Robots-Tag": "noindex, nofollow" } },
