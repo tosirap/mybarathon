@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { TicketIcon, CheckIcon, ExternalLinkIcon } from "lucide-vue-next";
+import { TicketIcon, CheckIcon, ExternalLinkIcon } from "@lucide/vue";
 
 const billetwebUrl = "https://www.billetweb.fr/shop.php?event=barathon22";
 

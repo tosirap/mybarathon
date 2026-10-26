@@ -7,7 +7,7 @@ import {
   UsersIcon,
   ShieldCheckIcon,
   SparklesIcon,
-} from "lucide-vue-next";
+} from "@lucide/vue";
 
 const values = [
   {

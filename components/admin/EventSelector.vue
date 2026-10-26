@@ -53,7 +53,7 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
-import { PlusIcon } from "lucide-vue-next";
+import { PlusIcon } from "@lucide/vue";
 
 const props = defineProps({
   modelValue: {

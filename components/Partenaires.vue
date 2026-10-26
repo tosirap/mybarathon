@@ -4,7 +4,7 @@ import {
   EyeIcon,
   PartyPopperIcon,
   AwardIcon,
-} from "lucide-vue-next";
+} from "@lucide/vue";
 
 const benefits = [
   {

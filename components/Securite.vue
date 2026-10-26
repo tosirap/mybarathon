@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ShieldCheckIcon, HeartPulseIcon, DropletsIcon } from "lucide-vue-next";
+import { ShieldCheckIcon, HeartPulseIcon, DropletsIcon } from "@lucide/vue";
 
 const measures = [
   {

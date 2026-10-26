@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ChevronDownIcon, MessageCircleIcon } from "lucide-vue-next";
+import { ChevronDownIcon, MessageCircleIcon } from "@lucide/vue";
 
 const faqs = [
   {

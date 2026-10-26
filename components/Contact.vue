@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { MailIcon, MapPinIcon, GlobeIcon } from "lucide-vue-next";
+import { MailIcon, MapPinIcon, GlobeIcon } from "@lucide/vue";
 </script>
 
 <template>

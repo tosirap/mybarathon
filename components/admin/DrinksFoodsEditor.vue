@@ -360,7 +360,7 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
-import { XIcon, TrashIcon, PlusIcon, EditIcon } from "lucide-vue-next";
+import { XIcon, TrashIcon, PlusIcon, EditIcon } from "@lucide/vue";
 
 const props = defineProps({
   eventBar: {

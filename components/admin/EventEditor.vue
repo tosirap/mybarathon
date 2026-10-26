@@ -237,7 +237,7 @@ import {
   PlusIcon,
   EditIcon,
   TrashIcon,
-} from "lucide-vue-next";
+} from "@lucide/vue";
 import BarSelector from "./BarSelector.vue";
 import DrinksFoodsEditor from "./DrinksFoodsEditor.vue";
 

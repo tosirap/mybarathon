@@ -367,7 +367,7 @@ import {
   GiftIcon,
   MapPinIcon,
   XIcon,
-} from "lucide-vue-next";
+} from "@lucide/vue";
 
 const supabase = useSupabaseClient();
 

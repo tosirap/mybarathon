@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount } from "vue";
-import { MenuIcon, XIcon } from "lucide-vue-next";
+import { MenuIcon, XIcon } from "@lucide/vue";
 
 const isOpen = ref(false);
 const activeId = ref("accueil");

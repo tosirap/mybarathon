@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PartyPopperIcon } from "lucide-vue-next";
+import { PartyPopperIcon } from "@lucide/vue";
 
 const steps = [
   "Vous précommandez votre Ecocup personnalisé",

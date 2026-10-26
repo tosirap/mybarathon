@@ -101,7 +101,7 @@
 
 <script setup>
 import { ref, computed, onMounted } from "vue";
-import { XIcon } from "lucide-vue-next";
+import { XIcon } from "@lucide/vue";
 import BarForm from "./BarForm.vue";
 
 const props = defineProps({

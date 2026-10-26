@@ -98,6 +98,8 @@ export default defineNuxtConfig({
     ],
     "@nuxtjs/sitemap",
     "@nuxtjs/supabase",
+    "@vercel/analytics/nuxt",
+    "@vercel/speed-insights/nuxt",
   ],
 
   sitemap: {
@@ -152,12 +154,12 @@ export default defineNuxtConfig({
   },
 
   build: {
-    transpile: ["lucide-vue-next"],
+    transpile: ["@lucide/vue"],
   },
 
   vite: {
     optimizeDeps: {
-      include: ["tailwindcss", "lucide-vue-next"],
+      include: ["tailwindcss", "@lucide/vue"],
     },
     css: {
       devSourcemap: false,
@@ -178,7 +180,7 @@ export default defineNuxtConfig({
           manualChunks(id) {
             const normalizedId = id.replace(/\\/g, "/");
 
-            if (normalizedId.includes("/node_modules/lucide-vue-next/")) {
+            if (normalizedId.includes("/node_modules/@lucide/vue/")) {
               return "lucide";
             }
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { UsersIcon, CheckIcon, MailIcon } from "lucide-vue-next";
+import { UsersIcon, CheckIcon, MailIcon } from "@lucide/vue";
 
 const seeking = [
   "Des bénévoles motivés",
