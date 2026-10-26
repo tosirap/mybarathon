@@ -1,235 +1,363 @@
 <template>
-  <div class="container mx-auto py-6">
-    <!-- Loading state -->
-    <div v-if="loading" class="text-center py-12">
-      <p class="text-lg">Chargement de l'événement...</p>
+  <div>
+    <!-- Chargement -->
+    <div v-if="loading" class="space-y-4" aria-busy="true">
+      <p class="sr-only" role="status">Chargement des événements…</p>
+      <div v-for="n in 2" :key="n" class="h-28 animate-pulse rounded-3xl bg-ink/5"></div>
     </div>
 
-    <!-- Error state -->
-    <div v-else-if="error" class="text-center py-12">
-      <p class="text-red-600">{{ error }}</p>
+    <!-- Erreur -->
+    <div
+      v-else-if="error"
+      class="rounded-2xl border border-red-200 bg-red-50 p-6 text-center"
+      role="alert"
+    >
+      <p class="font-semibold text-red-700">{{ error }}</p>
+      <button type="button" class="btn btn-brand mt-4" @click="fetchEvents">
+        Réessayer
+      </button>
     </div>
 
-    <!-- Contenu principal -->
-    <div v-else-if="event">
-      <!-- Intro -->
-      <div class="my-8 text-center">
-        <p class="text-lg font-medium">
-          Prochain barathon : {{ formatDate(event.event_date) }}
-        </p>
-        <p class="text-md">
-          Départs : <span class="font-bold">{{ startingBarsNames }}</span>
-        </p>
+    <!-- Aucun événement -->
+    <p
+      v-else-if="events.length === 0"
+      class="rounded-2xl bg-brand-50 p-8 text-center text-lg text-ink/70"
+    >
+      Aucun événement actif pour le moment.
+    </p>
 
-        <!-- Bouton pour ouvrir la modal -->
-        <button
-          v-if="event?.map_embed_url"
-          @click="showMapModal = true"
-          class="mt-4 inline-flex items-center px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg transition-colors shadow-md"
-        >
-          <MapPinIcon class="w-5 h-5 mr-2" />
-          Voir le plan du barathon
-        </button>
-      </div>
-
-      <!-- Titre -->
-      <h1 class="text-3xl font-bold mb-6 text-center">Liste des Bars</h1>
-
-      <!-- Liste des bars participants -->
+    <template v-else>
       <div
-        v-for="(bar, index) in barList"
-        :key="bar.id"
-        class="mb-4 border rounded-lg shadow-sm"
+        class="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between"
       >
-        <!-- Header cliquable -->
-        <button
-          @click="toggleBar(index)"
-          class="w-full flex justify-between items-center px-4 py-3 bg-gray-100 hover:bg-gray-200 text-left"
+        <h3 class="font-display text-2xl font-extrabold sm:text-3xl">
+          Nos barathons
+        </h3>
+
+        <div
+          role="tablist"
+          aria-label="Type d'événements"
+          class="inline-flex self-start rounded-full bg-ink/5 p-1"
         >
-          <div class="flex items-center space-x-2">
-            <span class="font-semibold text-lg">{{ capitalize(bar.name) }}</span>
-
-            <span
-              v-if="bar.is_starting_bar"
-              class="flex items-center text-green-600 font-bold text-sm px-2 py-0.5 border border-green-600 rounded space-x-1"
-            >
-              <FlagIcon class="h-4 w-4" />
-              <span>Départ</span>
-            </span>
-
-            <span
-              v-if="bar.is_after_party"
-              class="flex items-center text-purple-600 font-bold text-sm px-2 py-0.5 border border-purple-600 rounded space-x-1"
-            >
-              <MoonIcon class="h-4 w-4" />
-              <span>After</span>
-            </span>
-          </div>
-
-          <ChevronDownIcon
-            :class="[
-              'w-5 h-5 transition-transform',
-              { 'rotate-180': activeIndex === index },
-            ]"
-          />
-        </button>
-
-        <!-- Détails affichés si actif -->
-        <transition name="fade">
-          <div v-if="activeIndex === index" class="p-4 bg-white">
-            <!-- Image LAZY LOADED : chargée UNIQUEMENT quand le bar est ouvert -->
-            <div
-              v-if="bar.imageLoaded && !bar.image_path.endsWith('.svg')"
-              class="bar-image-wrapper"
-            >
-              <img
-                :src="bar.image_path"
-                :alt="bar.name"
-                loading="lazy"
-                class="bar-image-main"
-              />
-            </div>
-            <div
-              v-else-if="bar.imageLoaded && bar.image_path.endsWith('.svg')"
-              class="bar-image-wrapper-svg"
-            >
-              <img
-                :src="bar.image_path"
-                :alt="bar.name"
-                loading="lazy"
-                class="bar-image-svg"
-              />
-            </div>
-
-            <!-- Carte Google Maps LAZY LOADED -->
-            <div class="mb-3" v-if="bar.google_maps_link">
-              <iframe
-                :src="bar.google_maps_link"
-                width="100%"
-                height="200"
-                style="border: 0"
-                allowfullscreen=""
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-                class="rounded-md"
-              ></iframe>
-            </div>
-
-            <!-- Liste des boissons -->
-            <div v-if="bar.drinks && bar.drinks.length > 0" class="mb-6">
-              <h3 class="text-lg font-bold mb-4 flex items-center">
-                <CupSodaIcon class="w-5 h-5 mr-2 text-blue-500" />
-                Boissons
-              </h3>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                <div
-                  v-for="drink in bar.drinks"
-                  :key="drink.id"
-                  class="flex justify-between items-center p-3 bg-gray-50 rounded-lg border border-gray-200 hover:bg-gray-100 transition-colors"
-                >
-                  <span class="font-medium text-gray-800">{{
-                    capitalize(drink.name)
-                  }}</span>
-                  <span class="font-bold text-green-600">{{
-                    formatPrice(drink.price)
-                  }}</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Liste des aliments -->
-            <div v-if="bar.foods && bar.foods.length > 0" class="mb-6">
-              <h3 class="text-lg font-bold mb-4 flex items-center">
-                <SandwichIcon class="w-5 h-5 mr-2 text-orange-500" />
-                Nourriture
-              </h3>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                <div
-                  v-for="food in bar.foods"
-                  :key="food.id"
-                  class="flex justify-between items-center p-3 bg-gray-50 rounded-lg border border-gray-200 hover:bg-gray-100 transition-colors"
-                >
-                  <span class="font-medium text-gray-800">{{
-                    capitalize(food.name)
-                  }}</span>
-                  <span class="font-bold text-green-600">{{
-                    formatPrice(food.price)
-                  }}</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Avantages -->
-            <div v-if="bar.benefits && bar.benefits.length > 0">
-              <h3 class="text-lg font-bold mb-4 flex items-center">
-                <GiftIcon class="w-5 h-5 mr-2 text-purple-500" />
-                Avantages
-              </h3>
-              <div class="flex flex-wrap gap-2">
-                <span
-                  v-for="benefit in bar.benefits"
-                  :key="benefit.id"
-                  class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800 border border-blue-300 hover:bg-blue-200 transition-colors"
-                >
-                  {{ capitalize(benefit.value) }}
-                </span>
-              </div>
-            </div>
-          </div>
-        </transition>
+          <button
+            v-for="tab in tabs"
+            :id="`tab-${tab.id}`"
+            :key="tab.id"
+            type="button"
+            role="tab"
+            :aria-selected="activeTab === tab.id"
+            :aria-controls="`panel-${tab.id}`"
+            class="rounded-full px-5 py-2 text-sm font-bold transition"
+            :class="
+              activeTab === tab.id
+                ? 'bg-ink text-white shadow'
+                : 'text-ink/70 hover:text-ink'
+            "
+            @click="activeTab = tab.id"
+          >
+            {{ tab.label }}
+            <span class="ml-1 opacity-70">({{ tab.count }})</span>
+          </button>
+        </div>
       </div>
 
-      <!-- Modal pour la carte du barathon -->
-      <transition name="modal-fade">
-        <div
-          v-if="showMapModal"
-          @click="showMapModal = false"
-          class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+      <div
+        :id="`panel-${activeTab}`"
+        role="tabpanel"
+        :aria-labelledby="`tab-${activeTab}`"
+        class="mt-8 space-y-5"
+      >
+        <p
+          v-if="visibleEvents.length === 0"
+          class="rounded-2xl bg-brand-50 p-8 text-center text-ink/70"
         >
-          <div
-            @click.stop
-            class="relative bg-white rounded-lg shadow-lg w-full max-w-4xl mx-4 max-h-[90vh] overflow-hidden"
-          >
-            <!-- Header de la modal -->
-            <div class="flex items-center justify-between p-4 border-b">
-              <h2 class="text-xl font-bold">Plan du Barathon</h2>
-              <button
-                @click="showMapModal = false"
-                class="text-gray-500 hover:text-gray-700 transition-colors"
+          {{
+            activeTab === "upcoming"
+              ? "Aucun événement à venir pour le moment."
+              : "Aucun événement passé."
+          }}
+        </p>
+
+        <article
+          v-for="ev in visibleEvents"
+          :key="ev.id"
+          class="overflow-hidden rounded-3xl border bg-white shadow-soft"
+          :class="ev.open ? 'border-brand-300' : 'border-ink/10'"
+        >
+          <h4>
+            <button
+              type="button"
+              class="flex w-full items-center gap-4 p-5 text-left transition hover:bg-brand-50/60 sm:p-6"
+              :aria-expanded="ev.open"
+              :aria-controls="`event-${ev.id}`"
+              @click="toggleEvent(ev)"
+            >
+              <span
+                class="flex h-16 w-16 shrink-0 flex-col items-center justify-center rounded-2xl text-white"
+                :class="activeTab === 'past' ? 'bg-ink/60' : 'bg-brand-600'"
+                aria-hidden="true"
               >
-                <XIcon class="w-6 h-6" />
+                <span class="font-display text-2xl font-extrabold leading-none">
+                  {{ dayOf(ev.event_date) }}
+                </span>
+                <span class="mt-1 text-[0.7rem] font-bold uppercase tracking-wider">
+                  {{ monthShort(ev.event_date) }}
+                </span>
+              </span>
+
+              <span class="min-w-0 flex-1">
+                <span
+                  v-if="ev.id === nextEventId && activeTab === 'upcoming'"
+                  class="mb-1 inline-flex rounded-full bg-amber-100 px-3 py-0.5 text-xs font-bold text-amber-800"
+                >
+                  Prochain barathon
+                </span>
+                <span class="block font-display text-lg font-extrabold leading-snug sm:text-xl">
+                  {{ ev.name || "Barathon" }}
+                </span>
+                <span class="mt-0.5 block text-sm text-ink/70">
+                  {{ formatDate(ev.event_date) }}
+                  <template v-if="startingBarsNames(ev)">
+                    · Départs : {{ startingBarsNames(ev) }}
+                  </template>
+                </span>
+              </span>
+
+              <ChevronDownIcon
+                class="h-5 w-5 shrink-0 text-brand-600 transition-transform duration-200"
+                :class="{ 'rotate-180': ev.open }"
+                aria-hidden="true"
+              />
+            </button>
+          </h4>
+
+          <transition name="fade">
+            <div
+              v-if="ev.open"
+              :id="`event-${ev.id}`"
+              class="border-t border-ink/10 p-5 sm:p-6"
+            >
+              <p v-if="ev.description" class="mb-4 text-ink/70">
+                {{ ev.description }}
+              </p>
+
+              <button
+                v-if="ev.map_embed_url"
+                type="button"
+                class="btn btn-brand mb-6"
+                @click="mapEvent = ev"
+              >
+                <MapPinIcon class="h-4 w-4" aria-hidden="true" />
+                Voir le plan du barathon
               </button>
-            </div>
 
-            <!-- Contenu de la modal -->
-            <div class="p-4">
-              <iframe
-                v-if="event?.map_embed_url"
-                :src="event.map_embed_url"
-                width="100%"
-                height="480"
-                style="border: 0"
-                allowfullscreen=""
-                loading="lazy"
-                class="rounded-md"
-              ></iframe>
-              <p v-else class="text-center text-gray-500">Aucune carte disponible.</p>
+              <h5 class="mb-3 font-display text-lg font-extrabold">
+                Liste des bars
+                <span class="font-semibold text-ink/50">({{ ev.bars.length }})</span>
+              </h5>
 
+              <p v-if="ev.bars.length === 0" class="text-ink/60">
+                Les bars participants seront bientôt annoncés.
+              </p>
+
+              <div class="space-y-3">
+                <div
+                  v-for="bar in ev.bars"
+                  :key="bar.eventBarId"
+                  class="overflow-hidden rounded-2xl border border-ink/10"
+                >
+                  <button
+                    type="button"
+                    class="flex w-full items-center justify-between gap-3 bg-cream px-4 py-3 text-left transition hover:bg-brand-50"
+                    :aria-expanded="ev.activeBarId === bar.eventBarId"
+                    :aria-controls="`bar-${ev.id}-${bar.eventBarId}`"
+                    @click="toggleBar(ev, bar)"
+                  >
+                    <span class="flex flex-wrap items-center gap-2">
+                      <span class="font-bold">{{ capitalize(bar.name) }}</span>
+
+                      <span
+                        v-if="bar.is_starting_bar"
+                        class="inline-flex items-center gap-1 rounded-full bg-emerald-100 px-2.5 py-0.5 text-xs font-bold text-emerald-800"
+                      >
+                        <FlagIcon class="h-3.5 w-3.5" aria-hidden="true" />
+                        Départ
+                      </span>
+
+                      <span
+                        v-if="bar.is_after_party"
+                        class="inline-flex items-center gap-1 rounded-full bg-brand-100 px-2.5 py-0.5 text-xs font-bold text-brand-800"
+                      >
+                        <MoonIcon class="h-3.5 w-3.5" aria-hidden="true" />
+                        After
+                      </span>
+                    </span>
+
+                    <ChevronDownIcon
+                      class="h-5 w-5 shrink-0 text-brand-600 transition-transform duration-200"
+                      :class="{ 'rotate-180': ev.activeBarId === bar.eventBarId }"
+                      aria-hidden="true"
+                    />
+                  </button>
+
+                  <transition name="fade">
+                    <div
+                      v-if="ev.activeBarId === bar.eventBarId"
+                      :id="`bar-${ev.id}-${bar.eventBarId}`"
+                      class="space-y-6 bg-white p-4"
+                    >
+                      <!-- Image chargée uniquement à l'ouverture du bar -->
+                      <div
+                        v-if="bar.imageLoaded && bar.image_path"
+                        class="flex h-64 items-center justify-center overflow-hidden rounded-xl bg-gray-100"
+                      >
+                        <img
+                          :src="bar.image_path"
+                          :alt="bar.name"
+                          loading="lazy"
+                          class="max-h-full max-w-full object-contain"
+                          :class="{ 'max-h-[80%] max-w-[80%]': bar.image_path.endsWith('.svg') }"
+                        />
+                      </div>
+
+                      <div v-if="bar.google_maps_link">
+                        <iframe
+                          :src="bar.google_maps_link"
+                          width="100%"
+                          height="220"
+                          style="border: 0"
+                          allowfullscreen=""
+                          loading="lazy"
+                          referrerpolicy="no-referrer-when-downgrade"
+                          :title="`Carte : ${bar.name}`"
+                          class="rounded-xl"
+                        ></iframe>
+                      </div>
+
+                      <p
+                        v-if="ev.detailsLoading"
+                        class="text-sm text-ink/60"
+                        role="status"
+                      >
+                        Chargement des détails…
+                      </p>
+
+                      <!-- Boissons -->
+                      <div v-if="bar.drinks.length > 0">
+                        <h6 class="mb-3 flex items-center gap-2 font-display text-lg font-extrabold">
+                          <CupSodaIcon class="h-5 w-5 text-brand-600" aria-hidden="true" />
+                          Boissons
+                        </h6>
+                        <ul class="grid gap-2 md:grid-cols-2">
+                          <li
+                            v-for="drink in bar.drinks"
+                            :key="drink.id"
+                            class="flex items-center justify-between gap-3 rounded-xl border border-ink/10 bg-cream p-3"
+                          >
+                            <span class="font-medium">{{ capitalize(drink.name) }}</span>
+                            <span class="font-bold text-emerald-700">
+                              {{ formatPrice(drink.price) }}
+                            </span>
+                          </li>
+                        </ul>
+                      </div>
+
+                      <!-- Nourriture -->
+                      <div v-if="bar.foods.length > 0">
+                        <h6 class="mb-3 flex items-center gap-2 font-display text-lg font-extrabold">
+                          <SandwichIcon class="h-5 w-5 text-amber-600" aria-hidden="true" />
+                          Nourriture
+                        </h6>
+                        <ul class="grid gap-2 md:grid-cols-2">
+                          <li
+                            v-for="food in bar.foods"
+                            :key="food.id"
+                            class="flex items-center justify-between gap-3 rounded-xl border border-ink/10 bg-cream p-3"
+                          >
+                            <span class="font-medium">{{ capitalize(food.name) }}</span>
+                            <span class="font-bold text-emerald-700">
+                              {{ formatPrice(food.price) }}
+                            </span>
+                          </li>
+                        </ul>
+                      </div>
+
+                      <!-- Avantages -->
+                      <div v-if="bar.benefits.length > 0">
+                        <h6 class="mb-3 flex items-center gap-2 font-display text-lg font-extrabold">
+                          <GiftIcon class="h-5 w-5 text-pink-500" aria-hidden="true" />
+                          Avantages
+                        </h6>
+                        <ul class="flex flex-wrap gap-2">
+                          <li
+                            v-for="benefit in bar.benefits"
+                            :key="benefit.id"
+                            class="rounded-full bg-amber-100 px-3 py-1 text-sm font-semibold text-amber-900"
+                          >
+                            {{ capitalize(benefit.value) }}
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </transition>
+                </div>
+              </div>
             </div>
+          </transition>
+        </article>
+      </div>
+    </template>
+
+    <!-- Modal : plan du barathon -->
+    <transition name="fade">
+      <div
+        v-if="mapEvent"
+        class="fixed inset-0 z-[70] flex items-center justify-center bg-black/60 p-4"
+        @click="mapEvent = null"
+      >
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="map-dialog-title"
+          class="relative max-h-[90vh] w-full max-w-4xl overflow-hidden rounded-3xl bg-white shadow-2xl"
+          @click.stop
+        >
+          <div class="flex items-center justify-between border-b border-ink/10 p-4">
+            <h2 id="map-dialog-title" class="font-display text-xl font-extrabold">
+              Plan du Barathon
+            </h2>
+            <button
+              type="button"
+              class="rounded-full p-2 text-ink/60 transition hover:bg-ink/5 hover:text-ink"
+              aria-label="Fermer le plan"
+              @click="mapEvent = null"
+            >
+              <XIcon class="h-6 w-6" aria-hidden="true" />
+            </button>
+          </div>
+
+          <div class="p-4">
+            <iframe
+              v-if="mapEvent.map_embed_url"
+              :src="mapEvent.map_embed_url"
+              width="100%"
+              height="480"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              title="Plan du barathon"
+              class="rounded-xl"
+            ></iframe>
+            <p v-else class="text-center text-ink/60">Aucune carte disponible.</p>
           </div>
         </div>
-      </transition>
-    </div>
-
-    <!-- Aucun événement trouvé -->
-    <div v-else class="text-center py-12">
-      <p class="text-lg text-gray-600">Aucun événement actif pour le moment.</p>
-    </div>
+      </div>
+    </transition>
   </div>
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from "vue";
+import { ref, computed, watch, onMounted, onBeforeUnmount } from "vue";
 import {
   ChevronDownIcon,
   FlagIcon,
@@ -243,117 +371,175 @@ import {
 
 const supabase = useSupabaseClient();
 
+const siteUrl = "https://www.mybarathon.fr";
+
 // État
-const event = ref(null);
-const barList = ref([]);
+const events = ref([]);
 const loading = ref(true);
 const error = ref(null);
-const activeIndex = ref(null);
-const showMapModal = ref(false);
+const activeTab = ref("upcoming");
+const mapEvent = ref(null);
+const today = ref("");
 
-// Computed pour les bars de départ
-const startingBarsNames = computed(() => {
-  const startingBars = barList.value.filter((bar) => bar.is_starting_bar);
-  return startingBars.map((bar) => bar.name).join(" / ");
-});
+// Dates au format AAAA-MM-JJ pour comparer sans effet de fuseau horaire
+const dateKey = (value) => String(value ?? "").slice(0, 10);
+const parseDate = (value) => new Date(`${dateKey(value)}T12:00:00`);
 
-// Fonction pour récupérer l'événement actif
-const fetchActiveEvent = async () => {
+const upcomingEvents = computed(() =>
+  events.value
+    .filter((ev) => dateKey(ev.event_date) >= today.value)
+    .sort((a, b) => dateKey(a.event_date).localeCompare(dateKey(b.event_date)))
+);
+
+const pastEvents = computed(() =>
+  events.value
+    .filter((ev) => dateKey(ev.event_date) < today.value)
+    .sort((a, b) => dateKey(b.event_date).localeCompare(dateKey(a.event_date)))
+);
+
+const tabs = computed(() => [
+  { id: "upcoming", label: "À venir", count: upcomingEvents.value.length },
+  { id: "past", label: "Passés", count: pastEvents.value.length },
+]);
+
+const visibleEvents = computed(() =>
+  activeTab.value === "upcoming" ? upcomingEvents.value : pastEvents.value
+);
+
+const nextEventId = computed(() => upcomingEvents.value[0]?.id ?? null);
+
+const startingBarsNames = (ev) =>
+  ev.bars
+    .filter((bar) => bar.is_starting_bar)
+    .map((bar) => bar.name)
+    .join(" / ");
+
+// Récupère tous les événements actifs et leurs bars en deux requêtes
+const fetchEvents = async () => {
   try {
     loading.value = true;
     error.value = null;
+    today.value = new Date().toLocaleDateString("sv-SE", {
+      timeZone: "Europe/Paris",
+    });
 
-    // 1. Récupérer l'événement actif le plus récent
-    const { data: eventData, error: eventError } = await supabase
+    const { data: eventsData, error: eventsError } = await supabase
       .from("events")
       .select("*")
       .eq("is_active", true)
-      .order("event_date", { ascending: false })
-      .limit(1)
-      .single();
+      .order("event_date", { ascending: false });
 
-    if (eventError) throw eventError;
-    if (!eventData) {
-      error.value = "Aucun événement actif trouvé";
-      return;
-    }
+    if (eventsError) throw eventsError;
 
-    event.value = eventData;
+    const list = eventsData || [];
+    const barsByEvent = {};
 
-    // 2. Récupérer tous les bars de cet événement avec leurs relations
-    const { data: barsData, error: barsError } = await supabase
-      .from("event_bars")
-      .select(`
-        id,
-        is_starting_bar,
-        is_after_party,
-        display_order,
-        bars (
+    if (list.length > 0) {
+      const { data: eventBars, error: barsError } = await supabase
+        .from("event_bars")
+        .select(
+          `
           id,
-          name,
-          google_maps_link,
-          image_path
+          event_id,
+          is_starting_bar,
+          is_after_party,
+          display_order,
+          bars (
+            id,
+            name,
+            google_maps_link,
+            image_path
+          )
+        `
         )
-      `)
-      .eq("event_id", eventData.id)
-      .order("display_order", { ascending: true });
+        .in(
+          "event_id",
+          list.map((ev) => ev.id)
+        )
+        .order("display_order", { ascending: true });
 
-    if (barsError) throw barsError;
+      if (barsError) throw barsError;
 
-    // 3. Pour chaque bar, récupérer drinks, foods et benefits
-    const barsWithDetails = await Promise.all(
-      barsData.map(async (eventBar) => {
-        // Récupérer les drinks
-        const { data: drinks } = await supabase
-          .from("drinks")
-          .select("*")
-          .eq("event_bar_id", eventBar.id)
-          .order("name");
-
-        // Récupérer les foods
-        const { data: foods } = await supabase
-          .from("foods")
-          .select("*")
-          .eq("event_bar_id", eventBar.id)
-          .order("name");
-
-        // Récupérer les benefits
-        const { data: benefits } = await supabase
-          .from("benefits")
-          .select("*")
-          .eq("event_bar_id", eventBar.id);
-
-        return {
+      for (const eventBar of eventBars || []) {
+        (barsByEvent[eventBar.event_id] ||= []).push({
           ...eventBar.bars,
+          eventBarId: eventBar.id,
           is_starting_bar: eventBar.is_starting_bar,
           is_after_party: eventBar.is_after_party,
           display_order: eventBar.display_order,
-          drinks: drinks || [],
-          foods: foods || [],
-          benefits: benefits || [],
-          imageLoaded: false, // ← FLAG pour lazy loading
-        };
-      })
-    );
+          drinks: [],
+          foods: [],
+          benefits: [],
+          imageLoaded: false, // lazy loading de l'image
+        });
+      }
+    }
 
-    barList.value = barsWithDetails;
+    events.value = list.map((ev) => ({
+      ...ev,
+      bars: barsByEvent[ev.id] || [],
+      open: false,
+      detailsLoaded: false,
+      detailsLoading: false,
+      activeBarId: null,
+    }));
+
+    if (upcomingEvents.value.length === 0 && pastEvents.value.length > 0) {
+      activeTab.value = "past";
+    }
+
+    // Le prochain événement est ouvert par défaut
+    if (upcomingEvents.value[0]) {
+      await toggleEvent(upcomingEvents.value[0], true);
+    }
   } catch (err) {
-    console.error("Erreur lors du chargement de l'événement:", err);
-    error.value = "Erreur lors du chargement de l'événement";
+    console.error("Erreur lors du chargement des événements:", err);
+    error.value = "Erreur lors du chargement des événements";
   } finally {
     loading.value = false;
   }
 };
 
-// Fonction pour toggle un bar ET charger son image si nécessaire
-const toggleBar = (index) => {
-  const wasActive = activeIndex.value === index;
-  activeIndex.value = wasActive ? null : index;
-  
-  // Charger l'image UNIQUEMENT si le bar est ouvert et pas déjà chargé
-  if (!wasActive && barList.value[index] && !barList.value[index].imageLoaded) {
-    barList.value[index].imageLoaded = true;
+// Boissons, nourriture et avantages d'un événement, chargés à l'ouverture
+const loadDetails = async (ev) => {
+  if (ev.detailsLoaded || ev.detailsLoading) return;
+  if (ev.bars.length === 0) {
+    ev.detailsLoaded = true;
+    return;
   }
+
+  ev.detailsLoading = true;
+  try {
+    const ids = ev.bars.map((bar) => bar.eventBarId);
+    const [drinks, foods, benefits] = await Promise.all([
+      supabase.from("drinks").select("*").in("event_bar_id", ids).order("name"),
+      supabase.from("foods").select("*").in("event_bar_id", ids).order("name"),
+      supabase.from("benefits").select("*").in("event_bar_id", ids),
+    ]);
+
+    for (const bar of ev.bars) {
+      bar.drinks = (drinks.data || []).filter((d) => d.event_bar_id === bar.eventBarId);
+      bar.foods = (foods.data || []).filter((f) => f.event_bar_id === bar.eventBarId);
+      bar.benefits = (benefits.data || []).filter((b) => b.event_bar_id === bar.eventBarId);
+    }
+    ev.detailsLoaded = true;
+  } catch (err) {
+    console.error("Erreur lors du chargement des détails:", err);
+  } finally {
+    ev.detailsLoading = false;
+  }
+};
+
+const toggleEvent = async (ev, forceOpen = false) => {
+  ev.open = forceOpen ? true : !ev.open;
+  if (ev.open) await loadDetails(ev);
+};
+
+// Ouvre un bar et charge son image uniquement à ce moment
+const toggleBar = (ev, bar) => {
+  const wasActive = ev.activeBarId === bar.eventBarId;
+  ev.activeBarId = wasActive ? null : bar.eventBarId;
+  if (!wasActive) bar.imageLoaded = true;
 };
 
 // Fonctions utilitaires
@@ -374,90 +560,75 @@ const capitalize = (s) => {
   return s.charAt(0).toUpperCase() + s.slice(1);
 };
 
-const formatDate = (dateString) => {
-  const date = new Date(dateString);
-  return date.toLocaleDateString("fr-FR", {
+const formatDate = (value) =>
+  parseDate(value).toLocaleDateString("fr-FR", {
+    weekday: "long",
     day: "numeric",
     month: "long",
     year: "numeric",
   });
+
+const dayOf = (value) => parseDate(value).getDate();
+
+const monthShort = (value) =>
+  parseDate(value)
+    .toLocaleDateString("fr-FR", { month: "short" })
+    .replace(".", "");
+
+// SEO : données structurées pour les événements à venir
+const eventSchema = (ev) => ({
+  "@type": "Event",
+  name: ev.name || "Barathon MyBarathon",
+  startDate: dateKey(ev.event_date),
+  eventStatus: "https://schema.org/EventScheduled",
+  eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+  ...(ev.description ? { description: ev.description } : {}),
+  location: {
+    "@type": "Place",
+    name: startingBarsNames(ev) || "Bars partenaires",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Strasbourg",
+      addressCountry: "FR",
+    },
+  },
+  organizer: { "@type": "Organization", name: "MyBarathon", url: `${siteUrl}/` },
+  image: [`${siteUrl}/images/og-image.png`],
+  url: `${siteUrl}/#evenements`,
+});
+
+useHead(() => ({
+  script:
+    upcomingEvents.value.length > 0
+      ? [
+          {
+            key: "events-jsonld",
+            type: "application/ld+json",
+            innerHTML: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": upcomingEvents.value.map(eventSchema),
+            }),
+          },
+        ]
+      : [],
+}));
+
+// Modal : Échap pour fermer, et pas de défilement de la page derrière
+const onKeydown = (event) => {
+  if (event.key === "Escape") mapEvent.value = null;
 };
 
-// Charger les données au montage
+watch(mapEvent, (value) => {
+  document.body.style.overflow = value ? "hidden" : "";
+});
+
 onMounted(() => {
-  fetchActiveEvent();
+  window.addEventListener("keydown", onKeydown);
+  fetchEvents();
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener("keydown", onKeydown);
+  document.body.style.overflow = "";
 });
 </script>
-
-<style scoped>
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.3s;
-}
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-
-/* Transitions pour la modal */
-.modal-fade-enter-active,
-.modal-fade-leave-active {
-  transition: opacity 0.3s ease;
-}
-.modal-fade-enter-from,
-.modal-fade-leave-to {
-  opacity: 0;
-}
-
-/* Wrapper pour images normales (avec effet blur background) */
-.bar-image-wrapper {
-  position: relative;
-  width: 100%;
-  height: 16rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 0.5rem;
-  margin-bottom: 0.75rem;
-  background-color: #f3f4f6;
-  overflow: hidden;
-}
-
-.bar-image-main {
-  position: relative;
-  z-index: 2;
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  display: block;
-  margin: 0 auto;
-}
-
-/* Wrapper pour images SVG */
-.bar-image-wrapper-svg {
-  width: 100%;
-  height: 16rem;
-  border-radius: 0.5rem;
-  margin-bottom: 0.75rem;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #f3f4f6;
-}
-
-.bar-image-svg {
-  max-width: 80%;
-  max-height: 80%;
-  object-fit: contain;
-  display: block;
-  margin: auto;
-}
-
-/* Responsive */
-@media (min-width: 1024px) {
-  .container {
-    max-width: 900px;
-  }
-}
-</style>
