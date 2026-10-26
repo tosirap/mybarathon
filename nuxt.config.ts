@@ -133,6 +133,8 @@ export default defineNuxtConfig({
     prerender: {
       routes: ["/"],
       failOnError: false,
+      crawlLinks: false,
+      ignore: ["/admin"],
     },
     minify: true,
   },
