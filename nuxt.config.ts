@@ -136,13 +136,10 @@ export default defineNuxtConfig({
   },
 
   image: {
-    provider: "ipx",
-    ipx: {
-      modifiers: {
-        format: "webp",
-        quality: 80,
-      },
-    },
+    // IPX (@nuxt/image 2 + ipx 4 beta) hangs the Nitro prerender on Linux, so
+    // `nuxt generate` exits before writing the output. Use Vercel's optimizer.
+    provider: "vercel",
+    quality: 80,
     domains: [],
     screens: {
       xs: 320,
